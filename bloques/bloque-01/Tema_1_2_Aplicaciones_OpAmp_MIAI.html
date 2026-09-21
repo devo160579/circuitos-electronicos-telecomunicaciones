@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1.2 Aplicaciones de amplificadores operacionales en acondicionamiento y procesamiento de señales</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">1.2 Aplicaciones de amplificadores operacionales en
+acondicionamiento y procesamiento de señales</h1>
+<p class="subtitle">Circuitos Electrónicos para Telecomunicaciones ·
+Quinto ciclo</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#resultado-esperado-del-tema"
+id="toc-resultado-esperado-del-tema">Resultado esperado del
+tema</a></li>
+<li><a href="#conocimientos-previos"
+id="toc-conocimientos-previos">Conocimientos previos</a></li>
+<li><a
+href="#circuitos-sumadores-restadores-integradores-y-diferenciadores"
+id="toc-circuitos-sumadores-restadores-integradores-y-diferenciadores">1.2.1
+Circuitos sumadores, restadores, integradores y diferenciadores</a>
+<ul>
+<li><a href="#sumador-inversor" id="toc-sumador-inversor">Sumador
+inversor</a></li>
+<li><a href="#restador-o-amplificador-diferencial"
+id="toc-restador-o-amplificador-diferencial">Restador o amplificador
+diferencial</a></li>
+<li><a href="#integrador-inversor"
+id="toc-integrador-inversor">Integrador inversor</a></li>
+<li><a href="#diferenciador-inversor"
+id="toc-diferenciador-inversor">Diferenciador inversor</a></li>
+<li><a href="#comparación-funcional"
+id="toc-comparación-funcional">Comparación funcional</a></li>
+</ul></li>
+<li><a href="#ejemplos-resueltos" id="toc-ejemplos-resueltos">Ejemplos
+resueltos</a>
+<ul>
+<li><a href="#ejemplo-1-sumador-ponderado"
+id="toc-ejemplo-1-sumador-ponderado">Ejemplo 1 — Sumador ponderado</a>
+<ul>
+<li><a href="#problema" id="toc-problema">Problema</a></li>
+<li><a href="#fundamento" id="toc-fundamento">Fundamento</a></li>
+<li><a href="#procedimiento"
+id="toc-procedimiento">Procedimiento</a></li>
+<li><a href="#interpretación"
+id="toc-interpretación">Interpretación</a></li>
+</ul></li>
+<li><a href="#ejemplo-2-restador-para-una-señal-diferencial"
+id="toc-ejemplo-2-restador-para-una-señal-diferencial">Ejemplo 2 —
+Restador para una señal diferencial</a></li>
+<li><a href="#ejemplo-3-integrador-ante-una-entrada-constante"
+id="toc-ejemplo-3-integrador-ante-una-entrada-constante">Ejemplo 3 —
+Integrador ante una entrada constante</a></li>
+<li><a href="#ejemplo-4-diferenciador-ante-una-rampa"
+id="toc-ejemplo-4-diferenciador-ante-una-rampa">Ejemplo 4 —
+Diferenciador ante una rampa</a></li>
+</ul></li>
+<li><a
+href="#acondicionamiento-amplificación-y-procesamiento-de-señales-en-telecomunicaciones"
+id="toc-acondicionamiento-amplificación-y-procesamiento-de-señales-en-telecomunicaciones">1.2.2
+Acondicionamiento, amplificación y procesamiento de señales en
+telecomunicaciones</a>
+<ul>
+<li><a href="#qué-significa-acondicionar-una-señal"
+id="toc-qué-significa-acondicionar-una-señal">¿Qué significa
+acondicionar una señal?</a></li>
+<li><a href="#modelo-de-acondicionamiento-lineal"
+id="toc-modelo-de-acondicionamiento-lineal">Modelo de acondicionamiento
+lineal</a></li>
+<li><a href="#rango-dinámico-y-saturación"
+id="toc-rango-dinámico-y-saturación">Rango dinámico y
+saturación</a></li>
+<li><a href="#impedancias-y-carga"
+id="toc-impedancias-y-carga">Impedancias y carga</a></li>
+<li><a href="#ancho-de-banda-y-velocidad"
+id="toc-ancho-de-banda-y-velocidad">Ancho de banda y velocidad</a></li>
+<li><a href="#flujo-de-diseño-para-acondicionamiento"
+id="toc-flujo-de-diseño-para-acondicionamiento">Flujo de diseño para
+acondicionamiento</a></li>
+</ul></li>
+<li><a href="#comprueba-tu-comprensión"
+id="toc-comprueba-tu-comprensión">Comprueba tu comprensión</a></li>
+<li><a href="#ejercicios-propuestos"
+id="toc-ejercicios-propuestos">Ejercicios propuestos</a>
+<ul>
+<li><a href="#nivel-1-comprensión" id="toc-nivel-1-comprensión">Nivel 1
+— Comprensión</a></li>
+<li><a href="#nivel-2-aplicación" id="toc-nivel-2-aplicación">Nivel 2 —
+Aplicación</a></li>
+<li><a href="#nivel-3-transferencia-profesional"
+id="toc-nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</a></li>
+</ul></li>
+<li><a href="#caso-profesional-receptor-de-una-señal-diferencial"
+id="toc-caso-profesional-receptor-de-una-señal-diferencial">Caso
+profesional — receptor de una señal diferencial</a></li>
+<li><a href="#feedback-y-orientaciones"
+id="toc-feedback-y-orientaciones">Feedback y orientaciones</a></li>
+<li><a href="#síntesis" id="toc-síntesis">Síntesis</a></li>
+<li><a href="#reflexiona" id="toc-reflexiona">Reflexiona</a></li>
+<li><a href="#referencias-sugeridas"
+id="toc-referencias-sugeridas">Referencias sugeridas</a></li>
+</ul>
+</nav>
+<style>
+/* ===== MIAI visual system v2 ===== */
+:root{
+  --brand:#1F4E79;
+  --brand-dark:#163a5d;
+  --brand2:#2D6A9F;
+  --accent:#0f766e;
+  --ink:#172230;
+  --muted:#5b6978;
+  --soft:#f4f7fa;
+  --soft-blue:#eef5fb;
+  --line:#d9e3ec;
+  --line-strong:#c6d4df;
+  --ok:#166534;
+  --warn:#9a5b08;
+  --bad:#a11d1d;
+  --white:#ffffff;
+  --shadow:0 10px 28px rgba(25,55,85,.08);
+  --shadow-sm:0 4px 14px rgba(25,55,85,.07);
+  --radius:16px;
+}
+html{scroll-behavior:smooth;background:#edf2f7;}
+body{
+  color:var(--ink); background:#f7f9fc;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16.5px; line-height:1.72;
+  max-width:1180px !important; margin:0 auto !important;
+  padding:46px 56px 72px !important; box-sizing:border-box;
+}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--brand),#4b8fc5,var(--accent));z-index:9999;}
+#title-block-header{position:relative;overflow:hidden;max-width:none;margin:0 0 2rem 0;padding:2.35rem 2.25rem 2rem;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#f3f8fc 58%,#eaf3fa 100%);border:1px solid var(--line);box-shadow:var(--shadow);text-align:left;}
+#title-block-header:before{content:"BLOQUE 1 · TEMA 1.2";display:inline-flex;align-items:center;padding:.3rem .72rem;margin-bottom:.8rem;border-radius:999px;background:#e7f0f8;color:var(--brand);font-size:.78rem;font-weight:800;letter-spacing:.08em;}
+#title-block-header:after{content:"";position:absolute;width:210px;height:210px;right:-70px;top:-95px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,159,.18),rgba(45,106,159,0) 70%);pointer-events:none;}
+#title-block-header .title{max-width:920px;margin:0;color:#182634;font-weight:850;line-height:1.12;font-size:clamp(2rem,3.9vw,3.35rem);letter-spacing:-.035em;text-wrap:balance;}
+#title-block-header .subtitle{display:inline-block;margin:1rem 0 0 0;padding:.38rem .72rem;border-radius:10px;background:rgba(255,255,255,.78);border:1px solid #d9e5ee;color:var(--muted);font-size:1rem;font-weight:700;}
+#TOC{margin:0 0 2rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);}
+#TOC:before{content:"NAVEGACIÓN DEL TEMA";display:block;color:var(--brand);font-weight:850;font-size:.76rem;letter-spacing:.09em;margin:0 0 .65rem .25rem;}
+#TOC ul{margin:0;padding-left:1.2rem;} #TOC li{margin:.18rem 0;} #TOC a{color:#31485c;text-decoration:none;font-size:.93rem;} #TOC a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
+h1,h2,h3,h4{font-family:inherit;color:#1e3040;scroll-margin-top:25px;}
+h1:not(.title){margin-top:3.1rem;padding:1rem 1.05rem;border-radius:14px;background:linear-gradient(90deg,var(--brand-dark),var(--brand));color:#fff;font-size:1.75rem;line-height:1.25;letter-spacing:-.015em;box-shadow:0 7px 20px rgba(31,78,121,.16);}
+h2{margin-top:2.25rem;margin-bottom:.85rem;padding-left:.85rem;border-left:5px solid var(--brand2);color:var(--brand-dark);font-size:1.42rem;line-height:1.3;}
+h3{margin-top:1.8rem;color:#28485f;font-size:1.16rem;} h4{font-size:1.02rem;color:var(--brand);} p{margin:.68rem 0 1rem;} strong{color:#203449;} a{color:var(--brand2);text-underline-offset:3px;} hr{border:0;border-top:1px solid var(--line);margin:2rem 0;}
+.hero{position:relative;overflow:hidden;border:1px solid #cddde9;border-left:7px solid var(--brand);background:linear-gradient(120deg,#ffffff,#eef6fc);padding:1.45rem 1.55rem;border-radius:18px;margin:0 0 1.5rem 0;box-shadow:var(--shadow-sm);}
+.hero:after{content:"";position:absolute;width:160px;height:160px;right:-55px;bottom:-80px;border-radius:50%;background:rgba(45,106,159,.08);}
+.hero h2{margin:.05rem 0 .65rem;padding:0;border:0;color:var(--brand);font-size:1.45rem;} .hero p{max-width:930px;margin-bottom:.8rem;}
+.badge{display:inline-block;padding:.28rem .62rem;border-radius:999px;background:#e5f0f8;color:var(--brand);border:1px solid #d1e1ed;font-weight:800;font-size:.78rem;margin:.15rem .32rem .05rem 0;letter-spacing:.015em;}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.05rem 0 1.35rem;}
+.card{border:1px solid var(--line);border-radius:16px;padding:1.05rem 1.1rem;background:#fff;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.card:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(25,55,85,.10);border-color:#bdd1e0;} .card h4{margin:.05rem 0 .45rem;color:var(--brand);} .card p{margin-bottom:.25rem;}
+.callout-miai,.callout-key,.callout-error,.callout-attn{position:relative;padding:1rem 1.15rem 1rem 1.25rem;border-radius:14px;margin:1.15rem 0;border:1px solid var(--line);box-shadow:0 3px 12px rgba(25,55,85,.045);}
+.callout-miai{border-left:6px solid var(--brand2);background:#f4f9fd;} .callout-key{border-left:6px solid var(--accent);background:#f2fbf9;} .callout-error{border-left:6px solid #b42318;background:#fff6f5;} .callout-attn{border-left:6px solid #d97706;background:#fff9ef;}
+.callout-miai strong,.callout-key strong,.callout-error strong,.callout-attn strong{font-weight:850;}
+.eqbox{background:linear-gradient(180deg,#ffffff,#f8fbfe);border:1px solid #cedce8;border-radius:14px;padding:.9rem 1.1rem;margin:1rem 0 1.15rem;box-shadow:inset 4px 0 0 #b5cfe3;overflow-x:auto;} .math.display{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0 1.4rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,55,85,.05);} thead th,table th{background:#eaf2f8;color:#193a56;font-weight:800;text-align:left;} th,td{padding:.72rem .8rem;border-bottom:1px solid #e1e8ee;vertical-align:top;} tr:last-child td{border-bottom:0;} tbody tr:nth-child(even){background:#fbfcfe;} tbody tr:hover{background:#f4f8fb;}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;margin:.65rem 0;box-shadow:none;} .mini-table th,.mini-table td{border:0;border-bottom:1px solid #dce5ec;padding:.55rem .62rem;} .mini-table th{background:#eaf3fa;}
+svg.diagram{display:block;width:100%;max-width:960px;height:auto;border:1px solid #d6e1ea;border-radius:18px;background:#fff;margin:1rem auto 1.25rem;box-shadow:var(--shadow-sm);}
+.interactive{position:relative;overflow:hidden;border:1px solid #bcd2e3;border-top:6px solid var(--brand2);border-radius:20px;background:linear-gradient(180deg,#fbfdff,#f2f7fb);padding:1.25rem 1.3rem;margin:1.45rem 0;box-shadow:0 10px 26px rgba(31,78,121,.09);}
+.interactive:before{content:"INTERACTIVO";display:inline-block;margin:0 0 .65rem;padding:.22rem .55rem;border-radius:999px;color:var(--brand);background:#e3eef7;font-size:.72rem;font-weight:850;letter-spacing:.09em;}
+.interactive h3{margin:.05rem 0 .55rem;color:var(--brand);font-size:1.28rem;}
+.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:.9rem;align-items:end;margin-top:1rem;} .control-grid>div{background:rgba(255,255,255,.72);border:1px solid #d8e4ed;border-radius:12px;padding:.72rem;} .control-grid label{font-weight:750;display:block;margin-bottom:.35rem;color:#29455c;font-size:.91rem;}
+.control-grid input,.control-grid select{width:100%;box-sizing:border-box;padding:.58rem .62rem;border:1px solid #afc2d1;border-radius:9px;background:#fff;color:var(--ink);font:inherit;outline:none;transition:border-color .2s ease,box-shadow .2s ease;} .control-grid input:focus,.control-grid select:focus{border-color:var(--brand2);box-shadow:0 0 0 3px rgba(45,106,159,.12);} .control-grid input:disabled{background:#edf1f4;color:#82909d;}
+.result{background:#fff;border:1px solid #c8d8e4;border-radius:14px;padding:1rem 1.05rem;margin-top:1rem;box-shadow:var(--shadow-sm);} .kpi{font-size:1.35rem;font-weight:850;color:var(--brand);letter-spacing:-.02em;} .small{font-size:.88rem;color:var(--muted);} .status-ok{color:var(--ok);font-weight:800}.status-warn{color:var(--warn);font-weight:800}.status-bad{color:var(--bad);font-weight:800}
+canvas{display:block;width:100%;height:230px;border:1px solid #d1dde7;border-radius:14px;background:#fff;margin-top:1rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);}
+.quizbox{border:1px solid var(--line);border-left:5px solid #6c8faa;border-radius:14px;padding:1rem 1.05rem;margin:.9rem 0;background:#fff;box-shadow:var(--shadow-sm);} .quizbox p{margin:.15rem 0 .75rem;} .quizbox button{margin:.26rem .38rem .26rem 0;padding:.52rem .78rem;border-radius:9px;border:1px solid #b7c7d4;background:#f7fafc;color:#233b4f;font-weight:700;cursor:pointer;transition:all .18s ease;} .quizbox button:hover{background:#e8f1f7;border-color:#8eabc0;transform:translateY(-1px);} .quizbox button.is-correct{background:#edf9f1;border-color:#81bd91;color:#14532d;} .quizbox button.is-wrong{background:#fff1f0;border-color:#e0a29d;color:#8d1d18;} .feedback{margin-top:.65rem;padding:.55rem .7rem;border-radius:9px;background:#f5f8fb;font-weight:700;}
+.step{display:flex;gap:.85rem;margin:.72rem 0;align-items:flex-start;} .stepnum{flex:0 0 2rem;height:2rem;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;text-align:center;line-height:2rem;font-weight:850;box-shadow:0 4px 10px rgba(31,78,121,.18);} .stepbody{flex:1;padding-top:.15rem;}
+details{border:1px solid var(--line);border-radius:12px;padding:.68rem .85rem;margin:.7rem 0;background:#fff;box-shadow:0 2px 9px rgba(25,55,85,.04);} details summary{cursor:pointer;font-weight:800;color:var(--brand);} details[open]{border-color:#bed1e0;background:#fbfdff;}
+blockquote{margin:1.2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--brand2);border-radius:0 12px 12px 0;background:#f3f8fc;color:#29455a;font-size:1.03rem;}
+ul,ol{padding-left:1.45rem;} li{margin:.25rem 0;} h1#referencias-sugeridas+ul,h1#referencias+ul{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem 1rem 2.2rem;box-shadow:var(--shadow-sm);}
+@media (min-width:1180px){body{padding-left:330px !important;position:relative;} #TOC{position:fixed;left:max(24px,calc((100vw - 1180px)/2 + 10px));top:34px;width:250px;max-height:calc(100vh - 68px);overflow:auto;z-index:10;margin:0;}}
+@media (max-width:900px){body{padding:28px 24px 52px !important;} #title-block-header{padding:1.7rem 1.35rem;} #title-block-header .title{font-size:clamp(1.8rem,7vw,2.55rem);} h1:not(.title){font-size:1.5rem;} .interactive{padding:1rem;} .control-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:620px){body{padding:22px 14px 44px !important;font-size:15.8px;} #title-block-header{border-radius:18px;padding:1.35rem 1rem;} #title-block-header:before{font-size:.68rem;} #title-block-header .title{font-size:1.8rem;line-height:1.16;} #title-block-header .subtitle{font-size:.9rem;} .hero,.interactive{border-radius:15px;} .cardgrid,.control-grid{grid-template-columns:1fr;} h1:not(.title){font-size:1.35rem;padding:.85rem .9rem;} h2{font-size:1.22rem;} table{display:block;overflow-x:auto;white-space:normal;} .quizbox button{display:block;width:100%;text-align:left;margin:.35rem 0;}}
+@media print{body{background:#fff !important;max-width:none !important;padding:0 !important;color:#000;} body:before,#TOC{display:none !important;} #title-block-header,.hero,.card,.interactive,.quizbox,table,svg.diagram{box-shadow:none !important;} .interactive{break-inside:avoid;}}
+</style>
+<div class="hero">
+<h2>
+Del amplificador básico al procesamiento analógico de señales
+</h2>
+<p>
+En el tema anterior se estudiaron las configuraciones fundamentales del
+amplificador operacional. Ahora esas configuraciones se convierten en
+<strong>bloques funcionales de procesamiento</strong>: sumar, restar,
+integrar, diferenciar, escalar y adaptar señales para que puedan ser
+utilizadas por etapas posteriores de un sistema de telecomunicaciones.
+</p>
+<p><span class="badge">1.2.1 Sumadores, restadores, integradores y
+diferenciadores</span> <span class="badge">1.2.2 Acondicionamiento y
+procesamiento de señales</span></p>
+</div>
+<h1 id="resultado-esperado-del-tema">Resultado esperado del tema</h1>
+<p>Al finalizar este tema, el estudiante será capaz de <strong>analizar
+y diseñar circuitos con amplificadores operacionales para realizar
+operaciones analógicas y acondicionar señales</strong>, verificando que
+amplitud, polaridad, dinámica y niveles de salida sean compatibles con
+la aplicación de telecomunicaciones.</p>
+<div class="callout-key">
+<strong>Idea central.</strong> Un amplificador operacional no solo
+amplifica. Con realimentación adecuada puede ejecutar operaciones
+matemáticas sobre señales y actuar como interfaz entre sensores, etapas
+analógicas, convertidores y subsistemas de comunicaciones.
+</div>
+<h1 id="conocimientos-previos">Conocimientos previos</h1>
+<p>Antes de iniciar, el estudiante debe manejar:</p>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Op-amp ideal
+</h4>
+<p>
+Corrientes de entrada aproximadamente nulas y, con realimentación
+negativa, <strong>v<sub>+</sub> ≈ v<sub>−</sub></strong>.
+</p>
+</div>
+<div class="card">
+<h4>
+Configuración inversora
+</h4>
+<p>
+Ganancia cerrada: <strong>A<sub>v</sub> =
+−R<sub>f</sub>/R<sub>in</sub></strong>.
+</p>
+</div>
+<div class="card">
+<h4>
+Configuración no inversora
+</h4>
+<p>
+Ganancia cerrada: <strong>A<sub>v</sub> = 1 +
+R<sub>f</sub>/R<sub>g</sub></strong>.
+</p>
+</div>
+<div class="card">
+<h4>
+Señales
+</h4>
+<p>
+Amplitud, frecuencia, período, offset, fase y saturación.
+</p>
+</div>
+</div>
+<div class="callout-attn">
+<strong>Comprueba antes de continuar.</strong> Si un op-amp ideal está
+en configuración inversora con R<sub>f</sub> = 20 kΩ y R<sub>in</sub> =
+10 kΩ, una entrada de +0.5 V produce una salida ideal de −1 V.
+</div>
+<h1
+id="circuitos-sumadores-restadores-integradores-y-diferenciadores">1.2.1
+Circuitos sumadores, restadores, integradores y diferenciadores</h1>
+<h2 id="sumador-inversor">Sumador inversor</h2>
+<p>El sumador inversor permite obtener una combinación lineal de varias
+señales. Cada entrada aporta una corriente al nodo inversor y la
+realimentación convierte la suma de esas corrientes en un voltaje de
+salida.</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><msub><mi>R</mi><mi>f</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>v</mi><mn>1</mn></msub><msub><mi>R</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><msub><mi>v</mi><mn>2</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mfrac><mo>+</mo><mi>⋯</mi><mo>+</mo><mfrac><msub><mi>v</mi><mi>n</mi></msub><msub><mi>R</mi><mi>n</mi></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o=-R_f\left(\frac{v_1}{R_1}+\frac{v_2}{R_2}+\cdots+\frac{v_n}{R_n}\right)
+</annotation></semantics></math></p>
+</div>
+<p>Si todas las resistencias de entrada son iguales a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mfrac><msub><mi>R</mi><mi>f</mi></msub><mi>R</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o=-\frac{R_f}{R}(v_1+v_2+\cdots+v_n)
+</annotation></semantics></math></p>
+</div>
+<p><strong>Variables y unidades</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Significado</th>
+<th>Unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">v_1, v_2, ...</annotation></semantics></math></td>
+<td>Tensiones de entrada</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">R_1, R_2, ...</annotation></semantics></math></td>
+<td>Resistencias de entrada</td>
+<td>Ω</td>
+</tr>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>f</mi></msub><annotation encoding="application/x-tex">R_f</annotation></semantics></math></td>
+<td>Resistencia de realimentación</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>o</mi></msub><annotation encoding="application/x-tex">v_o</annotation></semantics></math></td>
+<td>Tensión de salida</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Aplicaciones típicas:</strong> mezcla analógica ponderada,
+suma de señales de control, generación de offsets, combinación de
+canales y conversión de varias entradas en una sola variable
+analógica.</p>
+<div class="callout-error">
+<strong>Error frecuente.</strong> Sumar algebraicamente las entradas y
+olvidar el signo inversor. El signo negativo forma parte de la función
+del circuito.
+</div>
+<h2 id="restador-o-amplificador-diferencial">Restador o amplificador
+diferencial</h2>
+<p>Un amplificador diferencial produce una salida proporcional a la
+diferencia entre dos tensiones. Si las relaciones de resistencias están
+correctamente emparejadas,</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mi>R</mi><mn>2</mn></msub><msub><mi>R</mi><mn>1</mn></msub></mfrac><mo>=</mo><mfrac><msub><mi>R</mi><mn>4</mn></msub><msub><mi>R</mi><mn>3</mn></msub></mfrac><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">
+\frac{R_2}{R_1}=\frac{R_4}{R_3}=k
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>−</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o=k(v_2-v_1)
+</annotation></semantics></math></p>
+</div>
+<p>Esta topología es especialmente útil cuando interesa recuperar una
+diferencia pequeña superpuesta sobre un nivel común considerable.</p>
+<div class="callout-miai">
+<strong>Aplicación en telecomunicaciones.</strong> Las señales
+diferenciales se emplean porque permiten transportar información entre
+dos conductores y reducir la influencia de perturbaciones comunes a
+ambos. El restador es una representación básica del principio de
+recepción diferencial.
+</div>
+<h2 id="integrador-inversor">Integrador inversor</h2>
+<p>En el integrador ideal, el elemento de realimentación es un
+capacitor. La salida es proporcional a la integral temporal de la
+entrada:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><mo>∫</mo><msub><mi>v</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>+</mo><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o(t)=-\frac{1}{RC}\int v_i(t)\,dt+v_o(t_0)
+</annotation></semantics></math></p>
+</div>
+<p>Para una entrada constante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>i</mi></msub><annotation encoding="application/x-tex">V_i</annotation></semantics></math>
+durante un intervalo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math>
+y considerando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_o(t_0)=0</annotation></semantics></math>:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>V</mi><mi>i</mi></msub><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>R</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\Delta v_o=-\frac{V_i\Delta t}{RC}
+</annotation></semantics></math></p>
+</div>
+<p>Para una entrada sinusoidal de frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+la magnitud de la relación entrada/salida del integrador ideal es:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>f</mi><mi>R</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+|A_v|=\frac{1}{2\pi fRC}
+</annotation></semantics></math></p>
+</div>
+<p><strong>Interpretación:</strong> cuanto mayor es la frecuencia, menor
+es la amplitud de salida del integrador ideal.</p>
+<div class="callout-attn">
+<strong>Diseño real.</strong> Un integrador práctico suele incorporar
+una resistencia en paralelo con el capacitor de realimentación para
+limitar la ganancia a muy baja frecuencia y evitar saturación por offset
+o componentes DC.
+</div>
+<h2 id="diferenciador-inversor">Diferenciador inversor</h2>
+<p>El diferenciador ideal genera una salida proporcional a la rapidez
+con la que cambia la señal de entrada:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mi>R</mi><mi>C</mi><mfrac><mrow><mi>d</mi><msub><mi>v</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+v_o(t)=-RC\frac{dv_i(t)}{dt}
+</annotation></semantics></math></p>
+</div>
+<p>Para una rampa cuya pendiente es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>d</mi><msub><mi>v</mi><mi>i</mi></msub><mi>/</mi><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">S=dv_i/dt</annotation></semantics></math>:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mi>R</mi><mi>C</mi><mspace width="0.167em"></mspace><mi>S</mi></mrow><annotation encoding="application/x-tex">
+v_o=-RC\,S
+</annotation></semantics></math></p>
+</div>
+<p>Para una señal sinusoidal, la magnitud ideal aumenta con la
+frecuencia:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><mi>R</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">
+|A_v|=2\pi fRC
+</annotation></semantics></math></p>
+</div>
+<p>Esto hace que el diferenciador ideal sea muy sensible al ruido de
+alta frecuencia. En la práctica se limita su banda mediante componentes
+adicionales.</p>
+<div class="callout-error">
+<strong>Error frecuente.</strong> Considerar al diferenciador ideal como
+una solución universal. Al aumentar la ganancia con la frecuencia,
+también amplifica perturbaciones rápidas y ruido; por ello debe
+diseñarse como diferenciador práctico.
+</div>
+<h2 id="comparación-funcional">Comparación funcional</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Circuito</th>
+<th>Operación principal</th>
+<th>Ecuación representativa</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sumador</td>
+<td>Suma ponderada</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><msub><mi>R</mi><mi>f</mi></msub><mo>∑</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>i</mi></msub><mi>/</mi><msub><mi>R</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_o=-R_f\sum(v_i/R_i)</annotation></semantics></math></td>
+<td>Mezcla y combinación de señales</td>
+</tr>
+<tr class="even">
+<td>Restador</td>
+<td>Diferencia</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>−</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_o=k(v_2-v_1)</annotation></semantics></math></td>
+<td>Recepción diferencial, eliminación de nivel común</td>
+</tr>
+<tr class="odd">
+<td>Integrador</td>
+<td>Integral temporal</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><mo>∫</mo><msub><mi>v</mi><mi>i</mi></msub><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">v_o=-\frac{1}{RC}\int v_i dt</annotation></semantics></math></td>
+<td>Promedio, conformación de señales, generación de rampas</td>
+</tr>
+<tr class="even">
+<td>Diferenciador</td>
+<td>Derivada temporal</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mi>R</mi><mi>C</mi><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>v</mi><mi>i</mi></msub><mi>/</mi><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">v_o=-RC\,dv_i/dt</annotation></semantics></math></td>
+<td>Detección de cambios rápidos, conformación de pulsos</td>
+</tr>
+</tbody>
+</table>
+<div class="interactive">
+<h3>
+Laboratorio virtual: operaciones analógicas con op-amps
+</h3>
+<p>
+<strong>Prediga primero:</strong> seleccione una operación, estime
+mentalmente el signo y orden de magnitud de la salida y luego compare
+con el cálculo.
+</p>
+<div class="control-grid">
+<div>
+<label for="opmode">Circuito</label><select id="opmode"><option value="sum">Sumador
+inversor</option><option value="diff">Restador
+diferencial</option><option value="int">Integrador (entrada
+constante)</option><option value="der">Diferenciador (entrada
+rampa)</option></select>
+</div>
+<div>
+<label for="a1">Entrada 1 / Vi
+(V)</label><input id="a1" type="number" step="0.01" value="0.5">
+</div>
+<div>
+<label for="a2">Entrada 2 / V2
+(V)</label><input id="a2" type="number" step="0.01" value="0.2">
+</div>
+<div>
+<label for="r1">R1 o R
+(kΩ)</label><input id="r1" type="number" min="0.001" step="0.1" value="10">
+</div>
+<div>
+<label for="r2">R2
+(kΩ)</label><input id="r2" type="number" min="0.001" step="0.1" value="10">
+</div>
+<div>
+<label for="rf2">Rf / relación
+k</label><input id="rf2" type="number" min="0.001" step="0.1" value="20">
+</div>
+<div>
+<label for="cval">C
+(nF)</label><input id="cval" type="number" min="0.001" step="1" value="100">
+</div>
+<div>
+<label for="timeval">Δt (ms) / pendiente
+(V/ms)</label><input id="timeval" type="number" step="0.1" value="1">
+</div>
+</div>
+<div id="opResult" class="result">
+
+</div>
+</div>
+<h1 id="ejemplos-resueltos">Ejemplos resueltos</h1>
+<h2 id="ejemplo-1-sumador-ponderado">Ejemplo 1 — Sumador ponderado</h2>
+<h3 id="problema">Problema</h3>
+<p>Tres señales deben combinarse mediante un sumador inversor. Se
+dispone de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>=</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">v_1=0.20</annotation></semantics></math>
+V,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>=</mo><mn>0.50</mn></mrow><annotation encoding="application/x-tex">v_2=0.50</annotation></semantics></math>
+V y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>3</mn></msub><mo>=</mo><mi>−</mi><mn>0.10</mn></mrow><annotation encoding="application/x-tex">v_3=-0.10</annotation></semantics></math>
+V. Todas las resistencias de entrada son de 10 kΩ y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">R_f=20</annotation></semantics></math>
+kΩ.</p>
+<h3 id="fundamento">Fundamento</h3>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mfrac><msub><mi>R</mi><mi>f</mi></msub><mi>R</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub><mo>+</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o=-\frac{R_f}{R}(v_1+v_2+v_3)
+</annotation></semantics></math></p>
+</div>
+<h3 id="procedimiento">Procedimiento</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mi>R</mi><mi>f</mi></msub><mi>R</mi></mfrac><mo>=</mo><mfrac><mn>20</mn><mn>10</mn></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+\frac{R_f}{R}=\frac{20}{10}=2
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub><mo>+</mo><msub><mi>v</mi><mn>3</mn></msub><mo>=</mo><mn>0.20</mn><mo>+</mo><mn>0.50</mn><mo>−</mo><mn>0.10</mn><mo>=</mo><mn>0.60</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_1+v_2+v_3=0.20+0.50-0.10=0.60\;V
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.60</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mn>1.20</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_o=-2(0.60)=-1.20\;V
+</annotation></semantics></math></p>
+<h3 id="interpretación">Interpretación</h3>
+<p>La red realiza una suma con peso 2 y además invierte el signo. El
+valor solo será válido físicamente si el op-amp puede entregar −1.2 V
+con la alimentación y carga empleadas.</p>
+<h2 id="ejemplo-2-restador-para-una-señal-diferencial">Ejemplo 2 —
+Restador para una señal diferencial</h2>
+<p>Dos líneas presentan
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>=</mo><mn>1.80</mn></mrow><annotation encoding="application/x-tex">v_1=1.80</annotation></semantics></math>
+V y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>=</mo><mn>2.10</mn></mrow><annotation encoding="application/x-tex">v_2=2.10</annotation></semantics></math>
+V. Se desea una ganancia diferencial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=5</annotation></semantics></math>.</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mn>5</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>2.10</mn><mo>−</mo><mn>1.80</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1.50</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_o=5(2.10-1.80)=1.50\;V
+</annotation></semantics></math></p>
+</div>
+<p><strong>Interpretación:</strong> aunque ambas líneas tienen niveles
+absolutos cercanos a 2 V, el circuito procesa únicamente su diferencia
+ideal de 0.30 V y la amplifica.</p>
+<h2 id="ejemplo-3-integrador-ante-una-entrada-constante">Ejemplo 3 —
+Integrador ante una entrada constante</h2>
+<p>Se tiene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R=10</annotation></semantics></math>
+kΩ,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">C=100</annotation></semantics></math>
+nF,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub><mo>=</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">V_i=0.20</annotation></semantics></math>
+V y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>t</mi><mo>=</mo><mn>0.50</mn></mrow><annotation encoding="application/x-tex">\Delta t=0.50</annotation></semantics></math>
+ms. Se parte de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_o(0)=0</annotation></semantics></math>.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>C</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mspace width="0.167em"></mspace><mn>000</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>100</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>9</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup><mspace width="0.278em"></mspace><mi>s</mi></mrow><annotation encoding="application/x-tex">
+RC=(10\,000)(100\times10^{-9})=1\times10^{-3}\;s
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.20</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.50</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup></mrow></mfrac><mo>=</mo><mi>−</mi><mn>0.10</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+\Delta v_o=-\frac{(0.20)(0.50\times10^{-3})}{1\times10^{-3}}=-0.10\;V
+</annotation></semantics></math></p>
+<p>La salida cambia linealmente porque la integral de una constante es
+una rampa.</p>
+<h2 id="ejemplo-4-diferenciador-ante-una-rampa">Ejemplo 4 —
+Diferenciador ante una rampa</h2>
+<p>Para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R=10</annotation></semantics></math>
+kΩ,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">C=10</annotation></semantics></math>
+nF y una pendiente de entrada de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1000</mn><annotation encoding="application/x-tex">1000</annotation></semantics></math>
+V/s:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>C</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mspace width="0.167em"></mspace><mn>000</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>9</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>4</mn></mrow></msup><mspace width="0.278em"></mspace><mi>s</mi></mrow><annotation encoding="application/x-tex">
+RC=(10\,000)(10\times10^{-9})=1\times10^{-4}\;s
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>4</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1000</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mn>0.10</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_o=-(1\times10^{-4})(1000)=-0.10\;V
+</annotation></semantics></math></p>
+<p>La salida es constante mientras la pendiente de la rampa se mantenga
+constante.</p>
+<h1
+id="acondicionamiento-amplificación-y-procesamiento-de-señales-en-telecomunicaciones">1.2.2
+Acondicionamiento, amplificación y procesamiento de señales en
+telecomunicaciones</h1>
+<h2 id="qué-significa-acondicionar-una-señal">¿Qué significa
+acondicionar una señal?</h2>
+<p>Acondicionar una señal significa modificar sus características para
+hacerla compatible con la siguiente etapa del sistema, <strong>sin
+perder la información relevante</strong>. En un sistema real pueden
+requerirse varias operaciones simultáneas:</p>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Escalamiento
+</h4>
+<p>
+Aumentar o reducir amplitud para aprovechar el rango dinámico
+disponible.
+</p>
+</div>
+<div class="card">
+<h4>
+Desplazamiento de nivel
+</h4>
+<p>
+Agregar o retirar una componente DC para adaptar una señal bipolar a un
+sistema unipolar.
+</p>
+</div>
+<div class="card">
+<h4>
+Aislamiento
+</h4>
+<p>
+Utilizar un seguidor para evitar que una carga altere la fuente de
+señal.
+</p>
+</div>
+<div class="card">
+<h4>
+Combinación
+</h4>
+<p>
+Sumar o restar canales, referencias o componentes de compensación.
+</p>
+</div>
+<div class="card">
+<h4>
+Conversión diferencial
+</h4>
+<p>
+Extraer la diferencia entre dos conductores y reducir el efecto ideal
+del modo común.
+</p>
+</div>
+<div class="card">
+<h4>
+Protección del rango
+</h4>
+<p>
+Evitar saturación y mantener la señal dentro de los límites de la etapa
+siguiente.
+</p>
+</div>
+</div>
+<h2 id="modelo-de-acondicionamiento-lineal">Modelo de acondicionamiento
+lineal</h2>
+<p>Muchas tareas de acondicionamiento pueden representarse inicialmente
+mediante una relación afín:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>a</mi><mspace width="0.167em"></mspace><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+v_o=a\,v_i+b
+</annotation></semantics></math></p>
+</div>
+<p>Aquí,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+representa el escalamiento o ganancia y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+el desplazamiento DC. Esta expresión es útil para plantear requisitos
+antes de seleccionar la topología concreta.</p>
+<div class="callout-key">
+<strong>Criterio de diseño.</strong> Primero se determina la
+transformación que necesita la señal; después se elige el circuito que
+pueda implementarla respetando alimentación, ancho de banda, ruido,
+saturación y carga.
+</div>
+<h2 id="rango-dinámico-y-saturación">Rango dinámico y saturación</h2>
+<p>Si una señal acondicionada supera los límites de salida del op-amp o
+el rango admisible por la etapa siguiente, aparece recorte. El resultado
+ya no representa linealmente a la señal original.</p>
+<p>Por ejemplo, para un convertidor ADC de 0 a 3.3 V, una señal debe
+cumplir:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>v</mi><mi>o</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mn>3.3</mn><mspace width="0.278em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+0\le v_o(t)\le 3.3\;V
+</annotation></semantics></math></p>
+</div>
+<p>Si se desea mapear una entrada bipolar de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>0.5</mn></mrow><annotation encoding="application/x-tex">-0.5</annotation></semantics></math>
+V a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>0.5</mn></mrow><annotation encoding="application/x-tex">+0.5</annotation></semantics></math>
+V dentro del rango del ADC, una transformación útil podría ser:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mn>3</mn><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><mn>1.65</mn></mrow><annotation encoding="application/x-tex">
+v_o=3v_i+1.65
+</annotation></semantics></math></p>
+</div>
+<p>Con ello, la salida varía idealmente entre 0.15 V y 3.15 V, dejando
+cierto margen respecto a los extremos.</p>
+<h2 id="impedancias-y-carga">Impedancias y carga</h2>
+<p>El acondicionamiento no se limita a amplitud. Una fuente puede
+producir la tensión correcta y aun así fallar al conectarse a una carga
+demasiado exigente. Un seguidor de tensión puede proporcionar
+<strong>alta impedancia de entrada</strong> y <strong>baja impedancia de
+salida</strong>, desacoplando etapas.</p>
+<h2 id="ancho-de-banda-y-velocidad">Ancho de banda y velocidad</h2>
+<p>La cadena analógica debe conservar las componentes frecuenciales
+relevantes. Un circuito con ganancia adecuada a baja frecuencia puede
+presentar atenuación o distorsión si el op-amp no dispone de suficiente
+producto ganancia–ancho de banda o slew rate.</p>
+<div class="callout-attn">
+<strong>Verificación mínima.</strong> En una aplicación de
+telecomunicaciones, revise siempre: rango de entrada, rango de salida,
+alimentación, ganancia, ancho de banda, slew rate, impedancia de
+entrada, carga y ruido.
+</div>
+<h2 id="flujo-de-diseño-para-acondicionamiento">Flujo de diseño para
+acondicionamiento</h2>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Caracterice la fuente:</strong> amplitud mínima/máxima, offset,
+frecuencia y resistencia de origen.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Caracterice el destino:</strong> rango admisible, impedancia,
+frecuencia y referencia de tierra.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Defina la transformación:</strong> ganancia, inversión, suma,
+diferencia, integración, diferenciación u offset.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Seleccione la topología:</strong> una o varias etapas según las
+funciones necesarias.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Verifique límites reales:</strong> saturación, GBW, slew rate,
+rango de entrada y corriente de salida.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+6
+</div>
+<div class="stepbody">
+<strong>Valide:</strong> cálculo → simulación → implementación →
+medición.
+</div>
+</div>
+<div class="interactive">
+<h3>
+Simulador de acondicionamiento para un ADC
+</h3>
+<p>
+Una señal sinusoidal de entrada se transforma según
+<strong>v<sub>o</sub> = a·v<sub>i</sub> + b</strong>. Ajuste los
+parámetros e intente aprovechar el rango de un ADC sin recorte.
+</p>
+<div class="control-grid">
+<div>
+<label for="ampIn">Amplitud pico de entrada
+(V)</label><input id="ampIn" type="number" min="0" step="0.05" value="0.5">
+</div>
+<div>
+<label for="offIn">Offset de entrada
+(V)</label><input id="offIn" type="number" step="0.05" value="0">
+</div>
+<div>
+<label for="gainCond">Ganancia
+a</label><input id="gainCond" type="number" step="0.1" value="3">
+</div>
+<div>
+<label for="biasCond">Offset añadido b
+(V)</label><input id="biasCond" type="number" step="0.05" value="1.65">
+</div>
+<div>
+<label for="adcMin">ADC mínimo
+(V)</label><input id="adcMin" type="number" step="0.1" value="0">
+</div>
+<div>
+<label for="adcMax">ADC máximo
+(V)</label><input id="adcMax" type="number" step="0.1" value="3.3">
+</div>
+</div>
+<div id="condResult" class="result">
+
+</div>
+<canvas id="condCanvas" width="900" height="260">
+</canvas>
+</div>
+<h1 id="comprueba-tu-comprensión">Comprueba tu comprensión</h1>
+<div class="quizbox" data-answer="b"
+data-feedback-ok="Correcto. En un sumador inversor con resistencias de entrada iguales, cada señal aporta con el mismo peso y la salida invierte la suma."
+data-feedback-bad="Revise la ecuación del sumador inversor y observe el signo global de la salida.">
+<p>
+<strong>1.</strong> Si R<sub>f</sub>=R y hay dos entradas de 1 V y 0.5
+V, ¿cuál es la salida ideal?
+</p>
+<button data-choice="a">
++1.5 V
+</button>
+<button data-choice="b">
+−1.5 V
+</button>
+<button data-choice="c">
+−0.5 V
+</button>
+<button data-choice="d">
++0.5 V
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="c"
+data-feedback-ok="Correcto. El restador ideal amplifica la diferencia entre las dos entradas cuando las relaciones resistivas están emparejadas."
+data-feedback-bad="Piense qué operación debe conservar una señal diferencial y suprimir idealmente una componente común.">
+<p>
+<strong>2.</strong> ¿Qué circuito es el más directamente asociado con la
+obtención de v<sub>2</sub>−v<sub>1</sub>?
+</p>
+<button data-choice="a">
+Seguidor
+</button>
+<button data-choice="b">
+Integrador
+</button>
+<button data-choice="c">
+Restador diferencial
+</button>
+<button data-choice="d">
+Oscilador
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="d"
+data-feedback-ok="Correcto. El diferenciador ideal incrementa su magnitud de ganancia con la frecuencia y puede amplificar ruido de alta frecuencia."
+data-feedback-bad="Revise la relación |Av| = 2πfRC del diferenciador ideal.">
+<p>
+<strong>3.</strong> ¿Cuál es una limitación importante del diferenciador
+ideal?
+</p>
+<button data-choice="a">
+No responde a cambios de entrada
+</button>
+<button data-choice="b">
+Su ganancia disminuye siempre con la frecuencia
+</button>
+<button data-choice="c">
+Solo funciona con DC
+</button>
+<button data-choice="d">
+Puede amplificar fuertemente el ruido de alta frecuencia
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="a"
+data-feedback-ok="Correcto. El acondicionamiento debe hacer compatible la señal con el rango eléctrico y dinámico de la siguiente etapa."
+data-feedback-bad="Piense en la función de una interfaz analógica entre una fuente y un ADC.">
+<p>
+<strong>4.</strong> ¿Cuál es el objetivo principal del acondicionamiento
+de señales?
+</p>
+<button data-choice="a">
+Hacer la señal compatible con la etapa siguiente sin perder la
+información relevante
+</button>
+<button data-choice="b">
+Aumentar siempre la amplitud al máximo
+</button>
+<button data-choice="c">
+Eliminar toda componente DC en cualquier aplicación
+</button>
+<button data-choice="d">
+Convertir toda señal en una onda cuadrada
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos</h1>
+<h2 id="nivel-1-comprensión">Nivel 1 — Comprensión</h2>
+<ol type="1">
+<li>Explique por qué un sumador inversor puede considerarse una red de
+combinación ponderada.</li>
+<li>Indique qué condición de resistencias debe cumplirse para obtener un
+restador balanceado de forma ideal.</li>
+<li>Compare el comportamiento ideal del integrador y del diferenciador
+frente al aumento de frecuencia.</li>
+<li>Justifique por qué un seguidor puede formar parte de una cadena de
+acondicionamiento aunque su ganancia sea 1.</li>
+</ol>
+<h2 id="nivel-2-aplicación">Nivel 2 — Aplicación</h2>
+<ol type="1">
+<li>Diseñe un sumador inversor para obtener
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mn>2</mn><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">v_o=-2v_1-v_2</annotation></semantics></math>
+utilizando resistencias comerciales.</li>
+<li>Un restador debe entregar 2 V cuando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>−</mo><msub><mi>v</mi><mn>1</mn></msub><mo>=</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">v_2-v_1=0.4</annotation></semantics></math>
+V. Determine la relación resistiva
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</li>
+<li>Un integrador utiliza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">R=22</annotation></semantics></math>
+kΩ y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">C=100</annotation></semantics></math>
+nF. Determine el cambio de salida al aplicar 0.3 V durante 1 ms.</li>
+<li>Un diferenciador utiliza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>4.7</mn></mrow><annotation encoding="application/x-tex">R=4.7</annotation></semantics></math>
+kΩ y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">C=10</annotation></semantics></math>
+nF. Calcule la salida para una rampa de 5000 V/s.</li>
+</ol>
+<details>
+<summary>
+Pistas para el Nivel 2
+</summary>
+<p>
+<strong>1.</strong> Use la expresión general del sumador y asigne
+diferentes relaciones Rf/Ri.
+</p>
+<p>
+<strong>2.</strong> Aplique k = vo/(v2−v1).
+</p>
+<p>
+<strong>3.</strong> Use Δvo = −ViΔt/(RC).
+</p>
+<p>
+<strong>4.</strong> Use vo = −RC·S, cuidando las unidades.
+</p>
+</details>
+<h2 id="nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</h2>
+<p>Una señal de banda base entregada por un subsistema analógico varía
+entre −0.35 V y +0.35 V. Debe ingresar a un ADC de 0–3.3 V. Proponga una
+transformación lineal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>a</mi><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">v_o=a v_i+b</annotation></semantics></math>
+que utilice la mayor parte posible del rango sin llegar a los límites.
+Luego:</p>
+<ul>
+<li>determine
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>;</li>
+<li>proponga una arquitectura con op-amps para implementarla;</li>
+<li>identifique qué parámetros reales del op-amp debe verificar;</li>
+<li>explique cómo validaría el diseño con generador y osciloscopio.</li>
+</ul>
+<h1 id="caso-profesional-receptor-de-una-señal-diferencial">Caso
+profesional — receptor de una señal diferencial</h1>
+<p>Un enlace interno entre dos módulos electrónicos transmite una señal
+en forma diferencial. Sobre ambos conductores aparece una perturbación
+común de aproximadamente 1 V, mientras que la información útil
+corresponde a una diferencia máxima de 120 mV.</p>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Identifique</strong> la señal útil como diferencia entre
+conductores.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Determine</strong> la ganancia necesaria para llevar 120 mV a un
+nivel útil, por ejemplo 1.2 V.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Seleccione</strong> una configuración diferencial y relaciones
+de resistencias emparejadas.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Verifique</strong> que la tensión de modo común esté dentro del
+rango de entrada permitido por el dispositivo real.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Valide</strong> la salida variando simultáneamente la componente
+común y la diferencia.
+</div>
+</div>
+<div class="callout-miai">
+<strong>Decisión de ingeniería.</strong> El cálculo ideal de ganancia
+diferencial es solo el inicio. En una implementación real influyen el
+emparejamiento de resistencias, el CMRR del op-amp, el rango de modo
+común, el ruido y el ancho de banda.
+</div>
+<h1 id="feedback-y-orientaciones">Feedback y orientaciones</h1>
+<ul>
+<li>Si el <strong>signo de la salida</strong> no coincide con lo
+esperado, revise primero si la topología es inversora o no
+inversora.</li>
+<li>Si el <strong>resultado numérico</strong> parece excesivo, compruebe
+que las resistencias estén expresadas en unidades compatibles y
+verifique saturación.</li>
+<li>Si un <strong>integrador deriva hasta saturarse</strong>, revise
+offset, componente DC y la necesidad de limitar la ganancia a baja
+frecuencia.</li>
+<li>Si un <strong>diferenciador presenta ruido elevado</strong>, limite
+su banda y evite aplicar el modelo ideal fuera del rango de diseño.</li>
+<li>Si un circuito de acondicionamiento <strong>recorta la
+señal</strong>, reduzca ganancia, modifique offset o seleccione una
+alimentación/topología apropiada.</li>
+</ul>
+<h1 id="síntesis">Síntesis</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Qué debe quedar claro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sumador</td>
+<td>Combina señales con pesos definidos por resistencias</td>
+</tr>
+<tr class="even">
+<td>Restador</td>
+<td>Amplifica una diferencia entre entradas</td>
+</tr>
+<tr class="odd">
+<td>Integrador</td>
+<td>Produce una salida vinculada al área acumulada de la señal</td>
+</tr>
+<tr class="even">
+<td>Diferenciador</td>
+<td>Responde a la rapidez de cambio de la señal</td>
+</tr>
+<tr class="odd">
+<td>Acondicionamiento</td>
+<td>Adapta amplitud, offset, impedancia y dinámica a la etapa
+siguiente</td>
+</tr>
+<tr class="even">
+<td>Validación</td>
+<td>Debe incluir cálculo, simulación y medición con límites reales del
+op-amp</td>
+</tr>
+</tbody>
+</table>
+<h1 id="reflexiona">Reflexiona</h1>
+<blockquote>
+<p>En un sistema de telecomunicaciones, una señal puede ser
+matemáticamente correcta y aun así ser inutilizable por la siguiente
+etapa. ¿Qué información debe conocer del origen y del destino de la
+señal antes de diseñar el acondicionamiento? Justifique al menos cuatro
+parámetros.</p>
+</blockquote>
+<h1 id="referencias-sugeridas">Referencias sugeridas</h1>
+<p>Para el desarrollo final del curso, estas referencias deben
+contrastarse con la <strong>bibliografía oficial del
+sílabo</strong>:</p>
+<ul>
+<li>Sedra, A. S. &amp; Smith, K. C. <em>Microelectronic
+Circuits</em>.</li>
+<li>Franco, S. <em>Design with Operational Amplifiers and Analog
+Integrated Circuits</em>.</li>
+<li>Boylestad, R. L. &amp; Nashelsky, L. <em>Electronic Devices and
+Circuit Theory</em>.</li>
+<li>Hojas de datos y notas de aplicación del fabricante del amplificador
+operacional utilizado en laboratorio.</li>
+</ul>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  function fmt(x,d=3){if(!isFinite(x)) return '—'; return Number(x).toFixed(d).replace(/\.000$/,'');}
+  function calcOp(){
+    const mode=$('opmode').value;
+    const a1=parseFloat($('a1').value)||0, a2=parseFloat($('a2').value)||0;
+    const r1=Math.max(.000001,parseFloat($('r1').value)||1), r2=Math.max(.000001,parseFloat($('r2').value)||1);
+    const rf=Math.max(.000001,parseFloat($('rf2').value)||1), c=Math.max(.000001,parseFloat($('cval').value)||1)*1e-9;
+    const t=parseFloat($('timeval').value)||0;
+    let vo=0, formula='', label='Salida ideal';
+    if(mode==='sum'){
+      vo=-(rf/r1*a1 + rf/r2*a2);
+      formula='Vo = −Rf(V1/R1 + V2/R2)';
+    }else if(mode==='diff'){
+      const k=rf;
+      vo=k*(a2-a1);
+      formula='Vo = k(V2 − V1), usando el campo Rf/relación como k';
+    }else if(mode==='int'){
+      const R=r1*1000, dt=t*1e-3;
+      vo=-(a1*dt)/(R*c);
+      formula='ΔVo = −Vi·Δt/(RC)'; label='Cambio de salida';
+    }else{
+      const R=r1*1000, slope=t*1000; // V/ms -> V/s
+      vo=-(R*c)*slope;
+      formula='Vo = −RC·(dVi/dt)';
+    }
+    $('opResult').innerHTML=`<div class="cardgrid"><div><span class="small">${label}</span><div class="kpi">${fmt(vo,4)} V</div></div><div><span class="small">Modelo utilizado</span><div><strong>${formula}</strong></div></div></div><p class="small">Compruebe que el valor calculado sea compatible con la alimentación y el rango de salida del op-amp real.</p>`;
+  }
+  ['opmode','a1','a2','r1','r2','rf2','cval','timeval'].forEach(id=>$(id).addEventListener('input',calcOp));
+
+  function drawCondition(){
+    const A=Math.max(0,parseFloat($('ampIn').value)||0), off=parseFloat($('offIn').value)||0;
+    const gain=parseFloat($('gainCond').value)||0, bias=parseFloat($('biasCond').value)||0;
+    let amin=parseFloat($('adcMin').value); if(!isFinite(amin)) amin=0;
+    let amax=parseFloat($('adcMax').value); if(!isFinite(amax)) amax=3.3;
+    if(amax<amin){const tmp=amax;amax=amin;amin=tmp;}
+    const viMin=off-A, viMax=off+A;
+    const vals=[gain*viMin+bias,gain*viMax+bias];
+    const voMin=Math.min(...vals), voMax=Math.max(...vals);
+    const ok=voMin>=amin-1e-9 && voMax<=amax+1e-9;
+    const span=Math.max(.0001,amax-amin), usage=Math.max(0,Math.min(100,(Math.min(voMax,amax)-Math.max(voMin,amin))/span*100));
+    $('condResult').innerHTML=`<div class="cardgrid"><div><span class="small">Entrada</span><div class="kpi">${fmt(viMin,2)} a ${fmt(viMax,2)} V</div></div><div><span class="small">Salida ideal</span><div class="kpi">${fmt(voMin,2)} a ${fmt(voMax,2)} V</div></div><div><span class="small">Uso aproximado del rango ADC</span><div class="kpi">${fmt(usage,1)} %</div></div><div><span class="small">Compatibilidad</span><div class="${ok?'status-ok':'status-bad'}">${ok?'SIN RECORTE':'FUERA DE RANGO'}</div></div></div>`;
+    const c=$('condCanvas'),ctx=c.getContext('2d'),W=c.width,H=c.height; ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='#d9e3ec';ctx.lineWidth=1;for(let i=0;i<=10;i++){let x=i*W/10;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let i=0;i<=6;i++){let y=i*H/6;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    const globalMin=Math.min(viMin,voMin,amin)-.3, globalMax=Math.max(viMax,voMax,amax)+.3; const range=Math.max(.1,globalMax-globalMin); const y=v=>H-((v-globalMin)/range)*(H*.86)-H*.07;
+    ctx.fillStyle='rgba(15,118,110,.08)';ctx.fillRect(0,y(amax),W,y(amin)-y(amax));ctx.strokeStyle='#0f766e';ctx.setLineDash([8,5]);ctx.beginPath();ctx.moveTo(0,y(amin));ctx.lineTo(W,y(amin));ctx.moveTo(0,y(amax));ctx.lineTo(W,y(amax));ctx.stroke();ctx.setLineDash([]);
+    ctx.strokeStyle='#2D6A9F';ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<W;x++){let th=x/W*2*Math.PI;let v=off+A*Math.sin(th);let yy=y(v);if(x===0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy);}ctx.stroke();
+    ctx.strokeStyle=ok?'#0f766e':'#b42318';ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<W;x++){let th=x/W*2*Math.PI;let vi=off+A*Math.sin(th);let v=gain*vi+bias;let vv=Math.max(amin,Math.min(amax,v));let yy=y(vv);if(x===0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy);}ctx.stroke();
+    ctx.fillStyle='#2D6A9F';ctx.font='16px sans-serif';ctx.fillText('Vi',18,24);ctx.fillStyle=ok?'#0f766e':'#b42318';ctx.fillText('Vo',52,24);ctx.fillStyle='#0f766e';ctx.fillText('Rango ADC',86,24);
+  }
+  ['ampIn','offIn','gainCond','biasCond','adcMin','adcMax'].forEach(id=>$(id).addEventListener('input',drawCondition));
+
+  document.querySelectorAll('.quizbox').forEach(box=>{box.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{let ok=btn.dataset.choice===box.dataset.answer;box.querySelectorAll('button').forEach(b=>b.classList.remove('is-correct','is-wrong'));btn.classList.add(ok?'is-correct':'is-wrong');let f=box.querySelector('.feedback');f.textContent=ok?box.dataset.feedbackOk:box.dataset.feedbackBad;f.className='feedback '+(ok?'status-ok':'status-warn');}))});
+  calcOp(); drawCondition();
+})();
+</script>
+</body>
+</html>
