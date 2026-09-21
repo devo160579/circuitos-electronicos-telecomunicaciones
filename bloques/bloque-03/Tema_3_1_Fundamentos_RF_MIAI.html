@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>3.1 Fundamentos y comportamiento de componentes y circuitos electrónicos en radiofrecuencia</title><style>
+:root{--brand:#1F4E79;--brand2:#2D6A9F;--ink:#172331;--muted:#5f6f7e;--soft:#f5f8fb;--line:#d7e2ec;--ok:#13795b;--warn:#b45309;--bad:#b42318;--violet:#6d4aff;--white:#fff;}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:#eef3f7}body{margin:0;color:var(--ink);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:#eef3f7;line-height:1.65}
+.page{max-width:1180px;margin:0 auto;padding:24px 20px 56px}.hero{background:linear-gradient(135deg,#173c5f,#1F4E79 60%,#2D6A9F);color:#fff;border-radius:22px;padding:30px 34px;box-shadow:0 14px 38px rgba(22,59,91,.18);margin-bottom:20px}.eyebrow{font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;opacity:.84}.hero h1{font-size:clamp(1.85rem,3.8vw,3rem);line-height:1.12;margin:.45rem 0 .7rem}.hero p{margin:.35rem 0;max-width:920px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.chip{padding:5px 10px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.08);font-size:.82rem;font-weight:800}
+.section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin:18px 0;box-shadow:0 5px 18px rgba(27,60,88,.055)}h2{color:var(--brand);font-size:1.45rem;margin:.15rem 0 1rem}h3{color:#284d6d;font-size:1.16rem;margin:1.4rem 0 .6rem}h4{color:#355b7d;margin:1rem 0 .4rem}p{margin:.6rem 0 1rem}.lead{font-size:1.06rem}.subtopics{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:15px}.subtopic{border:1px solid var(--line);border-radius:14px;background:#fbfdff;padding:14px}.subtopic b{color:var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fbfdff}.card h3,.card h4{margin-top:0}.callout{border-left:5px solid var(--brand2);background:#f4f9fd;padding:14px 16px;border-radius:10px;margin:14px 0}.key{border-left-color:#138a7e;background:#f1fbf9}.warn{border-left-color:#d97706;background:#fff8ed}.error{border-left-color:#c7372f;background:#fff5f5}.pro{border-left-color:#6d4aff;background:#f7f5ff}
+.eq{border:1px solid #bfd2e3;border-radius:12px;background:#f8fbfe;padding:14px 18px;margin:13px 0;text-align:center;overflow-x:auto;font-size:1.08rem}.eq math{font-size:1.12em}.small{color:var(--muted);font-size:.92rem}.tbl{width:100%;border-collapse:collapse;margin:12px 0}.tbl th,.tbl td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}.tbl th{background:#eef5fa;color:#244967}.formula-label{font-weight:900;color:var(--brand);margin-bottom:4px}
+.interactive{background:linear-gradient(180deg,#fbfdff,#f3f8fc);border:1px solid #bed2e3;border-radius:16px;padding:18px;margin:14px 0}.interactive h3{margin-top:0}.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}.control{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}.control label{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:.9rem;color:#294e6e}.control input[type=range]{width:100%}.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}.metric{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 12px}.metric span{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}.metric b{font-size:1.12rem;color:var(--brand)}canvas{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0}
+.example{border:1px solid #cbdce9;border-radius:15px;overflow:hidden;margin:14px 0}.example .head{background:#eaf3f9;color:#244d6e;font-weight:900;padding:10px 14px}.example .body{padding:14px 16px}.steps{counter-reset:step}.step{position:relative;padding-left:38px;margin:12px 0}.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--brand);color:white;text-align:center;line-height:26px;font-weight:900;font-size:.85rem}
+.quiz{border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;background:#fff}.quiz p{margin:.2rem 0 .65rem;font-weight:800}.quiz button,.btn{border:1px solid #b6cadb;background:#fff;border-radius:10px;padding:8px 11px;margin:4px 5px 4px 0;cursor:pointer;color:#244967;font-weight:700}.quiz button:hover,.btn:hover{background:#edf5fa}.feedback{margin-top:8px;padding:9px 11px;border-radius:9px;display:none}.feedback.ok{display:block;background:#eaf8f3;color:#0e684d}.feedback.no{display:block;background:#fff1f1;color:#96261f}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.level{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fbfdff}.level .tag{font-weight:900;font-size:.78rem;letter-spacing:.08em;color:var(--brand)}.refs li{margin:.45rem 0}.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.nav a{text-decoration:none;color:var(--brand);font-weight:800}.footer{text-align:center;color:var(--muted);font-size:.86rem;padding:16px 0 4px}
+.block-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.block-index a{display:block;text-decoration:none;color:inherit}.topic-card{height:100%;border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px;box-shadow:0 4px 15px rgba(27,60,88,.05)}.topic-card strong{display:block;color:var(--brand);font-size:1.04rem;margin-bottom:6px}.topic-separator{height:4px;border:0;background:linear-gradient(90deg,#1F4E79,#78a4c8,#1F4E79);margin:34px 0;border-radius:999px}
+@media(max-width:700px){.page{padding:12px 9px 34px}.hero{padding:23px 19px;border-radius:16px}.section{padding:18px 15px;border-radius:14px}.tbl{font-size:.9rem}.eq{font-size:.95rem;padding:11px 8px}}
+@media print{html,body{background:#fff}.page{max-width:none;padding:0}.hero{box-shadow:none;border-radius:0}.section{box-shadow:none;break-inside:avoid}.interactive{break-inside:avoid}}
+</style></head><body>
+<main class="page">
+<header class="hero"><div class="eyebrow">Bloque 3 · Circuitos de radiofrecuencia e integración de sistemas de telecomunicaciones</div><h1>3.1 Fundamentos y comportamiento de componentes y circuitos electrónicos en radiofrecuencia</h1>
+<p>Circuitos Electrónicos para Telecomunicaciones · Quinto ciclo</p>
+<div class="chips"><span class="chip">MIAI</span><span class="chip">Nivel universitario</span><span class="chip">Telecomunicaciones</span><span class="chip">Interactividad cognitiva</span></div></header>
+
+<section class="section"><h2>Contenido curricular</h2>
+<div class="subtopics">
+<div class="subtopic"><b>3.1.1.</b> Características de señales y circuitos electrónicos en altas frecuencias.</div>
+<div class="subtopic"><b>3.1.2.</b> Comportamiento de componentes pasivos y activos en radiofrecuencia.</div>
+</div>
+<div class="callout key"><b>Resultado de aprendizaje del Bloque 3:</b> Integra, implementa y valida circuitos de radiofrecuencia para etapas de transmisión y recepción, evaluando su desempeño mediante parámetros eléctricos y de señal.</div></section>
+
+<section class="section"><h2>Introducción / contextualización</h2>
+<p class="lead">Un circuito que funciona correctamente a 1 kHz puede comportarse de manera muy distinta a 10 MHz. En radiofrecuencia, las pistas, terminales y encapsulados dejan de ser conexiones “ideales” y comienzan a aportar inductancias, capacitancias y pérdidas que modifican la respuesta del sistema.</p>
+<div class="callout pro"><b>Pregunta generadora:</b> ¿por qué un capacitor real puede dejar de comportarse como capacitor cuando la frecuencia aumenta suficientemente?</div></section>
+
+<section class="section"><h2>3.1.1 Características de señales y circuitos electrónicos en altas frecuencias</h2>
+<p>En RF deben considerarse simultáneamente amplitud, fase, frecuencia, impedancia y geometría física. La longitud eléctrica de un conductor puede dejar de ser despreciable cuando su tamaño se vuelve comparable con la longitud de onda.</p>
+<div class="eq"><div class="formula-label">Longitud de onda</div>
+<math display="block"><mrow><mi>λ</mi><mo>=</mo><mfrac><mi>v</mi><mi>f</mi></mfrac></mrow></math>
+<div class="small">λ: longitud de onda; v: velocidad de propagación en el medio; f: frecuencia.</div></div>
+<p>En el vacío o aire, una aproximación útil es <b>v ≈ 3×10<sup>8</sup> m/s</b>. En cables y sustratos, la velocidad de propagación disminuye de acuerdo con el factor de velocidad o la permitividad efectiva.</p>
+<table class="tbl"><thead><tr><th>Fenómeno</th><th>Consecuencia en RF</th><th>Implicación de diseño</th></tr></thead><tbody>
+<tr><td>Parasitismos</td><td>Aparecen reactancias no previstas.</td><td>Usar modelos reales y conexiones cortas.</td></tr>
+<tr><td>Efecto de fase</td><td>Dos puntos del circuito pueden no estar eléctricamente “en fase”.</td><td>Controlar longitud y disposición de interconexiones.</td></tr>
+<tr><td>Pérdidas</td><td>Disminuyen amplitud, Q y eficiencia.</td><td>Seleccionar componentes y materiales adecuados.</td></tr>
+<tr><td>Radiación/acoplamiento</td><td>Una pista puede acoplar energía a otra.</td><td>Cuidar separación, masa y apantallamiento.</td></tr></tbody></table>
+<div class="callout warn"><b>Criterio práctico:</b> cuando la longitud física de una conexión ya no es pequeña respecto de λ, el modelo de “cable ideal” deja de ser suficiente.</div></section>
+
+<section class="section"><h2>3.1.2 Comportamiento de componentes pasivos y activos en radiofrecuencia</h2>
+<h3>Resistores reales</h3><p>Un resistor presenta inductancia de terminales y capacitancia parásita. Por ello, a frecuencias elevadas su impedancia deja de ser puramente resistiva.</p>
+<h3>Capacitores reales</h3><p>El modelo incluye ESR y ESL. Por debajo de su frecuencia de autorresonancia domina el comportamiento capacitivo; cerca de la autorresonancia la impedancia alcanza un mínimo; por encima, puede dominar la inductancia parásita.</p>
+<div class="eq"><div class="formula-label">Reactancia capacitiva ideal</div>
+<math display="block"><mrow><msub><mi>X</mi><mi>C</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>f</mi><mi>C</mi></mrow></mfrac></mrow></math></div>
+<h3>Inductores reales</h3><p>Un inductor presenta resistencia serie y capacitancia parásita entre espiras. Su factor Q y frecuencia de autorresonancia condicionan la banda útil de operación.</p>
+<div class="eq"><div class="formula-label">Reactancia inductiva ideal</div>
+<math display="block"><mrow><msub><mi>X</mi><mi>L</mi></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><mi>L</mi></mrow></math></div>
+<h3>Dispositivos activos</h3><p>Transistores y amplificadores presentan capacitancias internas, ganancia dependiente de frecuencia, retardos y límites de potencia. En RF interesa conocer la banda útil del dispositivo y trabajar con polarización, adaptación y estabilidad adecuadas.</p>
+<div class="grid">
+<div class="card"><h4>Ganancia</h4><p>No es constante en toda la frecuencia. Debe verificarse en la banda de interés.</p></div>
+<div class="card"><h4>Ruido</h4><p>En recepción, el ruido introducido por las primeras etapas puede condicionar el desempeño global.</p></div>
+<div class="card"><h4>Linealidad</h4><p>La saturación o no linealidad produce distorsión e intermodulación.</p></div>
+</div></section>
+
+<section class="section"><h2>Explora / experimenta</h2>
+<div class="interactive"><h3>De componente ideal a componente real</h3>
+<p>Modifique la frecuencia y observe cómo cambian las reactancias ideales de un capacitor y un inductor.</p>
+<div class="controls">
+<div class="control"><label>Frecuencia <span id="f31v">1.00 MHz</span></label><input id="f31" type="range" min="0.1" max="50" step="0.1" value="1"/></div>
+<div class="control"><label>Capacitor C <span id="c31v">100 pF</span></label><input id="c31" type="range" min="10" max="1000" step="10" value="100"/></div>
+<div class="control"><label>Inductor L <span id="l31v">1.0 µH</span></label><input id="l31" type="range" min="0.1" max="20" step="0.1" value="1"/></div>
+</div>
+<div class="readout">
+<div class="metric"><span>|Xc|</span><b id="xc31">—</b></div>
+<div class="metric"><span>XL</span><b id="xl31">—</b></div>
+<div class="metric"><span>λ en aire</span><b id="lam31">—</b></div>
+</div>
+<canvas id="chart31" width="960" height="280"></canvas>
+</div></section>
+
+<section class="section"><h2>Ejemplo resuelto</h2>
+<div class="example"><div class="head">Longitud de onda y criterio de conexión</div><div class="body">
+<p><b>Problema:</b> determinar λ para una señal de 100 MHz en aire y valorar si una conexión de 30 cm puede considerarse eléctricamente corta.</p>
+<div class="steps">
+<div class="step">f = 100 MHz = 100×10<sup>6</sup> Hz.</div>
+<div class="step">λ = 3×10<sup>8</sup> / 100×10<sup>6</sup> = 3 m.</div>
+<div class="step">La conexión de 0.30 m representa λ/10.</div>
+<div class="step">A esta escala, ya no conviene tratarla automáticamente como una conexión ideal; deben considerarse efectos distribuidos, fase y adaptación.</div>
+</div></div></div></section>
+
+<section class="section"><h2>Comprueba tu comprensión</h2>
+<div class="quiz" id="q311"><p>Al aumentar la frecuencia, la magnitud de la reactancia de un capacitor ideal:</p>
+<button onclick="checkQ('q311',0,1)">Aumenta</button><button onclick="checkQ('q311',1,1)">Disminuye</button><button onclick="checkQ('q311',2,1)">Permanece constante</button>
+<div class="feedback" data-ok="Correcto. Xc = 1/(2πfC), por lo que disminuye al aumentar f." data-no="Revise la relación Xc = 1/(2πfC)."></div></div>
+<div class="quiz" id="q312"><p>Por encima de la autorresonancia, un capacitor real puede mostrar comportamiento predominantemente:</p>
+<button onclick="checkQ('q312',0,1)">Resistivo puro</button><button onclick="checkQ('q312',1,1)">Inductivo</button><button onclick="checkQ('q312',2,1)">Idealmente capacitivo</button>
+<div class="feedback" data-ok="Correcto. La inductancia parásita puede dominar por encima de la autorresonancia." data-no="Considere el efecto de la ESL del capacitor real."></div></div></section>
+
+<section class="section"><h2>Ejercicios propuestos</h2><div class="levels">
+<div class="level"><div class="tag">NIVEL 1</div><p>Calcule λ a 10 MHz, 100 MHz y 1 GHz en aire.</p></div>
+<div class="level"><div class="tag">NIVEL 2</div><p>Calcule Xc para 100 pF y XL para 1 µH entre 1 y 50 MHz. Interprete tendencias.</p></div>
+<div class="level"><div class="tag">NIVEL 3</div><p>Explique por qué un montaje en protoboard puede introducir errores significativos al intentar trabajar en RF.</p></div>
+</div></section>
+
+<section class="section"><h2>Caso profesional</h2><div class="callout pro"><b>Diagnóstico:</b> un filtro diseñado correctamente en simulación cambia su frecuencia central al montarse físicamente. El estudiante debe identificar posibles contribuciones de capacitancias parásitas, inductancias de conexión, tolerancias y disposición física.</div></section>
+<section class="section"><h2>Feedback, síntesis y reflexión</h2><div class="callout key"><b>Síntesis:</b> en RF los componentes deben analizarse como elementos reales dependientes de frecuencia; geometría, pérdidas y parasitismos forman parte del circuito.</div><p><b>Reflexiona:</b> ¿qué simplificaciones de baja frecuencia dejarían de ser válidas en un montaje de 100 MHz?</p></section>
+<section class="section"><h2>Referencias</h2><ul class="refs"><li>Pozar, D. M. <i>Microwave Engineering</i>. Wiley.</li><li>Razavi, B. <i>RF Microelectronics</i>. Pearson.</li><li>Floyd, T. L. <i>Electronic Devices</i>. Pearson.</li></ul></section>
+
+<div class="footer">Universidad Católica de Cuenca · Carrera de Telecomunicaciones · Material Interactivo de Aprendizaje</div>
+</main><script>
+function checkQ(id,ans,correct){const box=document.querySelector('#'+id+' .feedback'); if(ans===correct){box.className='feedback ok';box.textContent=box.dataset.ok;}else{box.className='feedback no';box.textContent=box.dataset.no;}}
+function fmt(x,d=3){return Number(x).toLocaleString('es-EC',{maximumFractionDigits:d});}
+
+function upd31(){
+ let f=+document.getElementById('f31').value*1e6, C=+document.getElementById('c31').value*1e-12, L=+document.getElementById('l31').value*1e-6;
+ document.getElementById('f31v').textContent=(f/1e6).toFixed(2)+' MHz';
+ document.getElementById('c31v').textContent=(C*1e12).toFixed(0)+' pF';
+ document.getElementById('l31v').textContent=(L*1e6).toFixed(1)+' µH';
+ let xc=1/(2*Math.PI*f*C), xl=2*Math.PI*f*L, lam=3e8/f;
+ document.getElementById('xc31').textContent=fmt(xc,2)+' Ω';
+ document.getElementById('xl31').textContent=fmt(xl,2)+' Ω';
+ document.getElementById('lam31').textContent=fmt(lam,3)+' m';
+ let c=document.getElementById('chart31'),g=c.getContext('2d'),W=c.width,H=c.height; g.clearRect(0,0,W,H);
+ g.strokeStyle='#dce7ef';for(let i=0;i<10;i++){g.beginPath();g.moveTo(i*W/10,0);g.lineTo(i*W/10,H);g.stroke()}
+ let fmax=50e6, vals=[]; for(let i=1;i<=200;i++){let ff=fmax*i/200;vals.push([ff,1/(2*Math.PI*ff*C),2*Math.PI*ff*L]);}
+ let maxY=Math.max(...vals.flatMap(v=>[v[1],v[2]])); maxY=Math.min(maxY,5000);
+ function draw(col,idx){g.strokeStyle=col;g.lineWidth=2.2;g.beginPath();vals.forEach((v,i)=>{let x=i/(vals.length-1)*(W-50)+35,y=H-30-Math.min(v[idx],maxY)/maxY*(H-55);i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();}
+ draw('#1F4E79',1);draw('#d97706',2);g.fillStyle='#31485d';g.font='15px sans-serif';g.fillText('|Xc|',60,24);g.fillText('XL',125,24);
+}
+['f31','c31','l31'].forEach(id=>document.getElementById(id).addEventListener('input',upd31));upd31();
+</script></body></html>
