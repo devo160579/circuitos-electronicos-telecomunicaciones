@@ -1,14 +1,1552 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>1.1 Fundamentos, características y configuraciones de amplificadores operacionales</title>
-<link rel="stylesheet" href="../../../../assets/css/global.css">
-<link rel="stylesheet" href="../../../../assets/css/actividades.css"></head><body>
-<header><div class="container"><h1>1.1 Fundamentos, características y configuraciones de amplificadores operacionales</h1></div></header>
-<main class="container">
-<nav><a href="../../../../index.html">Inicio</a> / <a href="../../index.html">Bloque</a></nav>
-<section class="card"><h2>Introducción al tema</h2><p>Contenido por desarrollar.</p></section>
-<section class="card"><h2>Desarrollo de contenidos</h2><p>Contenido por desarrollar.</p></section>
-<section class="card"><h2>Resolución de ejemplos</h2><p>Contenido por desarrollar.</p></section>
-<section class="card"><h2>Ejercicios propuestos</h2><p>Contenido por desarrollar.</p></section>
-<section class="feedback"><h2>Feedback</h2><p>Contenido por desarrollar.</p></section>
-<section class="card"><h2>Actividad interactiva o juego</h2><p>Sección opcional.</p></section>
-</main><footer>Circuitos Electrónicos para Telecomunicaciones</footer></body></html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1.1 Fundamentos, características y configuraciones de amplificadores operacionales</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+
+#title-block-header{max-width:980px;margin:0 auto 1.8rem auto;padding:2.2rem 1.6rem;border-radius:18px;background:linear-gradient(135deg,#f7fbff 0%,#eef5fb 100%);border:1px solid #d8e1e8;box-shadow:0 8px 24px rgba(31,78,121,.08);text-align:center;}
+#title-block-header .title{margin:0;color:#1f2d3d;font-weight:800;line-height:1.15;font-size:clamp(2rem,4vw,3.05rem);text-wrap:balance;}
+#title-block-header .subtitle{margin:.8rem 0 0 0;font-size:1.03rem;color:#5d6b78;font-weight:600;}
+  
+/* ===== MIAI visual system v2 ===== */
+:root{
+  --brand:#1F4E79;
+  --brand-dark:#163a5d;
+  --brand2:#2D6A9F;
+  --accent:#0f766e;
+  --ink:#172230;
+  --muted:#5b6978;
+  --soft:#f4f7fa;
+  --soft-blue:#eef5fb;
+  --line:#d9e3ec;
+  --line-strong:#c6d4df;
+  --ok:#166534;
+  --warn:#9a5b08;
+  --bad:#a11d1d;
+  --white:#ffffff;
+  --shadow:0 10px 28px rgba(25,55,85,.08);
+  --shadow-sm:0 4px 14px rgba(25,55,85,.07);
+  --radius:16px;
+}
+
+html{scroll-behavior:smooth;background:#edf2f7;}
+body{
+  color:var(--ink);
+  background:#f7f9fc;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.72;
+  max-width:1180px !important;
+  margin:0 auto !important;
+  padding:46px 56px 72px !important;
+  box-sizing:border-box;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0 0 auto 0;
+  height:5px;
+  background:linear-gradient(90deg,var(--brand),#4b8fc5,var(--accent));
+  z-index:9999;
+}
+
+/* Title */
+#title-block-header{
+  position:relative;
+  overflow:hidden;
+  max-width:none;
+  margin:0 0 2rem 0;
+  padding:2.35rem 2.25rem 2rem;
+  border-radius:24px;
+  background:linear-gradient(135deg,#ffffff 0%,#f3f8fc 58%,#eaf3fa 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  text-align:left;
+}
+#title-block-header:before{
+  content:"BLOQUE 1 · TEMA 1.1";
+  display:inline-flex;
+  align-items:center;
+  padding:.3rem .72rem;
+  margin-bottom:.8rem;
+  border-radius:999px;
+  background:#e7f0f8;
+  color:var(--brand);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+#title-block-header:after{
+  content:"";
+  position:absolute;
+  width:210px;height:210px;
+  right:-70px;top:-95px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(45,106,159,.18),rgba(45,106,159,0) 70%);
+  pointer-events:none;
+}
+#title-block-header .title{
+  max-width:920px;
+  margin:0;
+  color:#182634;
+  font-weight:850;
+  line-height:1.12;
+  font-size:clamp(2rem,3.9vw,3.35rem);
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+#title-block-header .subtitle{
+  display:inline-block;
+  margin:1rem 0 0 0;
+  padding:.38rem .72rem;
+  border-radius:10px;
+  background:rgba(255,255,255,.78);
+  border:1px solid #d9e5ee;
+  color:var(--muted);
+  font-size:1rem;
+  font-weight:700;
+}
+
+/* TOC */
+#TOC{
+  margin:0 0 2rem;
+  padding:1rem 1.1rem;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+#TOC:before{
+  content:"NAVEGACIÓN DEL TEMA";
+  display:block;
+  color:var(--brand);
+  font-weight:850;
+  font-size:.76rem;
+  letter-spacing:.09em;
+  margin:0 0 .65rem .25rem;
+}
+#TOC ul{margin:0;padding-left:1.2rem;}
+#TOC li{margin:.18rem 0;}
+#TOC a{color:#31485c;text-decoration:none;font-size:.93rem;}
+#TOC a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
+
+/* Typography and sections */
+h1,h2,h3,h4{font-family:inherit;color:#1e3040;scroll-margin-top:25px;}
+h1:not(.title){
+  margin-top:3.1rem;
+  padding:1rem 1.05rem;
+  border-radius:14px;
+  background:linear-gradient(90deg,var(--brand-dark),var(--brand));
+  color:#fff;
+  font-size:1.75rem;
+  line-height:1.25;
+  letter-spacing:-.015em;
+  box-shadow:0 7px 20px rgba(31,78,121,.16);
+}
+h2{
+  margin-top:2.25rem;
+  margin-bottom:.85rem;
+  padding-left:.85rem;
+  border-left:5px solid var(--brand2);
+  color:var(--brand-dark);
+  font-size:1.42rem;
+  line-height:1.3;
+}
+h3{
+  margin-top:1.8rem;
+  color:#28485f;
+  font-size:1.16rem;
+}
+h4{font-size:1.02rem;color:var(--brand);}
+p{margin:.68rem 0 1rem;}
+strong{color:#203449;}
+a{color:var(--brand2);text-underline-offset:3px;}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0;}
+
+/* Hero */
+.hero{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #cddde9;
+  border-left:7px solid var(--brand);
+  background:linear-gradient(120deg,#ffffff,#eef6fc);
+  padding:1.45rem 1.55rem;
+  border-radius:18px;
+  margin:0 0 1.5rem 0;
+  box-shadow:var(--shadow-sm);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:160px;height:160px;
+  right:-55px;bottom:-80px;
+  border-radius:50%;
+  background:rgba(45,106,159,.08);
+}
+.hero h2{margin:.05rem 0 .65rem;padding:0;border:0;color:var(--brand);font-size:1.45rem;}
+.hero p{max-width:930px;margin-bottom:.8rem;}
+.badge{
+  display:inline-block;
+  padding:.28rem .62rem;
+  border-radius:999px;
+  background:#e5f0f8;
+  color:var(--brand);
+  border:1px solid #d1e1ed;
+  font-weight:800;
+  font-size:.78rem;
+  margin:.15rem .32rem .05rem 0;
+  letter-spacing:.015em;
+}
+
+/* Cards */
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.05rem 0 1.35rem;}
+.card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:1.05rem 1.1rem;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(25,55,85,.10);border-color:#bdd1e0;}
+.card h4{margin:.05rem 0 .45rem;color:var(--brand);}
+.card p{margin-bottom:.25rem;}
+
+/* Callouts */
+.callout-miai,.callout-key,.callout-error,.callout-attn{
+  position:relative;
+  padding:1rem 1.15rem 1rem 1.25rem;
+  border-radius:14px;
+  margin:1.15rem 0;
+  border:1px solid var(--line);
+  box-shadow:0 3px 12px rgba(25,55,85,.045);
+}
+.callout-miai{border-left:6px solid var(--brand2);background:#f4f9fd;}
+.callout-key{border-left:6px solid var(--accent);background:#f2fbf9;}
+.callout-error{border-left:6px solid #b42318;background:#fff6f5;}
+.callout-attn{border-left:6px solid #d97706;background:#fff9ef;}
+.callout-miai strong,.callout-key strong,.callout-error strong,.callout-attn strong{font-weight:850;}
+
+/* Equations */
+.eqbox{
+  background:linear-gradient(180deg,#ffffff,#f8fbfe);
+  border:1px solid #cedce8;
+  border-radius:14px;
+  padding:.9rem 1.1rem;
+  margin:1rem 0 1.15rem;
+  box-shadow:inset 4px 0 0 #b5cfe3;
+  overflow-x:auto;
+}
+.math.display{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;}
+
+/* Tables */
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0 1.4rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,55,85,.05);}
+thead th,table th{background:#eaf2f8;color:#193a56;font-weight:800;text-align:left;}
+th,td{padding:.72rem .8rem;border-bottom:1px solid #e1e8ee;vertical-align:top;}
+tr:last-child td{border-bottom:0;}
+tbody tr:nth-child(even){background:#fbfcfe;}
+tbody tr:hover{background:#f4f8fb;}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;margin:.65rem 0;box-shadow:none;}
+.mini-table th,.mini-table td{border:0;border-bottom:1px solid #dce5ec;padding:.55rem .62rem;}
+.mini-table th{background:#eaf3fa;}
+
+/* Diagrams */
+svg.diagram{
+  display:block;
+  width:100%;
+  max-width:960px;
+  height:auto;
+  border:1px solid #d6e1ea;
+  border-radius:18px;
+  background:#fff;
+  margin:1rem auto 1.25rem;
+  box-shadow:var(--shadow-sm);
+}
+
+/* Interactive modules */
+.interactive{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #bcd2e3;
+  border-top:6px solid var(--brand2);
+  border-radius:20px;
+  background:linear-gradient(180deg,#fbfdff,#f2f7fb);
+  padding:1.25rem 1.3rem;
+  margin:1.45rem 0;
+  box-shadow:0 10px 26px rgba(31,78,121,.09);
+}
+.interactive:before{
+  content:"INTERACTIVO";
+  display:inline-block;
+  margin:0 0 .65rem;
+  padding:.22rem .55rem;
+  border-radius:999px;
+  color:var(--brand);
+  background:#e3eef7;
+  font-size:.72rem;
+  font-weight:850;
+  letter-spacing:.09em;
+}
+.interactive h3{margin:.05rem 0 .55rem;color:var(--brand);font-size:1.28rem;}
+.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:.9rem;align-items:end;margin-top:1rem;}
+.control-grid>div{background:rgba(255,255,255,.72);border:1px solid #d8e4ed;border-radius:12px;padding:.72rem;}
+.control-grid label{font-weight:750;display:block;margin-bottom:.35rem;color:#29455c;font-size:.91rem;}
+.control-grid input,.control-grid select{
+  width:100%;box-sizing:border-box;
+  padding:.58rem .62rem;
+  border:1px solid #afc2d1;
+  border-radius:9px;
+  background:#fff;
+  color:var(--ink);
+  font:inherit;
+  outline:none;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.control-grid input:focus,.control-grid select:focus{border-color:var(--brand2);box-shadow:0 0 0 3px rgba(45,106,159,.12);}
+.control-grid input:disabled{background:#edf1f4;color:#82909d;}
+.result{
+  background:#fff;
+  border:1px solid #c8d8e4;
+  border-radius:14px;
+  padding:1rem 1.05rem;
+  margin-top:1rem;
+  box-shadow:var(--shadow-sm);
+}
+.kpi{font-size:1.35rem;font-weight:850;color:var(--brand);letter-spacing:-.02em;}
+.small{font-size:.88rem;color:var(--muted);}
+.status-ok{color:var(--ok);font-weight:800}.status-warn{color:var(--warn);font-weight:800}.status-bad{color:var(--bad);font-weight:800}
+canvas{display:block;width:100%;height:230px;border:1px solid #d1dde7;border-radius:14px;background:#fff;margin-top:1rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);}
+
+/* Quiz */
+.quizbox{
+  border:1px solid var(--line);
+  border-left:5px solid #6c8faa;
+  border-radius:14px;
+  padding:1rem 1.05rem;
+  margin:.9rem 0;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.quizbox p{margin:.15rem 0 .75rem;}
+.quizbox button{
+  margin:.26rem .38rem .26rem 0;
+  padding:.52rem .78rem;
+  border-radius:9px;
+  border:1px solid #b7c7d4;
+  background:#f7fafc;
+  color:#233b4f;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.quizbox button:hover{background:#e8f1f7;border-color:#8eabc0;transform:translateY(-1px);}
+.quizbox button.is-correct{background:#edf9f1;border-color:#81bd91;color:#14532d;}
+.quizbox button.is-wrong{background:#fff1f0;border-color:#e0a29d;color:#8d1d18;}
+.feedback{margin-top:.65rem;padding:.55rem .7rem;border-radius:9px;background:#f5f8fb;font-weight:700;}
+
+/* Steps */
+.step{display:flex;gap:.85rem;margin:.72rem 0;align-items:flex-start;}
+.stepnum{flex:0 0 2rem;height:2rem;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;text-align:center;line-height:2rem;font-weight:850;box-shadow:0 4px 10px rgba(31,78,121,.18);}
+.stepbody{flex:1;padding-top:.15rem;}
+
+/* Details */
+details{border:1px solid var(--line);border-radius:12px;padding:.68rem .85rem;margin:.7rem 0;background:#fff;box-shadow:0 2px 9px rgba(25,55,85,.04);}
+details summary{cursor:pointer;font-weight:800;color:var(--brand);}
+details[open]{border-color:#bed1e0;background:#fbfdff;}
+
+blockquote{
+  margin:1.2rem 0;
+  padding:1rem 1.2rem;
+  border-left:5px solid var(--brand2);
+  border-radius:0 12px 12px 0;
+  background:#f3f8fc;
+  color:#29455a;
+  font-size:1.03rem;
+}
+
+/* Lists */
+ul,ol{padding-left:1.45rem;}
+li{margin:.25rem 0;}
+
+/* References */
+h1#referencias-sugeridas+ul, h1#referencias+ul{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem 1rem 2.2rem;box-shadow:var(--shadow-sm);}
+
+/* Mobile */
+@media (min-width:1180px){
+  body{padding-left:330px !important;position:relative;}
+  #TOC{
+    position:fixed;
+    left:max(24px,calc((100vw - 1180px)/2 + 10px));
+    top:34px;
+    width:250px;
+    max-height:calc(100vh - 68px);
+    overflow:auto;
+    z-index:10;
+    margin:0;
+  }
+}
+@media (max-width:900px){
+  body{padding:28px 24px 52px !important;}
+  #title-block-header{padding:1.7rem 1.35rem;}
+  #title-block-header .title{font-size:clamp(1.8rem,7vw,2.55rem);}
+  h1:not(.title){font-size:1.5rem;}
+  .interactive{padding:1rem;}
+  .control-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:620px){
+  body{padding:22px 14px 44px !important;font-size:15.8px;}
+  #title-block-header{border-radius:18px;padding:1.35rem 1rem;}
+  #title-block-header:before{font-size:.68rem;}
+  #title-block-header .title{font-size:1.8rem;line-height:1.16;}
+  #title-block-header .subtitle{font-size:.9rem;}
+  .hero,.interactive{border-radius:15px;}
+  .cardgrid,.control-grid{grid-template-columns:1fr;}
+  h1:not(.title){font-size:1.35rem;padding:.85rem .9rem;}
+  h2{font-size:1.22rem;}
+  table{display:block;overflow-x:auto;white-space:normal;}
+  .quizbox button{display:block;width:100%;text-align:left;margin:.35rem 0;}
+}
+
+@media print{
+  body{background:#fff !important;max-width:none !important;padding:0 !important;color:#000;}
+  body:before,#TOC{display:none !important;}
+  #title-block-header,.hero,.card,.interactive,.quizbox,table,svg.diagram{box-shadow:none !important;}
+  .interactive{break-inside:avoid;}
+}
+
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">1.1 Fundamentos, características y configuraciones de
+amplificadores operacionales</h1>
+<p class="subtitle">Circuitos Electrónicos para Telecomunicaciones ·
+Quinto ciclo</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#resultado-esperado-del-tema"
+id="toc-resultado-esperado-del-tema">Resultado esperado del
+tema</a></li>
+<li><a href="#conocimientos-previos"
+id="toc-conocimientos-previos">Conocimientos previos</a></li>
+<li><a
+href="#principios-de-funcionamiento-parámetros-y-características-del-amplificador-operacional"
+id="toc-principios-de-funcionamiento-parámetros-y-características-del-amplificador-operacional">1.1.1
+Principios de funcionamiento, parámetros y características del
+amplificador operacional</a>
+<ul>
+<li><a href="#qué-es-un-amplificador-operacional"
+id="toc-qué-es-un-amplificador-operacional">1. ¿Qué es un amplificador
+operacional?</a>
+<ul>
+<li><a href="#modelo-conceptual" id="toc-modelo-conceptual">Modelo
+conceptual</a></li>
+</ul></li>
+<li><a href="#modelo-ideal-y-modelo-real"
+id="toc-modelo-ideal-y-modelo-real">2. Modelo ideal y modelo
+real</a></li>
+<li><a href="#realimentación-negativa-y-cortocircuito-virtual"
+id="toc-realimentación-negativa-y-cortocircuito-virtual">3.
+Realimentación negativa y “cortocircuito virtual”</a></li>
+<li><a href="#saturación-y-alimentación"
+id="toc-saturación-y-alimentación">4. Saturación y alimentación</a></li>
+<li><a href="#parámetros-prácticos-que-debe-revisar-un-ingeniero"
+id="toc-parámetros-prácticos-que-debe-revisar-un-ingeniero">5.
+Parámetros prácticos que debe revisar un ingeniero</a>
+<ul>
+<li><a href="#producto-ganancia-ancho-de-banda-gbw"
+id="toc-producto-ganancia-ancho-de-banda-gbw">Producto ganancia-ancho de
+banda (GBW)</a></li>
+<li><a href="#slew-rate" id="toc-slew-rate">Slew rate</a></li>
+<li><a href="#offset-y-corrientes-de-polarización"
+id="toc-offset-y-corrientes-de-polarización">Offset y corrientes de
+polarización</a></li>
+<li><a href="#rango-de-modo-común-y-excursión-de-salida"
+id="toc-rango-de-modo-común-y-excursión-de-salida">Rango de modo común y
+excursión de salida</a></li>
+</ul></li>
+</ul></li>
+<li><a
+href="#configuraciones-inversora-no-inversora-y-seguidor-de-tensión"
+id="toc-configuraciones-inversora-no-inversora-y-seguidor-de-tensión">1.1.2
+Configuraciones inversora, no inversora y seguidor de tensión</a>
+<ul>
+<li><a href="#configuración-inversora"
+id="toc-configuración-inversora">6. Configuración inversora</a>
+<ul>
+<li><a href="#ejemplo-resuelto-1-amplificador-inversor"
+id="toc-ejemplo-resuelto-1-amplificador-inversor">Ejemplo resuelto 1 —
+Amplificador inversor</a></li>
+</ul></li>
+<li><a href="#configuración-no-inversora"
+id="toc-configuración-no-inversora">7. Configuración no inversora</a>
+<ul>
+<li><a
+href="#ejemplo-resuelto-2-acondicionamiento-para-una-etapa-de-telecomunicaciones"
+id="toc-ejemplo-resuelto-2-acondicionamiento-para-una-etapa-de-telecomunicaciones">Ejemplo
+resuelto 2 — Acondicionamiento para una etapa de
+telecomunicaciones</a></li>
+</ul></li>
+<li><a href="#seguidor-de-tensión" id="toc-seguidor-de-tensión">8.
+Seguidor de tensión</a>
+<ul>
+<li><a href="#caso-típico" id="toc-caso-típico">Caso típico</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#explora-laboratorio-interactivo-de-op-amps"
+id="toc-explora-laboratorio-interactivo-de-op-amps">Explora —
+laboratorio interactivo de op-amps</a>
+<ul>
+<li><a href="#el-op-amp-elegido-es-suficientemente-rápido"
+id="toc-el-op-amp-elegido-es-suficientemente-rápido">¿El op-amp elegido
+es suficientemente rápido?</a></li>
+</ul></li>
+<li><a href="#comprueba-tu-comprensión"
+id="toc-comprueba-tu-comprensión">Comprueba tu comprensión</a></li>
+<li><a href="#ejercicios-propuestos"
+id="toc-ejercicios-propuestos">Ejercicios propuestos</a>
+<ul>
+<li><a href="#nivel-1-comprensión" id="toc-nivel-1-comprensión">Nivel 1
+— Comprensión</a></li>
+<li><a href="#nivel-2-aplicación" id="toc-nivel-2-aplicación">Nivel 2 —
+Aplicación</a></li>
+<li><a href="#nivel-3-transferencia-profesional"
+id="toc-nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</a></li>
+</ul></li>
+<li><a
+href="#caso-profesional-acondicionamiento-de-una-señal-de-telecomunicaciones"
+id="toc-caso-profesional-acondicionamiento-de-una-señal-de-telecomunicaciones">Caso
+profesional — acondicionamiento de una señal de
+telecomunicaciones</a></li>
+<li><a href="#síntesis" id="toc-síntesis">Síntesis</a></li>
+<li><a href="#reflexiona" id="toc-reflexiona">Reflexiona</a></li>
+<li><a href="#referencias-sugeridas"
+id="toc-referencias-sugeridas">Referencias sugeridas</a></li>
+</ul>
+</nav>
+<style>
+:root{
+  --brand:#1F4E79;
+  --brand2:#2D6A9F;
+  --ink:#1c2733;
+  --muted:#5d6b78;
+  --soft:#f4f7fa;
+  --line:#d8e1e8;
+  --ok:#166534;
+  --warn:#92400e;
+  --bad:#991b1b;
+}
+body{color:var(--ink);}
+.hero{border-left:6px solid var(--brand); background:linear-gradient(110deg,#f7fbff,#eef5fb); padding:1.15rem 1.3rem; border-radius:12px; margin:0 0 1.2rem 0;}
+.hero h2{margin-top:0;color:var(--brand);}
+.badge{display:inline-block;padding:.22rem .55rem;border-radius:999px;background:#e8f1f8;color:var(--brand);font-weight:700;font-size:.82rem;margin:.15rem .35rem .15rem 0;}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin:1rem 0;}
+.card{border:1px solid var(--line);border-radius:12px;padding:1rem;background:white;box-shadow:0 2px 8px rgba(31,78,121,.06);}
+.card h4{margin-top:0;color:var(--brand);}
+.callout-miai{border-left:5px solid var(--brand2);background:#f7fbff;padding:.9rem 1rem;border-radius:8px;margin:1rem 0;}
+.callout-key{border-left:5px solid #0f766e;background:#f0fdfa;padding:.9rem 1rem;border-radius:8px;margin:1rem 0;}
+.callout-error{border-left:5px solid #b91c1c;background:#fff7f7;padding:.9rem 1rem;border-radius:8px;margin:1rem 0;}
+.callout-attn{border-left:5px solid #d97706;background:#fffaf0;padding:.9rem 1rem;border-radius:8px;margin:1rem 0;}
+.eqbox{background:#fbfdff;border:1px solid var(--line);border-radius:10px;padding:.7rem 1rem;margin:.8rem 0;}
+.interactive{border:2px solid #c7d8e8;border-radius:14px;background:#f9fcff;padding:1rem 1.1rem;margin:1.2rem 0;}
+.interactive h3{margin-top:0;color:var(--brand);}
+.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.8rem;align-items:end;}
+.control-grid label{font-weight:650;display:block;margin-bottom:.25rem;}
+.control-grid input,.control-grid select{width:100%;padding:.46rem .55rem;border:1px solid #b7c5d1;border-radius:7px;background:white;}
+.result{background:white;border:1px solid #bfd0df;border-radius:10px;padding:.8rem 1rem;margin-top:1rem;}
+.result strong{color:var(--brand);}
+.status-ok{color:var(--ok);font-weight:700}.status-warn{color:var(--warn);font-weight:700}.status-bad{color:var(--bad);font-weight:700}
+canvas{width:100%;height:210px;border:1px solid #d7e0e8;border-radius:10px;background:white;margin-top:.8rem;}
+.mini-table{width:100%;border-collapse:collapse;margin:.6rem 0}.mini-table th,.mini-table td{border:1px solid #d8e1e8;padding:.45rem .55rem}.mini-table th{background:#eef5fb}
+.quizbox{border:1px solid var(--line);border-radius:10px;padding:.9rem;margin:.8rem 0;background:white}.quizbox p{margin-top:.2rem}.quizbox button{margin:.25rem .35rem .25rem 0;padding:.42rem .7rem;border-radius:7px;border:1px solid #aebdca;background:#f8fafc;cursor:pointer}.quizbox button:hover{background:#eaf2f8}.feedback{margin-top:.45rem;font-weight:650}
+.step{display:flex;gap:.7rem;margin:.55rem 0}.stepnum{flex:0 0 1.75rem;height:1.75rem;border-radius:50%;background:var(--brand);color:white;text-align:center;line-height:1.75rem;font-weight:700}.stepbody{flex:1}
+svg.diagram{max-width:100%;height:auto;border:1px solid #dbe5ec;border-radius:12px;background:white;margin:.7rem 0}
+.kpi{font-size:1.35rem;font-weight:800;color:var(--brand)}
+.small{font-size:.9rem;color:var(--muted)}
+details{border:1px solid var(--line);border-radius:8px;padding:.55rem .75rem;margin:.55rem 0;background:#fff}details summary{cursor:pointer;font-weight:700;color:var(--brand)}
+@media (max-width:720px){.hero{padding:1rem}.interactive{padding:.8rem}.control-grid{grid-template-columns:1fr}}
+</style>
+<div class="hero">
+<h2>
+¿Por qué necesito aprender esto?
+</h2>
+<p>
+En una cadena de telecomunicaciones, muchas señales llegan con
+amplitudes pequeñas, impedancias poco convenientes o niveles
+incompatibles con la siguiente etapa. El amplificador operacional
+permite <strong>amplificar, invertir, aislar y acondicionar</strong>
+estas señales de forma controlada. Este tema construye la base para los
+filtros activos, osciladores y etapas analógicas que se estudiarán
+después.
+</p>
+<p><span class="badge">Bloque 1</span><span class="badge">Tema
+1.1</span><span class="badge">Analógico</span><span class="badge">Diseño
++ análisis</span></p>
+</div>
+<h2 id="resultado-esperado-del-tema">Resultado esperado del tema</h2>
+<p>Al finalizar este tema, el estudiante será capaz de <strong>analizar
+y dimensionar configuraciones básicas con amplificadores operacionales
+—inversora, no inversora y seguidor de tensión— considerando su
+comportamiento ideal y sus principales limitaciones reales en
+aplicaciones de telecomunicaciones</strong>.</p>
+<h2 id="conocimientos-previos">Conocimientos previos</h2>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Ley de Ohm
+</h4>
+<p>
+Relacionar voltaje, corriente y resistencia:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>I</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">V=IR</annotation></semantics></math>.
+</p>
+</div>
+<div class="card">
+<h4>
+Leyes de Kirchhoff
+</h4>
+<p>
+Aplicar KCL en nodos y KVL en mallas.
+</p>
+</div>
+<div class="card">
+<h4>
+Divisor de tensión
+</h4>
+<p>
+Calcular tensiones en redes resistivas.
+</p>
+</div>
+<div class="card">
+<h4>
+Señales
+</h4>
+<p>
+Distinguir amplitud, frecuencia, fase y offset.
+</p>
+</div>
+</div>
+<div class="callout-miai">
+<strong>Antes de continuar:</strong> si una señal de sensor vale 100 mV
+y la etapa siguiente requiere 1 V, ¿qué debería hacer el circuito?
+<em>Prediga primero; luego compruebe sus ideas en el simulador
+interactivo.</em>
+</div>
+<h1
+id="principios-de-funcionamiento-parámetros-y-características-del-amplificador-operacional">1.1.1
+Principios de funcionamiento, parámetros y características del
+amplificador operacional</h1>
+<h2 id="qué-es-un-amplificador-operacional">1. ¿Qué es un amplificador
+operacional?</h2>
+<p>Un amplificador operacional, u <strong>op-amp</strong>, es un
+amplificador diferencial de muy alta ganancia diseñado para operar
+normalmente con <strong>realimentación</strong>. Posee dos entradas —no
+inversora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>+</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(+)</annotation></semantics></math>
+e inversora
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(- )</annotation></semantics></math>—
+y una salida.</p>
+<p>Su relación básica en lazo abierto es:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><msub><mi>A</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mo>+</mo></msub><mo>−</mo><msub><mi>v</mi><mo>−</mo></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+v_o=A_{OL}(v_+ - v_-)
+</annotation></semantics></math></p>
+</div>
+<p>Donde:</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>o</mi></msub><annotation encoding="application/x-tex">v_o</annotation></semantics></math>:
+tensión de salida [V].</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><annotation encoding="application/x-tex">A_{OL}</annotation></semantics></math>:
+ganancia diferencial en lazo abierto [V/V].</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mo>+</mo></msub><annotation encoding="application/x-tex">v_+</annotation></semantics></math>:
+tensión en la entrada no inversora [V].</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mo>−</mo></msub><annotation encoding="application/x-tex">v_-</annotation></semantics></math>:
+tensión en la entrada inversora [V].</li>
+</ul>
+<p>En un dispositivo real,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><annotation encoding="application/x-tex">A_{OL}</annotation></semantics></math>
+es muy grande. Por ello, incluso una pequeña diferencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>+</mo></msub><mo>−</mo><msub><mi>v</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">v_+-v_-</annotation></semantics></math>
+puede llevar la salida hacia los límites impuestos por la
+alimentación.</p>
+<h3 id="modelo-conceptual">Modelo conceptual</h3>
+<svg class="diagram" viewBox="0 0 820 300" role="img" aria-label="Diagrama conceptual de un amplificador operacional">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1F4E79"/></marker></defs>
+<rect x="15" y="15" width="790" height="270" rx="14" fill="#f8fbfe" stroke="#c8d7e4"/>
+<polygon points="315,70 315,230 555,150" fill="#ffffff" stroke="#1F4E79" stroke-width="3"/>
+<text x="345" y="135" font-size="26" fill="#1F4E79" font-weight="700">A<tspan baseline-shift="sub" font-size="17">OL</tspan></text>
+<text x="345" y="170" font-size="18" fill="#415466">amplificador
+diferencial</text>
+<text x="275" y="105" font-size="28" fill="#1F4E79">−</text>
+<text x="275" y="212" font-size="28" fill="#1F4E79">+</text>
+<line x1="100" y1="100" x2="315" y2="100" stroke="#1F4E79" stroke-width="3" marker-end="url(#arr)"/>
+<line x1="100" y1="205" x2="315" y2="205" stroke="#1F4E79" stroke-width="3" marker-end="url(#arr)"/>
+<line x1="555" y1="150" x2="720" y2="150" stroke="#1F4E79" stroke-width="3" marker-end="url(#arr)"/>
+<text x="50" y="92" font-size="20" fill="#1c2733">v−</text>
+<text x="50" y="198" font-size="20" fill="#1c2733">v+</text>
+<text x="730" y="156" font-size="20" fill="#1c2733">vo</text>
+<text x="330" y="48" font-size="17" fill="#5d6b78">Salida limitada por
+las tensiones de alimentación</text>
+</svg>
+<h2 id="modelo-ideal-y-modelo-real">2. Modelo ideal y modelo real</h2>
+<p>El modelo ideal simplifica el análisis; el modelo real permite
+verificar si el diseño funcionará físicamente.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 40%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th style="text-align: right;">Op-amp ideal</th>
+<th>Op-amp real: efecto de diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ganancia en lazo abierto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><annotation encoding="application/x-tex">A_{OL}</annotation></semantics></math></td>
+<td style="text-align: right;">Infinita</td>
+<td>Muy alta, pero finita y dependiente de frecuencia</td>
+</tr>
+<tr class="even">
+<td>Impedancia de entrada
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">Z_{in}</annotation></semantics></math></td>
+<td style="text-align: right;">Infinita</td>
+<td>Alta; existen corrientes de polarización</td>
+</tr>
+<tr class="odd">
+<td>Impedancia de salida
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">Z_{out}</annotation></semantics></math></td>
+<td style="text-align: right;">0 Ω</td>
+<td>Baja, pero no nula</td>
+</tr>
+<tr class="even">
+<td>Ancho de banda</td>
+<td style="text-align: right;">Infinito</td>
+<td>Limitado por el producto ganancia-ancho de banda</td>
+</tr>
+<tr class="odd">
+<td>Slew rate</td>
+<td style="text-align: right;">Infinito</td>
+<td>Limita la rapidez máxima de variación de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>o</mi></msub><annotation encoding="application/x-tex">v_o</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>Offset de entrada</td>
+<td style="text-align: right;">0 V</td>
+<td>Produce error DC en la salida</td>
+</tr>
+<tr class="odd">
+<td>Rechazo de modo común</td>
+<td style="text-align: right;">Infinito</td>
+<td>Finito, caracterizado por CMRR</td>
+</tr>
+<tr class="even">
+<td>Excursión de salida</td>
+<td style="text-align: right;">Ilimitada</td>
+<td>Restringida por alimentación y capacidad de salida</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-key">
+<strong>Concepto clave.</strong> En la mayoría de los análisis iniciales
+se usa el modelo ideal para obtener la función del circuito. Después se
+comprueba si el op-amp real posee suficiente alimentación, ancho de
+banda, slew rate, rango de modo común y capacidad de salida.
+</div>
+<h2 id="realimentación-negativa-y-cortocircuito-virtual">3.
+Realimentación negativa y “cortocircuito virtual”</h2>
+<p>Cuando la salida se devuelve a la entrada inversora mediante una red
+de realimentación, el sistema tiende a reducir el error diferencial.
+Mientras el op-amp permanezca en su región lineal:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>+</mo></msub><mo>≈</mo><msub><mi>v</mi><mo>−</mo></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>i</mi><mo>+</mo></msub><mo>≈</mo><msub><mi>i</mi><mo>−</mo></msub><mo>≈</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+v_+\approx v_-, \qquad i_+\approx i_-\approx 0
+</annotation></semantics></math></p>
+</div>
+<p>Estas aproximaciones constituyen dos herramientas fundamentales de
+análisis.</p>
+<div class="callout-error">
+<strong>Error frecuente.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>+</mo></msub><mo>≈</mo><msub><mi>v</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">v_+\approx v_-</annotation></semantics></math>
+<em>no significa</em> que ambas entradas estén físicamente
+cortocircuitadas. La igualdad aproximada aparece por acción de la alta
+ganancia y de la realimentación negativa.
+</div>
+<h2 id="saturación-y-alimentación">4. Saturación y alimentación</h2>
+<p>Si el cálculo ideal exige una salida mayor que la disponible
+físicamente, el op-amp entra en <strong>saturación</strong>. De forma
+simplificada:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>s</mi><mi>a</mi><mi>t</mi><mo>−</mo></mrow></msub><mo>≲</mo><msub><mi>v</mi><mi>o</mi></msub><mo>≲</mo><msub><mi>V</mi><mrow><mi>s</mi><mi>a</mi><mi>t</mi><mo>+</mo></mrow></msub></mrow><annotation encoding="application/x-tex">
+V_{sat-}\lesssim v_o\lesssim V_{sat+}
+</annotation></semantics></math></p>
+<p>Los valores de saturación dependen del dispositivo, carga y tensiones
+de alimentación. Algunos op-amps son <em>rail-to-rail</em> y pueden
+aproximarse más a los rieles de alimentación que otros.</p>
+<h2 id="parámetros-prácticos-que-debe-revisar-un-ingeniero">5.
+Parámetros prácticos que debe revisar un ingeniero</h2>
+<h3 id="producto-ganancia-ancho-de-banda-gbw">Producto ganancia-ancho de
+banda (GBW)</h3>
+<p>En op-amps compensados de propósito general, una aproximación útil
+es:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>W</mi><mrow><mi>C</mi><mi>L</mi></mrow></msub><mo>≈</mo><mfrac><mrow><mi>G</mi><mi>B</mi><mi>W</mi></mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mrow><mi>C</mi><mi>L</mi></mrow></msub><mo stretchy="true" form="postfix">|</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+BW_{CL}\approx \frac{GBW}{|A_{CL}|}
+</annotation></semantics></math></p>
+<p>Esta relación es aproximada y se utiliza como verificación inicial,
+no como sustituto de la hoja de datos.</p>
+<h3 id="slew-rate">Slew rate</h3>
+<p>Para una señal sinusoidal de pico
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>p</mi></msub><annotation encoding="application/x-tex">V_p</annotation></semantics></math>
+y frecuencia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+el slew rate requerido es:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>R</mi><mrow><mi>r</mi><mi>e</mi><mi>q</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><msub><mi>V</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">
+SR_{req}=2\pi fV_p
+</annotation></semantics></math></p>
+<p>Si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>R</mi><mrow><mi>o</mi><mi>p</mi><mi>a</mi><mi>m</mi><mi>p</mi></mrow></msub><mo>&lt;</mo><mi>S</mi><msub><mi>R</mi><mrow><mi>r</mi><mi>e</mi><mi>q</mi></mrow></msub></mrow><annotation encoding="application/x-tex">SR_{opamp}&lt;SR_{req}</annotation></semantics></math>,
+la señal de salida puede distorsionarse aunque el análisis de pequeña
+señal indique ancho de banda suficiente.</p>
+<h3 id="offset-y-corrientes-de-polarización">Offset y corrientes de
+polarización</h3>
+<p>La tensión de offset y las corrientes de polarización producen
+errores especialmente relevantes cuando se amplifican señales pequeñas o
+se utilizan resistencias grandes.</p>
+<h3 id="rango-de-modo-común-y-excursión-de-salida">Rango de modo común y
+excursión de salida</h3>
+<p>El valor de las entradas debe permanecer dentro del rango permitido
+por el dispositivo y la salida debe mantenerse dentro del rango de
+excursión disponible para la carga conectada.</p>
+<div class="callout-attn">
+<strong>Atención.</strong> “Funciona en el papel” no es equivalente a
+“funciona en el laboratorio”. Toda solución debe contrastarse con la
+hoja de datos del op-amp real.
+</div>
+<h1
+id="configuraciones-inversora-no-inversora-y-seguidor-de-tensión">1.1.2
+Configuraciones inversora, no inversora y seguidor de tensión</h1>
+<h2 id="configuración-inversora">6. Configuración inversora</h2>
+<p>En la configuración inversora, la señal se aplica mediante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">R_{in}</annotation></semantics></math>
+a la entrada inversora; la entrada no inversora se conecta a la
+referencia.</p>
+<svg class="diagram" viewBox="0 0 900 330" role="img" aria-label="Amplificador operacional inversor">
+<defs><marker id="a2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1F4E79"/></marker></defs>
+<text x="30" y="160" font-size="20">Vi</text><line x1="60" y1="155" x2="150" y2="155" stroke="#1F4E79" stroke-width="3"/>
+<rect x="150" y="138" width="120" height="34" rx="5" fill="#fff" stroke="#1F4E79" stroke-width="2"/><text x="180" y="130" font-size="18">Rin</text>
+<line x1="270" y1="155" x2="360" y2="155" stroke="#1F4E79" stroke-width="3"/>
+<circle cx="360" cy="155" r="5" fill="#1F4E79"/>
+<polygon points="405,95 405,235 610,165" fill="#fff" stroke="#1F4E79" stroke-width="3"/>
+<text x="380" y="155" font-size="25">−</text><text x="380" y="220" font-size="25">+</text>
+<line x1="360" y1="155" x2="405" y2="155" stroke="#1F4E79" stroke-width="3"/>
+<line x1="405" y1="215" x2="360" y2="215" stroke="#1F4E79" stroke-width="3"/><line x1="360" y1="215" x2="360" y2="265" stroke="#1F4E79" stroke-width="3"/><line x1="340" y1="265" x2="380" y2="265" stroke="#1F4E79" stroke-width="3"/><line x1="347" y1="275" x2="373" y2="275" stroke="#1F4E79" stroke-width="3"/><line x1="354" y1="285" x2="366" y2="285" stroke="#1F4E79" stroke-width="3"/>
+<line x1="610" y1="165" x2="785" y2="165" stroke="#1F4E79" stroke-width="3" marker-end="url(#a2)"/><text x="800" y="172" font-size="20">Vo</text>
+<line x1="700" y1="165" x2="700" y2="60" stroke="#1F4E79" stroke-width="3"/><line x1="700" y1="60" x2="510" y2="60" stroke="#1F4E79" stroke-width="3"/>
+<rect x="390" y="43" width="120" height="34" rx="5" fill="#fff" stroke="#1F4E79" stroke-width="2"/><text x="425" y="35" font-size="18">Rf</text>
+<line x1="390" y1="60" x2="360" y2="60" stroke="#1F4E79" stroke-width="3"/><line x1="360" y1="60" x2="360" y2="155" stroke="#1F4E79" stroke-width="3"/>
+</svg>
+<p>Por KCL en el nodo inversor y usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>−</mo></msub><mo>≈</mo><msub><mi>v</mi><mo>+</mo></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_-\approx v_+=0</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mi>v</mi><mi>i</mi></msub><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mfrac><mo>=</mo><mfrac><mrow><mi>−</mi><msub><mi>v</mi><mi>o</mi></msub></mrow><msub><mi>R</mi><mi>f</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">
+\frac{v_i}{R_{in}}=\frac{-v_o}{R_f}
+</annotation></semantics></math></p>
+<p>Por tanto:</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mfrac><msub><mi>v</mi><mi>o</mi></msub><msub><mi>v</mi><mi>i</mi></msub></mfrac><mo>=</mo><mi>−</mi><mfrac><msub><mi>R</mi><mi>f</mi></msub><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mfrac></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{A_v=\frac{v_o}{v_i}=-\frac{R_f}{R_{in}}}
+</annotation></semantics></math></p>
+</div>
+<p>El signo negativo indica una inversión de fase de 180°.</p>
+<h3 id="ejemplo-resuelto-1-amplificador-inversor">Ejemplo resuelto 1 —
+Amplificador inversor</h3>
+<p><strong>Problema.</strong> Una etapa de acondicionamiento recibe
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><mn>120</mn><mspace width="0.167em"></mspace><mi>m</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">v_i=120\,mV</annotation></semantics></math>.
+Se desea una ganancia de magnitud aproximada 5 mediante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{in}=10\,k\Omega</annotation></semantics></math>.</p>
+<p><strong>Datos.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{in}=10\,k\Omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">|A_v|=5</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><mn>0.12</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">v_i=0.12\,V</annotation></semantics></math>.</p>
+<p><strong>Objetivo.</strong> Calcular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>f</mi></msub><annotation encoding="application/x-tex">R_f</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>o</mi></msub><annotation encoding="application/x-tex">v_o</annotation></semantics></math>.</p>
+<p><strong>Fundamento.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mi>−</mi><msub><mi>R</mi><mi>f</mi></msub><mi>/</mi><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">A_v=-R_f/R_{in}</annotation></semantics></math>.</p>
+<p><strong>Procedimiento.</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>5</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>50</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">
+R_f=|A_v|R_{in}=5(10\,k\Omega)=50\,k\Omega
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><msub><mi>A</mi><mi>v</mi></msub><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.12</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mn>0.60</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_o=A_vv_i=(-5)(0.12)=-0.60\,V
+</annotation></semantics></math></p>
+<p><strong>Resultado.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>50</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_f=50\,k\Omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mn>0.60</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">v_o=-0.60\,V</annotation></semantics></math>.</p>
+<p><strong>Interpretación.</strong> La amplitud aumenta cinco veces y la
+salida invierte su fase.</p>
+<p><strong>Verificación.</strong> Si la alimentación permite una
+excursión de salida superior a 0.6 V y el ancho de banda es suficiente,
+el valor es físicamente razonable.</p>
+<h2 id="configuración-no-inversora">7. Configuración no inversora</h2>
+<p>La señal se aplica a la entrada no inversora. La entrada inversora
+recibe una fracción de la salida mediante
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>f</mi></msub><annotation encoding="application/x-tex">R_f</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>g</mi></msub><annotation encoding="application/x-tex">R_g</annotation></semantics></math>.</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><msub><mi>R</mi><mi>f</mi></msub><msub><mi>R</mi><mi>g</mi></msub></mfrac></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{A_v=1+\frac{R_f}{R_g}}
+</annotation></semantics></math></p>
+</div>
+<p>La ganancia es positiva, por lo que la salida permanece en fase con
+la entrada.</p>
+<h3
+id="ejemplo-resuelto-2-acondicionamiento-para-una-etapa-de-telecomunicaciones">Ejemplo
+resuelto 2 — Acondicionamiento para una etapa de telecomunicaciones</h3>
+<p><strong>Problema.</strong> Una señal de baseband de 0.30 V debe
+elevarse aproximadamente a 2.4 V sin inversión.</p>
+<p><strong>Objetivo.</strong> Diseñar una ganancia cercana a 8.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mfrac><mn>2.4</mn><mn>0.30</mn></mfrac><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">
+A_v=\frac{2.4}{0.30}=8
+</annotation></semantics></math></p>
+<p>Con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>g</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_g=10\,k\Omega</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mi>v</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>R</mi><mi>g</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>8</mn><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>70</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">
+R_f=(A_v-1)R_g=(8-1)(10\,k\Omega)=70\,k\Omega
+</annotation></semantics></math></p>
+<p>Si se dispone de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>68</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">68\,k\Omega</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>68</mn><mn>10</mn></mfrac><mo>=</mo><mn>7.8</mn></mrow><annotation encoding="application/x-tex">
+A_v=1+\frac{68}{10}=7.8
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mn>7.8</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.30</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2.34</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">
+v_o=7.8(0.30)=2.34\,V
+</annotation></semantics></math></p>
+<p><strong>Interpretación.</strong> El uso de un valor comercial cercano
+modifica ligeramente la ganancia; el diseñador debe comprobar si la
+tolerancia es aceptable para la etapa siguiente.</p>
+<h2 id="seguidor-de-tensión">8. Seguidor de tensión</h2>
+<p>El seguidor se obtiene conectando directamente la salida a la entrada
+inversora y aplicando la señal a la entrada no inversora.</p>
+<div class="eqbox">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>≈</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>v</mi><mi>o</mi></msub><mo>≈</mo><msub><mi>v</mi><mi>i</mi></msub></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{A_v\approx 1,\qquad v_o\approx v_i}
+</annotation></semantics></math></p>
+</div>
+<p>Aunque no amplifica tensión, resulta muy útil como
+<strong>buffer</strong> debido a su alta impedancia de entrada y baja
+impedancia de salida.</p>
+<h3 id="caso-típico">Caso típico</h3>
+<p>Un sensor o etapa precedente puede entregar el voltaje correcto pero
+no disponer de suficiente capacidad de corriente para alimentar
+directamente la siguiente etapa. Un seguidor permite aislar ambas etapas
+y reducir el efecto de carga.</p>
+<h1 id="explora-laboratorio-interactivo-de-op-amps">Explora —
+laboratorio interactivo de op-amps</h1>
+<div id="simulator" class="interactive">
+<h3>
+PREDECIR → EXPERIMENTAR → OBSERVAR → EXPLICAR
+</h3>
+<p>
+<strong>Antes de mover los controles:</strong> prediga el signo de la
+salida y si habrá saturación.
+</p>
+<div class="control-grid">
+<div>
+<label for="cfg">Configuración</label><select id="cfg"><option value="inv">Inversora</option><option value="noninv">No
+inversora</option><option value="follower">Seguidor</option></select>
+</div>
+<div>
+<label for="vi">Vi pico
+[V]</label><input id="vi" type="number" step="0.05" value="0.5">
+</div>
+<div>
+<label for="rin">Rin / Rg
+[kΩ]</label><input id="rin" type="number" step="1" value="10">
+</div>
+<div>
+<label for="rf">Rf
+[kΩ]</label><input id="rf" type="number" step="1" value="47">
+</div>
+<div>
+<label for="vcc">Alimentación simétrica ±V
+[V]</label><input id="vcc" type="number" step="1" value="12">
+</div>
+<div>
+<label for="headroom">Margen de salida desde cada riel
+[V]</label><input id="headroom" type="number" step="0.1" value="1.5">
+</div>
+<div>
+<label for="freq">Frecuencia
+[Hz]</label><input id="freq" type="number" step="100" value="1000">
+</div>
+</div>
+<div id="simResult" class="result">
+
+</div>
+<canvas id="waveCanvas" width="900" height="260" aria-label="Comparación de señal de entrada y salida">
+</canvas>
+<p class="small">
+Modelo didáctico: usa la ganancia ideal de la configuración y limita la
+salida a un margen configurable respecto de los rieles.
+</p>
+</div>
+<h2 id="el-op-amp-elegido-es-suficientemente-rápido">¿El op-amp elegido
+es suficientemente rápido?</h2>
+<div id="speedcheck" class="interactive">
+<h3>
+Verificación de GBW y slew rate
+</h3>
+<div class="control-grid">
+<div>
+<label for="gaincl">|Ganancia
+cerrada|</label><input id="gaincl" type="number" step="0.1" value="10">
+</div>
+<div>
+<label for="sigfreq">Frecuencia máxima de señal
+[kHz]</label><input id="sigfreq" type="number" step="1" value="20">
+</div>
+<div>
+<label for="vpeak">Vout pico
+[V]</label><input id="vpeak" type="number" step="0.1" value="2">
+</div>
+<div>
+<label for="gbw">GBW del op-amp
+[MHz]</label><input id="gbw" type="number" step="0.1" value="1">
+</div>
+<div>
+<label for="sr">Slew rate del op-amp
+[V/µs]</label><input id="sr" type="number" step="0.1" value="0.5">
+</div>
+</div>
+<div id="speedResult" class="result">
+
+</div>
+</div>
+<h1 id="comprueba-tu-comprensión">Comprueba tu comprensión</h1>
+<div class="quizbox" data-answer="b"
+data-feedback-ok="La realimentación negativa obliga al op-amp a reducir el error diferencial mientras permanezca en zona lineal."
+data-feedback-bad="Revise la relación entre alta ganancia, realimentación negativa y la aproximación v+ ≈ v−.">
+<p>
+<strong>1.</strong> ¿Por qué puede utilizarse aproximadamente
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>+</mo></msub><mo>≈</mo><msub><mi>v</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">v_+\approx v_-</annotation></semantics></math>
+en un circuito lineal con realimentación negativa?
+</p>
+<button data-choice="a">
+Porque las entradas están físicamente unidas.
+</button>
+<button data-choice="b">
+Porque la alta ganancia y la realimentación reducen el error
+diferencial.
+</button>
+<button data-choice="c">
+Porque la corriente de salida es cero.
+</button>
+<div class="feedback">
+
+</div>
+</div>
+<div class="quizbox" data-answer="c"
+data-feedback-ok="Correcto: Av = −Rf/Rin = −47/10 = −4.7."
+data-feedback-bad="Use Av = −Rf/Rin y recuerde el signo de inversión.">
+<p>
+<strong>2.</strong> En un inversor con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>47</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_f=47\,k\Omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{in}=10\,k\Omega</annotation></semantics></math>,
+la ganancia ideal es:
+</p>
+<button data-choice="a">
++4.7
+</button>
+<button data-choice="b">
+−0.213
+</button>
+<button data-choice="c">
+−4.7
+</button>
+<div class="feedback">
+
+</div>
+</div>
+<div class="quizbox" data-answer="a"
+data-feedback-ok="Correcto: el seguidor reproduce aproximadamente la tensión y desacopla impedancias."
+data-feedback-bad="Revise la finalidad del buffer o seguidor de tensión.">
+<p>
+<strong>3.</strong> ¿Cuál es la aplicación más característica del
+seguidor de tensión?
+</p>
+<button data-choice="a">
+Aislar etapas y evitar carga excesiva.
+</button>
+<button data-choice="b">
+Producir una inversión de 180°.
+</button>
+<button data-choice="c">
+Obtener ganancia de tensión muy alta.
+</button>
+<div class="feedback">
+
+</div>
+</div>
+<div class="quizbox" data-answer="b"
+data-feedback-ok="Correcto: el cálculo ideal puede pedir una salida que excede la excursión disponible; entonces el op-amp satura."
+data-feedback-bad="Compare la salida calculada con los límites de alimentación y excursión del dispositivo.">
+<p>
+<strong>4.</strong> Si el cálculo ideal exige
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mn>15</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">v_o=15\,V</annotation></semantics></math>
+pero el op-amp alimentado a ±12 V solo puede entregar aproximadamente
+±10.5 V, ¿qué ocurre?
+</p>
+<button data-choice="a">
+La salida será 15 V.
+</button>
+<button data-choice="b">
+La salida se limitará por saturación.
+</button>
+<button data-choice="c">
+La ganancia se vuelve infinita.
+</button>
+<div class="feedback">
+
+</div>
+</div>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos</h1>
+<h2 id="nivel-1-comprensión">Nivel 1 — Comprensión</h2>
+<ol type="1">
+<li>Explique la diferencia entre ganancia en lazo abierto y ganancia en
+lazo cerrado.</li>
+<li>Justifique por qué las corrientes de entrada se consideran
+aproximadamente cero en el modelo ideal.</li>
+<li>Explique por qué la configuración inversora produce un cambio de
+fase de 180°.</li>
+<li>Indique dos razones por las que un seguidor de tensión puede ser
+útil aunque su ganancia sea 1.</li>
+</ol>
+<details>
+<summary>
+Pistas de autoevaluación
+</summary>
+<p>
+Distinga entre el dispositivo aislado y el circuito realimentado; piense
+en impedancia de entrada, corriente de carga y signo de la relación de
+transferencia.
+</p>
+</details>
+<h2 id="nivel-2-aplicación">Nivel 2 — Aplicación</h2>
+<ol type="1">
+<li>Diseñe un amplificador inversor con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>A</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">|A_v|=8</annotation></semantics></math>
+usando
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>10</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{in}=10\,k\Omega</annotation></semantics></math>.
+Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>f</mi></msub><annotation encoding="application/x-tex">R_f</annotation></semantics></math>.</li>
+<li>Para un no inversor con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>g</mi></msub><mo>=</mo><mn>4.7</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_g=4.7\,k\Omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>22</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_f=22\,k\Omega</annotation></semantics></math>,
+determine
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>v</mi></msub><annotation encoding="application/x-tex">A_v</annotation></semantics></math>.</li>
+<li>Un inversor tiene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>100</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_f=100\,k\Omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>20</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{in}=20\,k\Omega</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><mn>0.4</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">v_i=0.4\,V</annotation></semantics></math>.
+Calcule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>o</mi></msub><annotation encoding="application/x-tex">v_o</annotation></semantics></math>
+ideal y verifique si sería posible con una excursión máxima de ±1.8
+V.</li>
+<li>Para una salida sinusoidal de 4 V pico a 50 kHz, determine el slew
+rate mínimo requerido.</li>
+</ol>
+<details>
+<summary>
+Resultados para comprobación
+</summary>
+<ol>
+<li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>f</mi></msub><mo>=</mo><mn>80</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_f=80\,k\Omega</annotation></semantics></math>.
+</li>
+<li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><mn>22</mn><mi>/</mi><mn>4.7</mn><mo>≈</mo><mn>5.68</mn></mrow><annotation encoding="application/x-tex">A_v=1+22/4.7\approx5.68</annotation></semantics></math>.
+</li>
+<li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><mi>−</mi><mn>2.0</mn><mspace width="0.167em"></mspace><mi>V</mi></mrow><annotation encoding="application/x-tex">v_o=-2.0\,V</annotation></semantics></math>;
+excede ±1.8 V, por lo que habrá limitación.
+</li>
+<li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>R</mi><mrow><mi>r</mi><mi>e</mi><mi>q</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>π</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>50</mn><mspace width="0.167em"></mspace><mi>k</mi><mi>H</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mspace width="0.167em"></mspace><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≈</mo><mn>1.26</mn><mspace width="0.167em"></mspace><mi>V</mi><mi>/</mi><mi>μ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">SR_{req}=2\pi(50\,kHz)(4\,V)\approx1.26\,V/\mu s</annotation></semantics></math>.
+</li>
+</ol>
+</details>
+<h2 id="nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</h2>
+<p><strong>Caso.</strong> Una etapa de recepción entrega una señal
+senoidal de 150 mV pico a 10 kHz. La entrada del siguiente subsistema
+requiere aproximadamente 1.2 V pico, no debe invertirse la fase y el
+op-amp disponible posee GBW = 1 MHz y SR = 0.5 V/µs.</p>
+<p>Diseñe una configuración adecuada y responda:</p>
+<ol type="1">
+<li>¿Qué topología elegiría y por qué?</li>
+<li>¿Qué ganancia necesita?</li>
+<li>Proponga
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>g</mi></msub><annotation encoding="application/x-tex">R_g</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>f</mi></msub><annotation encoding="application/x-tex">R_f</annotation></semantics></math>
+comerciales.</li>
+<li>Verifique el ancho de banda aproximado.</li>
+<li>Verifique el slew rate mínimo.</li>
+<li>Indique dos comprobaciones adicionales que realizaría en la hoja de
+datos.</li>
+</ol>
+<details>
+<summary>
+Orientación
+</summary>
+<p>
+La señal no debe invertirse; calcule primero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>1.2</mn><mi>/</mi><mn>0.15</mn></mrow><annotation encoding="application/x-tex">A_v=1.2/0.15</annotation></semantics></math>.
+Después verifique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>W</mi><mrow><mi>C</mi><mi>L</mi></mrow></msub><mo>≈</mo><mi>G</mi><mi>B</mi><mi>W</mi><mi>/</mi><msub><mi>A</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">BW_{CL}\approx GBW/A_v</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>R</mi><mrow><mi>r</mi><mi>e</mi><mi>q</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><msub><mi>V</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">SR_{req}=2\pi fV_p</annotation></semantics></math>.
+Finalmente revise rango de modo común y excursión de salida.
+</p>
+</details>
+<h1
+id="caso-profesional-acondicionamiento-de-una-señal-de-telecomunicaciones">Caso
+profesional — acondicionamiento de una señal de telecomunicaciones</h1>
+<p>Una tarjeta de adquisición recibe una señal de banda base de amplitud
+reducida desde un subsistema analógico. La entrada del ADC acepta 0–3.3
+V y la señal de interés debe mantenerse dentro del rango permitido sin
+distorsión.</p>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Identifique</strong> amplitud, offset, frecuencia máxima y
+carga.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Seleccione</strong> topología: inversora, no inversora o
+seguidor.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Dimensione</strong> la ganancia y la referencia DC si se
+requiere.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Verifique</strong> GBW, slew rate, rango de entrada, excursión
+de salida y alimentación.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Valide</strong> mediante simulación y posteriormente mediante
+medición.
+</div>
+</div>
+<div class="callout-miai">
+<strong>Decisión de ingeniería.</strong> No existe una “configuración
+mejor” en términos absolutos. La topología correcta depende de la
+ganancia requerida, fase, impedancias, referencia DC, frecuencia, ruido,
+alimentación y carga.
+</div>
+<h1 id="síntesis">Síntesis</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Qué debe quedar claro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ecuación fundamental</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>o</mi></msub><mo>=</mo><msub><mi>A</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mo>+</mo></msub><mo>−</mo><msub><mi>v</mi><mo>−</mo></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_o=A_{OL}(v_+-v_-)</annotation></semantics></math>,
+pero la salida está físicamente limitada</td>
+</tr>
+<tr class="even">
+<td>Realimentación negativa</td>
+<td>Permite establecer una ganancia controlada y aproximar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>+</mo></msub><mo>≈</mo><msub><mi>v</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">v_+\approx v_-</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>Inversor</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mi>−</mi><msub><mi>R</mi><mi>f</mi></msub><mi>/</mi><msub><mi>R</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">A_v=-R_f/R_{in}</annotation></semantics></math>;
+cambia fase 180°</td>
+</tr>
+<tr class="even">
+<td>No inversor</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><msub><mi>R</mi><mi>f</mi></msub><mi>/</mi><msub><mi>R</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">A_v=1+R_f/R_g</annotation></semantics></math>;
+mantiene fase</td>
+</tr>
+<tr class="odd">
+<td>Seguidor</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub><mo>≈</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A_v\approx1</annotation></semantics></math>;
+desacopla impedancias</td>
+</tr>
+<tr class="even">
+<td>Diseño real</td>
+<td>Debe verificar alimentación, salida, GBW, slew rate, offset, rango
+de entrada y carga</td>
+</tr>
+</tbody>
+</table>
+<h1 id="reflexiona">Reflexiona</h1>
+<blockquote>
+<p>Un circuito puede cumplir exactamente la ecuación de ganancia y, aun
+así, fallar en el laboratorio. ¿Qué tres parámetros reales del op-amp
+revisaría primero si la salida aparece recortada o distorsionada a alta
+frecuencia? Justifique el orden de su diagnóstico.</p>
+</blockquote>
+<h1 id="referencias-sugeridas">Referencias sugeridas</h1>
+<p>Para el desarrollo final del curso, estas referencias deben
+contrastarse con la <strong>bibliografía oficial del
+sílabo</strong>:</p>
+<ul>
+<li>Sedra, A. S. &amp; Smith, K. C. <em>Microelectronic
+Circuits</em>.</li>
+<li>Franco, S. <em>Design with Operational Amplifiers and Analog
+Integrated Circuits</em>.</li>
+<li>Boylestad, R. L. &amp; Nashelsky, L. <em>Electronic Devices and
+Circuit Theory</em>.</li>
+<li>Documentación técnica y hojas de datos del fabricante del op-amp
+utilizado en laboratorio.</li>
+</ul>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  function fmt(x,d=3){ if(!isFinite(x)) return '—'; return Number(x).toFixed(d).replace(/\.000$/,''); }
+  function calcSim(){
+    const cfg=$('cfg').value, vi=parseFloat($('vi').value)||0, rin=Math.max(0.0001,parseFloat($('rin').value)||1), rf=Math.max(0,parseFloat($('rf').value)||0), vcc=Math.abs(parseFloat($('vcc').value)||12), head=Math.max(0,parseFloat($('headroom').value)||0), f=Math.max(1,parseFloat($('freq').value)||1000);
+    let av=1;
+    if(cfg==='inv') av=-rf/rin;
+    else if(cfg==='noninv') av=1+rf/rin;
+    let voIdeal=av*vi;
+    let lim=Math.max(0,vcc-head);
+    let vo=Math.max(-lim,Math.min(lim,voIdeal));
+    let sat=Math.abs(voIdeal)>lim+1e-9;
+    $('rf').disabled=(cfg==='follower'); $('rin').disabled=(cfg==='follower');
+    $('simResult').innerHTML=`<div class="cardgrid"><div><span class="small">Ganancia ideal</span><div class="kpi">${fmt(av,3)} V/V</div></div><div><span class="small">Vout pico ideal</span><div class="kpi">${fmt(voIdeal,3)} V</div></div><div><span class="small">Vout pico modelado</span><div class="kpi">${fmt(vo,3)} V</div></div><div><span class="small">Estado</span><div class="${sat?'status-bad':'status-ok'}">${sat?'SATURACIÓN':'REGIÓN LINEAL'}</div></div></div>`;
+    drawWave(vi,voIdeal,vo,f,lim,sat);
+  }
+  function drawWave(vi,voIdeal,vo,f,lim,sat){
+    const c=$('waveCanvas'),ctx=c.getContext('2d'),W=c.width,H=c.height; ctx.clearRect(0,0,W,H); ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='#d8e1e8';ctx.lineWidth=1; for(let i=0;i<=10;i++){let x=i*W/10;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()} for(let i=0;i<=6;i++){let y=i*H/6;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    ctx.strokeStyle='#657789';ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+    const maxA=Math.max(Math.abs(vi),Math.abs(voIdeal),lim,0.2)*1.15;
+    function y(v){return H/2-v/maxA*(H*0.42)}
+    ctx.strokeStyle='#2D6A9F';ctx.lineWidth=3;ctx.beginPath(); for(let x=0;x<W;x++){let t=x/W*2*Math.PI;let val=vi*Math.sin(t);let yy=y(val); if(x===0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy)}ctx.stroke();
+    ctx.strokeStyle=sat?'#b91c1c':'#0f766e';ctx.lineWidth=3;ctx.beginPath(); for(let x=0;x<W;x++){let t=x/W*2*Math.PI;let val=voIdeal*Math.sin(t);val=Math.max(-lim,Math.min(lim,val));let yy=y(val); if(x===0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy)}ctx.stroke();
+    ctx.fillStyle='#2D6A9F';ctx.font='16px sans-serif';ctx.fillText('Vi',18,24);ctx.fillStyle=sat?'#b91c1c':'#0f766e';ctx.fillText('Vo',55,24);
+  }
+  ['cfg','vi','rin','rf','vcc','headroom','freq'].forEach(id=>$(id).addEventListener('input',calcSim));
+
+  function speed(){
+    const g=Math.max(.001,Math.abs(parseFloat($('gaincl').value)||1)), fk=Math.max(0,parseFloat($('sigfreq').value)||0), vp=Math.max(0,parseFloat($('vpeak').value)||0), gbw=Math.max(.001,parseFloat($('gbw').value)||1), sr=Math.max(.001,parseFloat($('sr').value)||.5);
+    const bwk=gbw*1000/g; // kHz
+    const srreq=2*Math.PI*(fk*1000)*vp/1e6; // V/us
+    const bwok=bwk>=fk, srok=sr>=srreq;
+    let overall=bwok&&srok;
+    $('speedResult').innerHTML=`<table class="mini-table"><tr><th>Verificación</th><th>Requerido</th><th>Disponible / estimado</th><th>Estado</th></tr><tr><td>Ancho de banda</td><td>${fmt(fk,2)} kHz</td><td>${fmt(bwk,2)} kHz</td><td class="${bwok?'status-ok':'status-bad'}">${bwok?'Cumple':'No cumple'}</td></tr><tr><td>Slew rate</td><td>${fmt(srreq,3)} V/µs</td><td>${fmt(sr,3)} V/µs</td><td class="${srok?'status-ok':'status-bad'}">${srok?'Cumple':'No cumple'}</td></tr></table><p class="${overall?'status-ok':'status-warn'}">${overall?'La verificación inicial es favorable. Confirme los demás límites en la hoja de datos.':'El diseño requiere revisar ganancia, frecuencia, amplitud o seleccionar un op-amp más adecuado.'}</p>`;
+  }
+  ['gaincl','sigfreq','vpeak','gbw','sr'].forEach(id=>$(id).addEventListener('input',speed));
+
+  document.querySelectorAll('.quizbox').forEach(box=>{box.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{let ok=btn.dataset.choice===box.dataset.answer;box.querySelectorAll('button').forEach(b=>b.classList.remove('is-correct','is-wrong'));btn.classList.add(ok?'is-correct':'is-wrong');let f=box.querySelector('.feedback');f.textContent=ok?box.dataset.feedbackOk:box.dataset.feedbackBad;f.className='feedback '+(ok?'status-ok':'status-warn')}))});
+  calcSim(); speed();
+})();
+</script>
+</body>
+</html>
