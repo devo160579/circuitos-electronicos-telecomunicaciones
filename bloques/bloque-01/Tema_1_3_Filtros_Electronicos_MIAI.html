@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1.3 Fundamentos, clasificación y respuesta en frecuencia de filtros electrónicos</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="/usr/share/javascript/mathjax/MathJax.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">1.3 Fundamentos, clasificación y respuesta en
+frecuencia de filtros electrónicos</h1>
+<p class="subtitle">Circuitos Electrónicos para Telecomunicaciones ·
+Quinto ciclo</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#resultado-esperado-del-tema"
+id="toc-resultado-esperado-del-tema">Resultado esperado del
+tema</a></li>
+<li><a href="#conocimientos-previos"
+id="toc-conocimientos-previos">Conocimientos previos</a></li>
+<li><a
+href="#frecuencia-de-corte-ancho-de-banda-orden-y-respuesta-en-frecuencia"
+id="toc-frecuencia-de-corte-ancho-de-banda-orden-y-respuesta-en-frecuencia">1.3.1
+Frecuencia de corte, ancho de banda, orden y respuesta en frecuencia</a>
+<ul>
+<li><a href="#qué-es-la-respuesta-en-frecuencia"
+id="toc-qué-es-la-respuesta-en-frecuencia">¿Qué es la respuesta en
+frecuencia?</a></li>
+<li><a href="#frecuencia-de-corte"
+id="toc-frecuencia-de-corte">Frecuencia de corte</a></li>
+<li><a href="#ancho-de-banda" id="toc-ancho-de-banda">Ancho de
+banda</a></li>
+<li><a href="#orden-del-filtro-y-pendiente"
+id="toc-orden-del-filtro-y-pendiente">Orden del filtro y
+pendiente</a></li>
+<li><a href="#diagramas-de-bode" id="toc-diagramas-de-bode">Diagramas de
+Bode</a></li>
+<li><a href="#ejemplo-resuelto-1-filtro-rc-pasa-bajos"
+id="toc-ejemplo-resuelto-1-filtro-rc-pasa-bajos">Ejemplo resuelto 1 —
+filtro RC pasa bajos</a>
+<ul>
+<li><a href="#problema" id="toc-problema">Problema</a></li>
+<li><a href="#objetivo" id="toc-objetivo">Objetivo</a></li>
+<li><a href="#fundamento" id="toc-fundamento">Fundamento</a></li>
+<li><a href="#procedimiento"
+id="toc-procedimiento">Procedimiento</a></li>
+<li><a href="#interpretación"
+id="toc-interpretación">Interpretación</a></li>
+<li><a href="#verificación" id="toc-verificación">Verificación</a></li>
+</ul></li>
+</ul></li>
+<li><a
+href="#filtros-pasa-bajos-pasa-altos-pasa-banda-y-rechazo-de-banda"
+id="toc-filtros-pasa-bajos-pasa-altos-pasa-banda-y-rechazo-de-banda">1.3.2
+Filtros pasa bajos, pasa altos, pasa banda y rechazo de banda</a>
+<ul>
+<li><a href="#filtro-pasa-bajos" id="toc-filtro-pasa-bajos">Filtro pasa
+bajos</a></li>
+<li><a href="#filtro-pasa-altos" id="toc-filtro-pasa-altos">Filtro pasa
+altos</a></li>
+<li><a href="#filtro-pasa-banda" id="toc-filtro-pasa-banda">Filtro pasa
+banda</a></li>
+<li><a href="#filtro-rechazo-de-banda"
+id="toc-filtro-rechazo-de-banda">Filtro rechazo de banda</a></li>
+<li><a href="#comparación-funcional"
+id="toc-comparación-funcional">Comparación funcional</a></li>
+</ul></li>
+<li><a
+href="#ejemplo-resuelto-2-identificación-a-partir-de-una-respuesta"
+id="toc-ejemplo-resuelto-2-identificación-a-partir-de-una-respuesta">Ejemplo
+resuelto 2 — identificación a partir de una respuesta</a>
+<ul>
+<li><a href="#problema-1" id="toc-problema-1">Problema</a></li>
+<li><a href="#análisis" id="toc-análisis">Análisis</a></li>
+<li><a href="#interpretación-1"
+id="toc-interpretación-1">Interpretación</a></li>
+</ul></li>
+<li><a href="#comprueba-tu-comprensión"
+id="toc-comprueba-tu-comprensión">Comprueba tu comprensión</a></li>
+<li><a href="#ejercicios-propuestos"
+id="toc-ejercicios-propuestos">Ejercicios propuestos</a>
+<ul>
+<li><a href="#nivel-1-comprensión" id="toc-nivel-1-comprensión">Nivel 1
+— Comprensión</a></li>
+<li><a href="#nivel-2-aplicación" id="toc-nivel-2-aplicación">Nivel 2 —
+Aplicación</a></li>
+<li><a href="#nivel-3-transferencia-profesional"
+id="toc-nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</a></li>
+</ul></li>
+<li><a href="#caso-profesional-selección-de-banda-antes-de-digitalizar"
+id="toc-caso-profesional-selección-de-banda-antes-de-digitalizar">Caso
+profesional — selección de banda antes de digitalizar</a></li>
+<li><a href="#feedback-y-orientaciones"
+id="toc-feedback-y-orientaciones">Feedback y orientaciones</a></li>
+<li><a href="#síntesis" id="toc-síntesis">Síntesis</a></li>
+<li><a href="#reflexiona" id="toc-reflexiona">Reflexiona</a></li>
+<li><a href="#referencias-sugeridas"
+id="toc-referencias-sugeridas">Referencias sugeridas</a></li>
+</ul>
+</nav>
+<style>
+/* ===== MIAI visual system v2 ===== */
+:root{
+  --brand:#1F4E79;
+  --brand-dark:#163a5d;
+  --brand2:#2D6A9F;
+  --accent:#0f766e;
+  --ink:#172230;
+  --muted:#5b6978;
+  --soft:#f4f7fa;
+  --soft-blue:#eef5fb;
+  --line:#d9e3ec;
+  --line-strong:#c6d4df;
+  --ok:#166534;
+  --warn:#9a5b08;
+  --bad:#a11d1d;
+  --white:#ffffff;
+  --shadow:0 10px 28px rgba(25,55,85,.08);
+  --shadow-sm:0 4px 14px rgba(25,55,85,.07);
+  --radius:16px;
+}
+html{scroll-behavior:smooth;background:#edf2f7;}
+body{
+  color:var(--ink); background:#f7f9fc;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16.5px; line-height:1.72;
+  max-width:1180px !important; margin:0 auto !important;
+  padding:46px 56px 72px !important; box-sizing:border-box;
+}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--brand),#4b8fc5,var(--accent));z-index:9999;}
+#title-block-header{position:relative;overflow:hidden;max-width:none;margin:0 0 2rem 0;padding:2.35rem 2.25rem 2rem;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#f3f8fc 58%,#eaf3fa 100%);border:1px solid var(--line);box-shadow:var(--shadow);text-align:left;}
+#title-block-header:before{content:"BLOQUE 1 · TEMA 1.3";display:inline-flex;align-items:center;padding:.3rem .72rem;margin-bottom:.8rem;border-radius:999px;background:#e7f0f8;color:var(--brand);font-size:.78rem;font-weight:800;letter-spacing:.08em;}
+#title-block-header:after{content:"";position:absolute;width:210px;height:210px;right:-70px;top:-95px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,159,.18),rgba(45,106,159,0) 70%);pointer-events:none;}
+#title-block-header .title{max-width:920px;margin:0;color:#182634;font-weight:850;line-height:1.12;font-size:clamp(2rem,3.9vw,3.35rem);letter-spacing:-.035em;text-wrap:balance;}
+#title-block-header .subtitle{display:inline-block;margin:1rem 0 0 0;padding:.38rem .72rem;border-radius:10px;background:rgba(255,255,255,.78);border:1px solid #d9e5ee;color:var(--muted);font-size:1rem;font-weight:700;}
+#TOC{margin:0 0 2rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);}
+#TOC:before{content:"NAVEGACIÓN DEL TEMA";display:block;color:var(--brand);font-weight:850;font-size:.76rem;letter-spacing:.09em;margin:0 0 .65rem .25rem;}
+#TOC ul{margin:0;padding-left:1.2rem;} #TOC li{margin:.18rem 0;} #TOC a{color:#31485c;text-decoration:none;font-size:.93rem;} #TOC a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
+h1,h2,h3,h4{font-family:inherit;color:#1e3040;scroll-margin-top:25px;}
+h1:not(.title){margin-top:3.1rem;padding:1rem 1.05rem;border-radius:14px;background:linear-gradient(90deg,var(--brand-dark),var(--brand));color:#fff;font-size:1.75rem;line-height:1.25;letter-spacing:-.015em;box-shadow:0 7px 20px rgba(31,78,121,.16);}
+h2{margin-top:2.25rem;margin-bottom:.85rem;padding-left:.85rem;border-left:5px solid var(--brand2);color:var(--brand-dark);font-size:1.42rem;line-height:1.3;}
+h3{margin-top:1.8rem;color:#28485f;font-size:1.16rem;} h4{font-size:1.02rem;color:var(--brand);} p{margin:.68rem 0 1rem;} strong{color:#203449;} a{color:var(--brand2);text-underline-offset:3px;} hr{border:0;border-top:1px solid var(--line);margin:2rem 0;}
+.hero{position:relative;overflow:hidden;border:1px solid #cddde9;border-left:7px solid var(--brand);background:linear-gradient(120deg,#ffffff,#eef6fc);padding:1.45rem 1.55rem;border-radius:18px;margin:0 0 1.5rem 0;box-shadow:var(--shadow-sm);}
+.hero:after{content:"";position:absolute;width:160px;height:160px;right:-55px;bottom:-80px;border-radius:50%;background:rgba(45,106,159,.08);}
+.hero h2{margin:.05rem 0 .65rem;padding:0;border:0;color:var(--brand);font-size:1.45rem;} .hero p{max-width:930px;margin-bottom:.8rem;}
+.badge{display:inline-block;padding:.28rem .62rem;border-radius:999px;background:#e5f0f8;color:var(--brand);border:1px solid #d1e1ed;font-weight:800;font-size:.78rem;margin:.15rem .32rem .05rem 0;letter-spacing:.015em;}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.05rem 0 1.35rem;}
+.card{border:1px solid var(--line);border-radius:16px;padding:1.05rem 1.1rem;background:#fff;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.card:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(25,55,85,.10);border-color:#bdd1e0;} .card h4{margin:.05rem 0 .45rem;color:var(--brand);} .card p{margin-bottom:.25rem;}
+.callout-miai,.callout-key,.callout-error,.callout-attn{position:relative;padding:1rem 1.15rem 1rem 1.25rem;border-radius:14px;margin:1.15rem 0;border:1px solid var(--line);box-shadow:0 3px 12px rgba(25,55,85,.045);}
+.callout-miai{border-left:6px solid var(--brand2);background:#f4f9fd;} .callout-key{border-left:6px solid var(--accent);background:#f2fbf9;} .callout-error{border-left:6px solid #b42318;background:#fff6f5;} .callout-attn{border-left:6px solid #d97706;background:#fff9ef;}
+.callout-miai strong,.callout-key strong,.callout-error strong,.callout-attn strong{font-weight:850;}
+.eqbox{background:linear-gradient(180deg,#ffffff,#f8fbfe);border:1px solid #cedce8;border-radius:14px;padding:.9rem 1.1rem;margin:1rem 0 1.15rem;box-shadow:inset 4px 0 0 #b5cfe3;overflow-x:auto;} .math.display{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0 1.4rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,55,85,.05);} thead th,table th{background:#eaf2f8;color:#193a56;font-weight:800;text-align:left;} th,td{padding:.72rem .8rem;border-bottom:1px solid #e1e8ee;vertical-align:top;} tr:last-child td{border-bottom:0;} tbody tr:nth-child(even){background:#fbfcfe;} tbody tr:hover{background:#f4f8fb;}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;margin:.65rem 0;box-shadow:none;} .mini-table th,.mini-table td{border:0;border-bottom:1px solid #dce5ec;padding:.55rem .62rem;} .mini-table th{background:#eaf3fa;}
+svg.diagram{display:block;width:100%;max-width:960px;height:auto;border:1px solid #d6e1ea;border-radius:18px;background:#fff;margin:1rem auto 1.25rem;box-shadow:var(--shadow-sm);}
+.interactive{position:relative;overflow:hidden;border:1px solid #bcd2e3;border-top:6px solid var(--brand2);border-radius:20px;background:linear-gradient(180deg,#fbfdff,#f2f7fb);padding:1.25rem 1.3rem;margin:1.45rem 0;box-shadow:0 10px 26px rgba(31,78,121,.09);}
+.interactive:before{content:"INTERACTIVO";display:inline-block;margin:0 0 .65rem;padding:.22rem .55rem;border-radius:999px;color:var(--brand);background:#e3eef7;font-size:.72rem;font-weight:850;letter-spacing:.09em;}
+.interactive h3{margin:.05rem 0 .55rem;color:var(--brand);font-size:1.28rem;}
+.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:.9rem;align-items:end;margin-top:1rem;} .control-grid>div{background:rgba(255,255,255,.72);border:1px solid #d8e4ed;border-radius:12px;padding:.72rem;} .control-grid label{font-weight:750;display:block;margin-bottom:.35rem;color:#29455c;font-size:.91rem;}
+.control-grid input,.control-grid select{width:100%;box-sizing:border-box;padding:.58rem .62rem;border:1px solid #afc2d1;border-radius:9px;background:#fff;color:var(--ink);font:inherit;outline:none;transition:border-color .2s ease,box-shadow .2s ease;} .control-grid input:focus,.control-grid select:focus{border-color:var(--brand2);box-shadow:0 0 0 3px rgba(45,106,159,.12);} .control-grid input:disabled{background:#edf1f4;color:#82909d;}
+.result{background:#fff;border:1px solid #c8d8e4;border-radius:14px;padding:1rem 1.05rem;margin-top:1rem;box-shadow:var(--shadow-sm);} .kpi{font-size:1.35rem;font-weight:850;color:var(--brand);letter-spacing:-.02em;} .small{font-size:.88rem;color:var(--muted);} .status-ok{color:var(--ok);font-weight:800}.status-warn{color:var(--warn);font-weight:800}.status-bad{color:var(--bad);font-weight:800}
+canvas{display:block;width:100%;height:230px;border:1px solid #d1dde7;border-radius:14px;background:#fff;margin-top:1rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);}
+.quizbox{border:1px solid var(--line);border-left:5px solid #6c8faa;border-radius:14px;padding:1rem 1.05rem;margin:.9rem 0;background:#fff;box-shadow:var(--shadow-sm);} .quizbox p{margin:.15rem 0 .75rem;} .quizbox button{margin:.26rem .38rem .26rem 0;padding:.52rem .78rem;border-radius:9px;border:1px solid #b7c7d4;background:#f7fafc;color:#233b4f;font-weight:700;cursor:pointer;transition:all .18s ease;} .quizbox button:hover{background:#e8f1f7;border-color:#8eabc0;transform:translateY(-1px);} .quizbox button.is-correct{background:#edf9f1;border-color:#81bd91;color:#14532d;} .quizbox button.is-wrong{background:#fff1f0;border-color:#e0a29d;color:#8d1d18;} .feedback{margin-top:.65rem;padding:.55rem .7rem;border-radius:9px;background:#f5f8fb;font-weight:700;}
+.step{display:flex;gap:.85rem;margin:.72rem 0;align-items:flex-start;} .stepnum{flex:0 0 2rem;height:2rem;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;text-align:center;line-height:2rem;font-weight:850;box-shadow:0 4px 10px rgba(31,78,121,.18);} .stepbody{flex:1;padding-top:.15rem;}
+details{border:1px solid var(--line);border-radius:12px;padding:.68rem .85rem;margin:.7rem 0;background:#fff;box-shadow:0 2px 9px rgba(25,55,85,.04);} details summary{cursor:pointer;font-weight:800;color:var(--brand);} details[open]{border-color:#bed1e0;background:#fbfdff;}
+blockquote{margin:1.2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--brand2);border-radius:0 12px 12px 0;background:#f3f8fc;color:#29455a;font-size:1.03rem;}
+ul,ol{padding-left:1.45rem;} li{margin:.25rem 0;} h1#referencias-sugeridas+ul,h1#referencias+ul{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem 1rem 2.2rem;box-shadow:var(--shadow-sm);}
+@media (min-width:1180px){body{padding-left:330px !important;position:relative;} #TOC{position:fixed;left:max(24px,calc((100vw - 1180px)/2 + 10px));top:34px;width:250px;max-height:calc(100vh - 68px);overflow:auto;z-index:10;margin:0;}}
+@media (max-width:900px){body{padding:28px 24px 52px !important;} #title-block-header{padding:1.7rem 1.35rem;} #title-block-header .title{font-size:clamp(1.8rem,7vw,2.55rem);} h1:not(.title){font-size:1.5rem;} .interactive{padding:1rem;} .control-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:620px){body{padding:22px 14px 44px !important;font-size:15.8px;} #title-block-header{border-radius:18px;padding:1.35rem 1rem;} #title-block-header:before{font-size:.68rem;} #title-block-header .title{font-size:1.8rem;line-height:1.16;} #title-block-header .subtitle{font-size:.9rem;} .hero,.interactive{border-radius:15px;} .cardgrid,.control-grid{grid-template-columns:1fr;} h1:not(.title){font-size:1.35rem;padding:.85rem .9rem;} h2{font-size:1.22rem;} table{display:block;overflow-x:auto;white-space:normal;} .quizbox button{display:block;width:100%;text-align:left;margin:.35rem 0;}}
+@media print{body{background:#fff !important;max-width:none !important;padding:0 !important;color:#000;} body:before,#TOC{display:none !important;} #title-block-header,.hero,.card,.interactive,.quizbox,table,svg.diagram{box-shadow:none !important;} .interactive{break-inside:avoid;}}
+</style>
+<div class="hero">
+<h2>
+Seleccionar lo útil y atenuar lo no deseado
+</h2>
+<p>
+En telecomunicaciones, casi ninguna señal llega aislada. Ruido,
+interferencias y componentes fuera de banda acompañan a la información.
+Los filtros permiten <strong>seleccionar regiones del espectro</strong>
+y preparar la señal para amplificación, conversión, modulación,
+demodulación o digitalización.
+</p>
+<p><span class="badge">1.3.1 Frecuencia de corte, ancho de banda, orden
+y respuesta en frecuencia</span> <span class="badge">1.3.2 Pasa bajos,
+pasa altos, pasa banda y rechazo de banda</span></p>
+</div>
+<h1 id="resultado-esperado-del-tema">Resultado esperado del tema</h1>
+<p>Al finalizar este tema, el estudiante será capaz de
+<strong>interpretar y analizar la respuesta en frecuencia de filtros
+electrónicos, identificando frecuencia de corte, ancho de banda, orden y
+tipo de respuesta</strong>, y relacionando estos parámetros con
+aplicaciones básicas de telecomunicaciones.</p>
+<div class="callout-key">
+<strong>Idea central.</strong> Un filtro no “elimina frecuencias” de
+manera absoluta: modifica la amplitud y, en general, la fase de las
+componentes espectrales según su frecuencia. La respuesta en frecuencia
+permite cuantificar ese comportamiento.
+</div>
+<h1 id="conocimientos-previos">Conocimientos previos</h1>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Señales periódicas
+</h4>
+<p>
+Frecuencia, período, amplitud, fase y representación sinusoidal.
+</p>
+</div>
+<div class="card">
+<h4>
+Impedancia
+</h4>
+<p>
+Resistencia, reactancia capacitiva e inductiva y dependencia con la
+frecuencia.
+</p>
+</div>
+<div class="card">
+<h4>
+Ganancia
+</h4>
+<p>
+Relación de amplitudes y expresión logarítmica en decibelios.
+</p>
+</div>
+<div class="card">
+<h4>
+Op-amps
+</h4>
+<p>
+Ganancia cerrada, saturación y ancho de banda como base para filtros
+activos.
+</p>
+</div>
+</div>
+<div class="callout-attn">
+<strong>Comprueba antes de continuar.</strong> Para un capacitor ideal,
+<span class="math inline">\(X_C=1/(2\pi fC)\)</span>. Por tanto, cuando
+la frecuencia aumenta, su reactancia disminuye. Esa dependencia es la
+base de numerosos filtros RC.
+</div>
+<h1
+id="frecuencia-de-corte-ancho-de-banda-orden-y-respuesta-en-frecuencia">1.3.1
+Frecuencia de corte, ancho de banda, orden y respuesta en
+frecuencia</h1>
+<h2 id="qué-es-la-respuesta-en-frecuencia">¿Qué es la respuesta en
+frecuencia?</h2>
+<p>La respuesta en frecuencia describe cómo cambia la relación entre
+salida y entrada cuando varía la frecuencia de una señal sinusoidal
+aplicada al circuito. Para un sistema lineal, se expresa mediante una
+función de transferencia compleja:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+H(j\omega)=\frac{V_o(j\omega)}{V_i(j\omega)}
+\]</span></p>
+</div>
+<p>Su magnitud indica cuánto se amplifica o atenúa cada componente y su
+argumento representa el desplazamiento de fase.</p>
+<p>La magnitud suele expresarse en decibelios:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+G_{dB}=20\log_{10}|H(j\omega)|
+\]</span></p>
+</div>
+<p><strong>Interpretación:</strong> <span
+class="math inline">\(0\)</span> dB significa que la amplitud de salida
+es igual a la de entrada; valores negativos representan atenuación y
+valores positivos representan ganancia.</p>
+<h2 id="frecuencia-de-corte">Frecuencia de corte</h2>
+<p>En filtros de primer orden, la frecuencia de corte <span
+class="math inline">\(f_c\)</span> se asocia habitualmente con el punto
+donde la magnitud cae a <span class="math inline">\(1/\sqrt{2}\)</span>
+del valor de la banda de paso:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+|H(f_c)|=\frac{1}{\sqrt{2}}\approx0.707
+\]</span></p>
+<p><span class="math display">\[
+20\log_{10}(0.707)\approx-3.01\;\text{dB}
+\]</span></p>
+</div>
+<p>Para un filtro RC de primer orden:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+f_c=\frac{1}{2\pi RC}
+\]</span></p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Significado</th>
+<th>Unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f_c\)</span></td>
+<td>Frecuencia de corte</td>
+<td>Hz</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R\)</span></td>
+<td>Resistencia</td>
+<td>Ω</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>Capacitancia</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-error">
+<strong>Error frecuente.</strong> Confundir frecuencia de corte con
+“frecuencia donde la salida vale cero”. En un filtro real la transición
+es gradual; en <span class="math inline">\(f_c\)</span> la señal todavía
+tiene aproximadamente el 70.7 % de la amplitud de referencia en un
+filtro de primer orden.
+</div>
+<h2 id="ancho-de-banda">Ancho de banda</h2>
+<p>El ancho de banda representa el intervalo de frecuencias que el
+circuito deja pasar dentro del criterio definido. Para una respuesta
+pasa banda:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+BW=f_H-f_L
+\]</span></p>
+</div>
+<p>donde <span class="math inline">\(f_L\)</span> y <span
+class="math inline">\(f_H\)</span> son las frecuencias de corte inferior
+y superior.</p>
+<p>En un pasa bajos idealizado, suele considerarse la banda de paso
+desde DC hasta <span class="math inline">\(f_c\)</span>; en un pasa
+altos, desde <span class="math inline">\(f_c\)</span> hacia frecuencias
+mayores dentro del rango útil del circuito.</p>
+<h2 id="orden-del-filtro-y-pendiente">Orden del filtro y pendiente</h2>
+<p>El orden está relacionado con el número de polos dominantes de la
+función de transferencia. Cada polo de primer orden aporta una pendiente
+asintótica aproximada de <strong>−20 dB/década</strong> después de su
+frecuencia característica.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Orden</th>
+<th style="text-align: right;">Pendiente asintótica típica</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">−20 dB/década</td>
+<td>Transición suave</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">−40 dB/década</td>
+<td>Mayor selectividad</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">−60 dB/década</td>
+<td>Transición más rápida</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span
+class="math inline">\(n\)</span></td>
+<td style="text-align: right;">−20<span class="math inline">\(n\)</span>
+dB/década</td>
+<td>Aumenta con el orden</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-miai">
+<strong>Lectura de ingeniería.</strong> Aumentar el orden mejora la
+selectividad, pero también incrementa complejidad, sensibilidad a
+tolerancias, consumo de recursos y posibles efectos de fase. El “mejor”
+orden depende de la especificación del sistema.
+</div>
+<h2 id="diagramas-de-bode">Diagramas de Bode</h2>
+<p>Una representación de Bode muestra magnitud y fase en función de la
+frecuencia, normalmente con eje logarítmico. Permite identificar de
+forma directa:</p>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Banda de paso
+</h4>
+<p>
+Región donde la señal útil conserva una magnitud aceptable.
+</p>
+</div>
+<div class="card">
+<h4>
+Zona de transición
+</h4>
+<p>
+Región donde la respuesta cambia desde paso hacia rechazo.
+</p>
+</div>
+<div class="card">
+<h4>
+Banda de rechazo
+</h4>
+<p>
+Región donde las componentes se atenúan significativamente.
+</p>
+</div>
+<div class="card">
+<h4>
+Pendiente
+</h4>
+<p>
+Indica cuán rápido aumenta la atenuación con la frecuencia.
+</p>
+</div>
+</div>
+<h2 id="ejemplo-resuelto-1-filtro-rc-pasa-bajos">Ejemplo resuelto 1 —
+filtro RC pasa bajos</h2>
+<h3 id="problema">Problema</h3>
+<p>Se desea analizar un filtro RC pasa bajos con <span
+class="math inline">\(R=2.2\)</span> kΩ y <span
+class="math inline">\(C=47\)</span> nF.</p>
+<h3 id="objetivo">Objetivo</h3>
+<p>Determinar la frecuencia de corte y estimar la ganancia a una
+frecuencia de 5 kHz.</p>
+<h3 id="fundamento">Fundamento</h3>
+<div class="eqbox">
+<p><span class="math display">\[
+f_c=\frac{1}{2\pi RC}
+\]</span></p>
+<p><span class="math display">\[
+|H_{LP}(j\omega)|=\frac{1}{\sqrt{1+(f/f_c)^2}}
+\]</span></p>
+</div>
+<h3 id="procedimiento">Procedimiento</h3>
+<p><span class="math display">\[
+RC=(2200)(47\times10^{-9})=1.034\times10^{-4}\;s
+\]</span></p>
+<p><span class="math display">\[
+f_c=\frac{1}{2\pi(1.034\times10^{-4})}\approx1539\;Hz
+\]</span></p>
+<p>Para <span class="math inline">\(f=5\)</span> kHz:</p>
+<p><span class="math display">\[
+\frac{f}{f_c}\approx\frac{5000}{1539}\approx3.25
+\]</span></p>
+<p><span class="math display">\[
+|H|\approx\frac{1}{\sqrt{1+3.25^2}}\approx0.294
+\]</span></p>
+<p><span class="math display">\[
+G_{dB}=20\log_{10}(0.294)\approx-10.6\;dB
+\]</span></p>
+<h3 id="interpretación">Interpretación</h3>
+<p>La frecuencia de 5 kHz está bastante por encima de <span
+class="math inline">\(f_c\)</span>, por lo que la salida se encuentra
+significativamente atenuada.</p>
+<h3 id="verificación">Verificación</h3>
+<p>La magnitud es menor que 0.707, coherente con estar por encima de la
+frecuencia de corte de un pasa bajos.</p>
+<h1
+id="filtros-pasa-bajos-pasa-altos-pasa-banda-y-rechazo-de-banda">1.3.2
+Filtros pasa bajos, pasa altos, pasa banda y rechazo de banda</h1>
+<h2 id="filtro-pasa-bajos">Filtro pasa bajos</h2>
+<p>Permite el paso preferente de las componentes de baja frecuencia y
+atenúa las altas. Para un RC de primer orden:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+H_{LP}(s)=\frac{1}{1+sRC}
+\]</span></p>
+</div>
+<p><strong>Aplicaciones:</strong> limitación de ruido de alta
+frecuencia, suavizado, anti-aliasing previo a un ADC y recuperación de
+banda base.</p>
+<h2 id="filtro-pasa-altos">Filtro pasa altos</h2>
+<p>Atenúa bajas frecuencias y permite el paso de componentes por encima
+de una frecuencia de corte:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+H_{HP}(s)=\frac{sRC}{1+sRC}
+\]</span></p>
+</div>
+<p><strong>Aplicaciones:</strong> eliminación de componentes DC,
+acoplamiento AC y supresión de variaciones lentas.</p>
+<h2 id="filtro-pasa-banda">Filtro pasa banda</h2>
+<p>Selecciona una región limitada entre <span
+class="math inline">\(f_L\)</span> y <span
+class="math inline">\(f_H\)</span>. Puede obtenerse combinando etapas
+pasa altos y pasa bajos, siempre que exista una separación adecuada
+entre sus frecuencias características.</p>
+<div class="eqbox">
+<p><span class="math display">\[
+BW=f_H-f_L
+\]</span></p>
+<p><span class="math display">\[
+f_0\approx\sqrt{f_Lf_H}
+\]</span></p>
+</div>
+<p>La expresión de <span class="math inline">\(f_0\)</span> corresponde
+a la frecuencia central geométrica de una banda definida por dos límites
+positivos.</p>
+<p><strong>Aplicaciones:</strong> selección de canal, extracción de una
+banda de interés y rechazo de componentes fuera de banda.</p>
+<h2 id="filtro-rechazo-de-banda">Filtro rechazo de banda</h2>
+<p>Atenúa una región de frecuencias mientras permite el paso por debajo
+y por encima de ella. Una variante estrecha se denomina
+<strong>notch</strong> o filtro de muesca.</p>
+<p><strong>Aplicaciones:</strong> rechazo de interferencias específicas,
+por ejemplo una componente estrecha de red o una portadora no deseada,
+cuando el diseño sea apropiado para esa frecuencia.</p>
+<h2 id="comparación-funcional">Comparación funcional</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Pasa preferentemente</th>
+<th>Atenúa preferentemente</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pasa bajos</td>
+<td><span class="math inline">\(f&lt;f_c\)</span></td>
+<td><span class="math inline">\(f&gt;f_c\)</span></td>
+<td>Reducir ruido de alta frecuencia</td>
+</tr>
+<tr class="even">
+<td>Pasa altos</td>
+<td><span class="math inline">\(f&gt;f_c\)</span></td>
+<td><span class="math inline">\(f&lt;f_c\)</span></td>
+<td>Eliminar DC o variaciones lentas</td>
+</tr>
+<tr class="odd">
+<td>Pasa banda</td>
+<td><span class="math inline">\(f_L&lt;f&lt;f_H\)</span></td>
+<td>Fuera de la banda</td>
+<td>Selección de canal</td>
+</tr>
+<tr class="even">
+<td>Rechazo de banda</td>
+<td>Fuera de una banda</td>
+<td>Entre <span class="math inline">\(f_L\)</span> y <span
+class="math inline">\(f_H\)</span></td>
+<td>Eliminar interferencia localizada</td>
+</tr>
+</tbody>
+</table>
+<div class="interactive">
+<h3>
+Explorador interactivo de filtros
+</h3>
+<p>
+<strong>Prediga primero:</strong> seleccione el tipo de filtro y estime
+qué ocurrirá con una señal a la frecuencia indicada. Después modifique
+R, C y frecuencia para verificarlo.
+</p>
+<div class="control-grid">
+<div>
+<label for="filterType">Tipo</label><select id="filterType"><option value="lp">Pasa
+bajos RC</option><option value="hp">Pasa altos
+RC</option><option value="bp">Pasa banda
+aproximado</option><option value="bs">Rechazo de banda
+aproximado</option></select>
+</div>
+<div>
+<label for="Rval">R
+(kΩ)</label><input id="Rval" type="number" min="0.1" step="0.1" value="2.2">
+</div>
+<div>
+<label for="Cval">C
+(nF)</label><input id="Cval" type="number" min="1" step="1" value="47">
+</div>
+<div>
+<label for="testFreq">Frecuencia de prueba
+(Hz)</label><input id="testFreq" type="number" min="1" step="100" value="5000">
+</div>
+<div>
+<label for="bwFactor">Separación banda
+(factor)</label><input id="bwFactor" type="number" min="1.5" max="20" step="0.5" value="4">
+</div>
+</div>
+<div id="filterResult" class="result">
+
+</div>
+<canvas id="filterCanvas" width="900" height="320">
+</canvas>
+</div>
+<div class="callout-miai">
+<strong>Experimenta.</strong> En pasa bajos y pasa altos, cambie R o C y
+observe el desplazamiento de <span class="math inline">\(f_c\)</span>.
+Luego duplique C: ¿la frecuencia de corte aumenta o disminuye?
+Compruébelo con la ecuación.
+</div>
+<h1
+id="ejemplo-resuelto-2-identificación-a-partir-de-una-respuesta">Ejemplo
+resuelto 2 — identificación a partir de una respuesta</h1>
+<h3 id="problema-1">Problema</h3>
+<p>Un circuito presenta aproximadamente 0 dB a bajas frecuencias y
+comienza a atenuar a partir de 2 kHz con una pendiente cercana a −20
+dB/década.</p>
+<h3 id="análisis">Análisis</h3>
+<ul>
+<li>Conserva bajas frecuencias: comportamiento <strong>pasa
+bajos</strong>.</li>
+<li>La transición se inicia alrededor de 2 kHz: <span
+class="math inline">\(f_c\approx2\)</span> kHz.</li>
+<li>Pendiente de −20 dB/década: comportamiento compatible con un
+<strong>primer orden</strong> dominante.</li>
+</ul>
+<h3 id="interpretación-1">Interpretación</h3>
+<p>A partir de una gráfica de magnitud puede inferirse el tipo de filtro
+y su orden aproximado sin conocer primero todos los componentes del
+circuito.</p>
+<h1 id="comprueba-tu-comprensión">Comprueba tu comprensión</h1>
+<div class="quizbox" data-answer="c"
+data-feedback-ok="Correcto. En un filtro de primer orden, la frecuencia de corte se asocia al punto de aproximadamente −3 dB respecto a la banda de paso."
+data-feedback-bad="Revise la relación entre 0.707 de amplitud y su equivalente en decibelios.">
+<p>
+<strong>1.</strong> ¿Qué valor de ganancia en dB se asocia
+aproximadamente con la frecuencia de corte de un filtro de primer orden?
+</p>
+<button data-choice="a">
+0 dB
+</button>
+<button data-choice="b">
+−1 dB
+</button>
+<button data-choice="c">
+−3 dB
+</button>
+<button data-choice="d">
+−20 dB
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="b"
+data-feedback-ok="Correcto. Un segundo orden presenta una pendiente asintótica de aproximadamente −40 dB/década."
+data-feedback-bad="Cada polo de primer orden aporta aproximadamente −20 dB/década.">
+<p>
+<strong>2.</strong> ¿Cuál es la pendiente asintótica típica de un filtro
+de segundo orden después de su zona de transición?
+</p>
+<button data-choice="a">
+−10 dB/década
+</button>
+<button data-choice="b">
+−40 dB/década
+</button>
+<button data-choice="c">
++20 dB/década
+</button>
+<button data-choice="d">
+0 dB/década
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="d"
+data-feedback-ok="Correcto. Un pasa banda selecciona una región limitada por dos frecuencias de corte."
+data-feedback-bad="Identifique qué respuesta conserva una banda intermedia y atenúa por debajo y por encima.">
+<p>
+<strong>3.</strong> ¿Qué tipo de filtro es más apropiado para
+seleccionar una banda limitada alrededor de una frecuencia de interés?
+</p>
+<button data-choice="a">
+Pasa bajos
+</button>
+<button data-choice="b">
+Pasa altos
+</button>
+<button data-choice="c">
+Seguidor de tensión
+</button>
+<button data-choice="d">
+Pasa banda
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="a"
+data-feedback-ok="Correcto. Al duplicar C manteniendo R, el producto RC se duplica y la frecuencia de corte se reduce a la mitad."
+data-feedback-bad="Use fc = 1/(2πRC) y observe la proporcionalidad inversa.">
+<p>
+<strong>4.</strong> Si en un filtro RC se duplica C y R permanece
+constante, ¿qué ocurre con la frecuencia de corte?
+</p>
+<button data-choice="a">
+Se reduce aproximadamente a la mitad
+</button>
+<button data-choice="b">
+Se duplica
+</button>
+<button data-choice="c">
+No cambia
+</button>
+<button data-choice="d">
+Se hace cero siempre
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos</h1>
+<h2 id="nivel-1-comprensión">Nivel 1 — Comprensión</h2>
+<ol type="1">
+<li>Explique con sus palabras la diferencia entre banda de paso, zona de
+transición y banda de rechazo.</li>
+<li>¿Por qué un filtro de mayor orden puede ser más selectivo?</li>
+<li>Diferencie frecuencia de corte y ancho de banda.</li>
+<li>Describa una aplicación de cada uno de los cuatro tipos de filtro
+estudiados.</li>
+</ol>
+<h2 id="nivel-2-aplicación">Nivel 2 — Aplicación</h2>
+<ol type="1">
+<li>Calcule <span class="math inline">\(f_c\)</span> para un filtro RC
+con <span class="math inline">\(R=3.3\)</span> kΩ y <span
+class="math inline">\(C=22\)</span> nF.</li>
+<li>Diseñe un filtro RC de primer orden con <span
+class="math inline">\(f_c\approx5\)</span> kHz escogiendo primero <span
+class="math inline">\(C=10\)</span> nF y calculando <span
+class="math inline">\(R\)</span>.</li>
+<li>Un pasa banda presenta <span class="math inline">\(f_L=12\)</span>
+kHz y <span class="math inline">\(f_H=18\)</span> kHz. Calcule <span
+class="math inline">\(BW\)</span> y la frecuencia central
+geométrica.</li>
+<li>Determine la magnitud aproximada de un pasa bajos de primer orden a
+<span class="math inline">\(f=10f_c\)</span> y exprésela en dB.</li>
+</ol>
+<details>
+<summary>
+Pistas para el Nivel 2
+</summary>
+<p>
+<strong>1 y 2.</strong> Use <span class="math inline">\(f_c=1/(2\pi
+RC)\)</span>.
+</p>
+<p>
+<strong>3.</strong> Use <span class="math inline">\(BW=f_H-f_L\)</span>
+y <span class="math inline">\(f_0=\sqrt{f_Lf_H}\)</span>.
+</p>
+<p>
+<strong>4.</strong> Use <span
+class="math inline">\(|H|=1/\sqrt{1+(f/f_c)^2}\)</span>.
+</p>
+</details>
+<h2 id="nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</h2>
+<p>Un receptor entrega una señal útil entre 300 Hz y 3.4 kHz, acompañada
+por una componente de baja frecuencia debida a deriva y por ruido
+notable por encima de 8 kHz. Proponga una estrategia de filtrado
+conceptual que:</p>
+<ul>
+<li>atenúe la deriva;</li>
+<li>conserve la banda útil;</li>
+<li>reduzca el ruido de alta frecuencia;</li>
+<li>identifique las frecuencias de corte que deberían estudiarse;</li>
+<li>justifique si conviene una respuesta de primer o segundo orden en
+cada extremo.</li>
+</ul>
+<h1 id="caso-profesional-selección-de-banda-antes-de-digitalizar">Caso
+profesional — selección de banda antes de digitalizar</h1>
+<p>Una etapa analógica entrega información principalmente hasta 12 kHz.
+El ADC trabaja a 40 kS/s, por lo que la frecuencia de Nyquist es 20 kHz.
+Se detecta ruido significativo por encima de 18 kHz.</p>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Identifique</strong> la banda útil y la zona que debe atenuarse
+antes de la conversión.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Proponga</strong> un filtro pasa bajos con frecuencia de corte
+compatible con el compromiso entre conservar 12 kHz y atenuar antes de
+20 kHz.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Evalúe</strong> si un primer orden ofrece suficiente transición
+o si se requiere un orden mayor.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Verifique</strong> la respuesta en simulación antes de
+implementarla.
+</div>
+</div>
+<div class="callout-miai">
+<strong>Decisión de ingeniería.</strong> La frecuencia de corte no debe
+elegirse de manera aislada. Debe analizarse junto con la banda útil, la
+frecuencia de muestreo, la atenuación requerida y el orden del filtro.
+</div>
+<h1 id="feedback-y-orientaciones">Feedback y orientaciones</h1>
+<ul>
+<li>Si confunde <strong>pasa bajos con pasa altos</strong>, observe qué
+región queda cerca de 0 dB: bajas o altas frecuencias.</li>
+<li>Si obtiene una <span class="math inline">\(f_c\)</span> inesperada,
+verifique que C esté expresada en faradios y R en ohmios.</li>
+<li>Si interpreta el punto de −3 dB como “señal casi nula”, recuerde que
+corresponde aproximadamente al 70.7 % de amplitud.</li>
+<li>Si el ancho de banda resulta negativo, revise el orden de <span
+class="math inline">\(f_H\)</span> y <span
+class="math inline">\(f_L\)</span>.</li>
+<li>Si una respuesta simulada no coincide con el modelo ideal, revise
+impedancias de fuente/carga y limitaciones de componentes reales.</li>
+</ul>
+<h1 id="síntesis">Síntesis</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concepto</th>
+<th>Idea esencial</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Respuesta en frecuencia</td>
+<td>Describe magnitud y fase frente a la frecuencia</td>
+</tr>
+<tr class="even">
+<td>Frecuencia de corte</td>
+<td>Punto de referencia de transición; en primer orden ≈ −3 dB</td>
+</tr>
+<tr class="odd">
+<td>Ancho de banda</td>
+<td>Intervalo de frecuencias útil según criterio</td>
+</tr>
+<tr class="even">
+<td>Orden</td>
+<td>Relacionado con la pendiente y selectividad</td>
+</tr>
+<tr class="odd">
+<td>Pasa bajos</td>
+<td>Conserva bajas frecuencias</td>
+</tr>
+<tr class="even">
+<td>Pasa altos</td>
+<td>Conserva altas frecuencias</td>
+</tr>
+<tr class="odd">
+<td>Pasa banda</td>
+<td>Conserva una banda limitada</td>
+</tr>
+<tr class="even">
+<td>Rechazo de banda</td>
+<td>Atenúa una banda específica</td>
+</tr>
+</tbody>
+</table>
+<h1 id="reflexiona">Reflexiona</h1>
+<blockquote>
+<p>Dos filtros tienen la misma frecuencia de corte, pero uno es de
+primer orden y otro de segundo orden. ¿Por qué pueden producir
+resultados muy diferentes en un sistema de telecomunicaciones? Considere
+atenuación, fase, selectividad y complejidad.</p>
+</blockquote>
+<h1 id="referencias-sugeridas">Referencias sugeridas</h1>
+<p>Para el desarrollo final del curso, estas referencias deben
+contrastarse con la <strong>bibliografía oficial del
+sílabo</strong>:</p>
+<ul>
+<li>Sedra, A. S. &amp; Smith, K. C. <em>Microelectronic
+Circuits</em>.</li>
+<li>Franco, S. <em>Design with Operational Amplifiers and Analog
+Integrated Circuits</em>.</li>
+<li>Haykin, S. <em>Communication Systems</em>.</li>
+<li>Hojas de datos y notas de aplicación de los fabricantes de los
+componentes utilizados.</li>
+</ul>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  function fmt(x,d=2){if(!isFinite(x))return '—';return Number(x).toFixed(d).replace(/\.00$/,'');}
+  function mag(type,f,fc,bwFactor){
+    let r=f/fc;
+    if(type==='lp') return 1/Math.sqrt(1+r*r);
+    if(type==='hp') return r/Math.sqrt(1+r*r);
+    const fl=fc/Math.sqrt(bwFactor), fh=fc*Math.sqrt(bwFactor);
+    const hp=(f/fl)/Math.sqrt(1+(f/fl)*(f/fl));
+    const lp=1/Math.sqrt(1+(f/fh)*(f/fh));
+    const bp=hp*lp;
+    if(type==='bp') return bp;
+    return Math.max(1e-6,1-bp);
+  }
+  function draw(){
+    const type=$('filterType').value;
+    const R=Math.max(.001,parseFloat($('Rval').value)||1)*1e3;
+    const C=Math.max(.001,parseFloat($('Cval').value)||1)*1e-9;
+    const f=Math.max(.01,parseFloat($('testFreq').value)||1);
+    const b=Math.max(1.5,parseFloat($('bwFactor').value)||4);
+    const fc=1/(2*Math.PI*R*C);
+    const m=mag(type,f,fc,b), db=20*Math.log10(Math.max(m,1e-6));
+    const labels={lp:'Pasa bajos',hp:'Pasa altos',bp:'Pasa banda',bs:'Rechazo de banda'};
+    $('filterResult').innerHTML=`<div class="cardgrid"><div><span class="small">Tipo</span><div class="kpi">${labels[type]}</div></div><div><span class="small">Frecuencia característica</span><div class="kpi">${fmt(fc,1)} Hz</div></div><div><span class="small">|H| en f de prueba</span><div class="kpi">${fmt(m,3)}</div></div><div><span class="small">Ganancia</span><div class="kpi">${fmt(db,2)} dB</div></div></div>`;
+    const c=$('filterCanvas'),ctx=c.getContext('2d'),W=c.width,H=c.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+    const fmin=Math.max(1,fc/100),fmax=fc*100; const ymin=-60,ymax=5;
+    function xof(ff){return (Math.log10(ff)-Math.log10(fmin))/(Math.log10(fmax)-Math.log10(fmin))*W;}
+    function yof(dd){return H-((dd-ymin)/(ymax-ymin))*H;}
+    ctx.strokeStyle='#e0e7ed';ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){let ff=fmin*Math.pow(10,i);let x=xof(ff);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.fillStyle='#617282';ctx.font='13px sans-serif';ctx.fillText(ff>=1000?(ff/1000).toFixed(1)+'k':ff.toFixed(0),x+4,H-8);}
+    for(let d=-60;d<=0;d+=10){let y=yof(d);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.fillStyle='#617282';ctx.fillText(d+' dB',6,y-4);}
+    ctx.strokeStyle='#2D6A9F';ctx.lineWidth=3;ctx.beginPath();
+    for(let i=0;i<W;i++){let ff=Math.pow(10,Math.log10(fmin)+(i/(W-1))*(Math.log10(fmax)-Math.log10(fmin)));let mm=mag(type,ff,fc,b);let dd=Math.max(ymin,20*Math.log10(Math.max(mm,1e-6)));let y=yof(dd);if(i===0)ctx.moveTo(i,y);else ctx.lineTo(i,y);}ctx.stroke();
+    const xf=xof(f),yf=yof(Math.max(ymin,db));ctx.fillStyle='#b42318';ctx.beginPath();ctx.arc(xf,yf,6,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#0f766e';ctx.setLineDash([7,5]);let xc=xof(fc);ctx.beginPath();ctx.moveTo(xc,0);ctx.lineTo(xc,H);ctx.stroke();ctx.setLineDash([]);
+  }
+  ['filterType','Rval','Cval','testFreq','bwFactor'].forEach(id=>$(id).addEventListener('input',draw));
+  document.querySelectorAll('.quizbox').forEach(box=>{box.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{let ok=btn.dataset.choice===box.dataset.answer;box.querySelectorAll('button').forEach(b=>b.classList.remove('is-correct','is-wrong'));btn.classList.add(ok?'is-correct':'is-wrong');let f=box.querySelector('.feedback');f.textContent=ok?box.dataset.feedbackOk:box.dataset.feedbackBad;f.className='feedback '+(ok?'status-ok':'status-warn');}))});
+  draw();
+})();
+</script>
+</body>
+</html>
