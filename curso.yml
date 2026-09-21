@@ -1,0 +1,15 @@
+asignatura:
+  codigo: CT-IT-05
+  nombre: Circuitos Electrónicos para Telecomunicaciones
+  ciclo: Quinto
+  paralelo: 5A
+  modalidad: Presencial
+  periodo: Septiembre 2026 - Febrero 2027
+
+bloques:
+  - numero: 1
+    nombre: Amplificadores operacionales y filtros para telecomunicaciones
+  - numero: 2
+    nombre: Osciladores, modulación y demodulación analógica
+  - numero: 3
+    nombre: Circuitos de radiofrecuencia e integración de sistemas de telecomunicaciones
