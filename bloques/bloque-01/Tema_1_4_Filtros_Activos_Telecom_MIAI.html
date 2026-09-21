@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1.4 Diseño y análisis de filtros activos aplicados a sistemas de telecomunicaciones</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="/usr/share/javascript/mathjax/MathJax.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">1.4 Diseño y análisis de filtros activos aplicados a
+sistemas de telecomunicaciones</h1>
+<p class="subtitle">Circuitos Electrónicos para Telecomunicaciones ·
+Quinto ciclo</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#resultado-esperado-del-tema"
+id="toc-resultado-esperado-del-tema">Resultado esperado del
+tema</a></li>
+<li><a href="#conocimientos-previos"
+id="toc-conocimientos-previos">Conocimientos previos</a></li>
+<li><a
+href="#diseño-y-análisis-de-filtros-activos-de-primer-y-segundo-orden"
+id="toc-diseño-y-análisis-de-filtros-activos-de-primer-y-segundo-orden">1.4.1
+Diseño y análisis de filtros activos de primer y segundo orden</a>
+<ul>
+<li><a href="#qué-hace-activo-a-un-filtro"
+id="toc-qué-hace-activo-a-un-filtro">¿Qué hace “activo” a un
+filtro?</a></li>
+<li><a href="#filtro-activo-de-primer-orden-pasa-bajos"
+id="toc-filtro-activo-de-primer-orden-pasa-bajos">Filtro activo de
+primer orden pasa bajos</a></li>
+<li><a href="#filtro-activo-de-primer-orden-pasa-altos"
+id="toc-filtro-activo-de-primer-orden-pasa-altos">Filtro activo de
+primer orden pasa altos</a></li>
+<li><a href="#procedimiento-de-diseño-de-primer-orden"
+id="toc-procedimiento-de-diseño-de-primer-orden">Procedimiento de diseño
+de primer orden</a></li>
+<li><a href="#ejemplo-resuelto-1-pasa-bajos-activo-de-primer-orden"
+id="toc-ejemplo-resuelto-1-pasa-bajos-activo-de-primer-orden">Ejemplo
+resuelto 1 — pasa bajos activo de primer orden</a>
+<ul>
+<li><a href="#problema" id="toc-problema">Problema</a></li>
+<li><a href="#cálculo-de-r" id="toc-cálculo-de-r">Cálculo de R</a></li>
+<li><a href="#ganancia" id="toc-ganancia">Ganancia</a></li>
+<li><a href="#verificación" id="toc-verificación">Verificación</a></li>
+</ul></li>
+<li><a href="#filtros-de-segundo-orden"
+id="toc-filtros-de-segundo-orden">Filtros de segundo orden</a></li>
+<li><a href="#sallen-key-pasa-bajos-con-componentes-iguales"
+id="toc-sallen-key-pasa-bajos-con-componentes-iguales">Sallen-Key pasa
+bajos con componentes iguales</a></li>
+<li><a
+href="#ejemplo-resuelto-2-sallen-key-butterworth-de-segundo-orden"
+id="toc-ejemplo-resuelto-2-sallen-key-butterworth-de-segundo-orden">Ejemplo
+resuelto 2 — Sallen-Key Butterworth de segundo orden</a>
+<ul>
+<li><a href="#problema-1" id="toc-problema-1">Problema</a></li>
+<li><a href="#frecuencia" id="toc-frecuencia">Frecuencia</a></li>
+<li><a href="#ganancia-requerida" id="toc-ganancia-requerida">Ganancia
+requerida</a></li>
+<li><a href="#interpretación"
+id="toc-interpretación">Interpretación</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#verificación-del-amplificador-operacional"
+id="toc-verificación-del-amplificador-operacional">Verificación del
+amplificador operacional</a></li>
+<li><a
+href="#aplicaciones-de-filtrado-y-selección-de-señales-en-sistemas-de-telecomunicaciones"
+id="toc-aplicaciones-de-filtrado-y-selección-de-señales-en-sistemas-de-telecomunicaciones">1.4.2
+Aplicaciones de filtrado y selección de señales en sistemas de
+telecomunicaciones</a>
+<ul>
+<li><a href="#anti-aliasing-antes-de-un-adc"
+id="toc-anti-aliasing-antes-de-un-adc">Anti-aliasing antes de un
+ADC</a></li>
+<li><a href="#reconstrucción-después-de-un-dac"
+id="toc-reconstrucción-después-de-un-dac">Reconstrucción después de un
+DAC</a></li>
+<li><a href="#selección-de-canal-y-banda"
+id="toc-selección-de-canal-y-banda">Selección de canal y banda</a></li>
+<li><a href="#acondicionamiento-de-banda-base"
+id="toc-acondicionamiento-de-banda-base">Acondicionamiento de banda
+base</a></li>
+<li><a href="#flujo-de-diseño-orientado-a-telecomunicaciones"
+id="toc-flujo-de-diseño-orientado-a-telecomunicaciones">Flujo de diseño
+orientado a telecomunicaciones</a></li>
+</ul></li>
+<li><a href="#comprueba-tu-comprensión"
+id="toc-comprueba-tu-comprensión">Comprueba tu comprensión</a></li>
+<li><a href="#ejercicios-propuestos"
+id="toc-ejercicios-propuestos">Ejercicios propuestos</a>
+<ul>
+<li><a href="#nivel-1-comprensión" id="toc-nivel-1-comprensión">Nivel 1
+— Comprensión</a></li>
+<li><a href="#nivel-2-aplicación" id="toc-nivel-2-aplicación">Nivel 2 —
+Aplicación</a></li>
+<li><a href="#nivel-3-transferencia-profesional"
+id="toc-nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</a></li>
+</ul></li>
+<li><a href="#caso-profesional-filtrado-previo-a-digitalización"
+id="toc-caso-profesional-filtrado-previo-a-digitalización">Caso
+profesional — filtrado previo a digitalización</a></li>
+<li><a href="#feedback-y-orientaciones"
+id="toc-feedback-y-orientaciones">Feedback y orientaciones</a></li>
+<li><a href="#síntesis" id="toc-síntesis">Síntesis</a></li>
+<li><a href="#reflexiona" id="toc-reflexiona">Reflexiona</a></li>
+<li><a href="#referencias-sugeridas"
+id="toc-referencias-sugeridas">Referencias sugeridas</a></li>
+</ul>
+</nav>
+<style>
+/* ===== MIAI visual system v2 ===== */
+:root{
+  --brand:#1F4E79;
+  --brand-dark:#163a5d;
+  --brand2:#2D6A9F;
+  --accent:#0f766e;
+  --ink:#172230;
+  --muted:#5b6978;
+  --soft:#f4f7fa;
+  --soft-blue:#eef5fb;
+  --line:#d9e3ec;
+  --line-strong:#c6d4df;
+  --ok:#166534;
+  --warn:#9a5b08;
+  --bad:#a11d1d;
+  --white:#ffffff;
+  --shadow:0 10px 28px rgba(25,55,85,.08);
+  --shadow-sm:0 4px 14px rgba(25,55,85,.07);
+  --radius:16px;
+}
+html{scroll-behavior:smooth;background:#edf2f7;}
+body{
+  color:var(--ink); background:#f7f9fc;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16.5px; line-height:1.72;
+  max-width:1180px !important; margin:0 auto !important;
+  padding:46px 56px 72px !important; box-sizing:border-box;
+}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--brand),#4b8fc5,var(--accent));z-index:9999;}
+#title-block-header{position:relative;overflow:hidden;max-width:none;margin:0 0 2rem 0;padding:2.35rem 2.25rem 2rem;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#f3f8fc 58%,#eaf3fa 100%);border:1px solid var(--line);box-shadow:var(--shadow);text-align:left;}
+#title-block-header:before{content:"BLOQUE 1 · TEMA 1.4";display:inline-flex;align-items:center;padding:.3rem .72rem;margin-bottom:.8rem;border-radius:999px;background:#e7f0f8;color:var(--brand);font-size:.78rem;font-weight:800;letter-spacing:.08em;}
+#title-block-header:after{content:"";position:absolute;width:210px;height:210px;right:-70px;top:-95px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,159,.18),rgba(45,106,159,0) 70%);pointer-events:none;}
+#title-block-header .title{max-width:920px;margin:0;color:#182634;font-weight:850;line-height:1.12;font-size:clamp(2rem,3.9vw,3.35rem);letter-spacing:-.035em;text-wrap:balance;}
+#title-block-header .subtitle{display:inline-block;margin:1rem 0 0 0;padding:.38rem .72rem;border-radius:10px;background:rgba(255,255,255,.78);border:1px solid #d9e5ee;color:var(--muted);font-size:1rem;font-weight:700;}
+#TOC{margin:0 0 2rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);}
+#TOC:before{content:"NAVEGACIÓN DEL TEMA";display:block;color:var(--brand);font-weight:850;font-size:.76rem;letter-spacing:.09em;margin:0 0 .65rem .25rem;}
+#TOC ul{margin:0;padding-left:1.2rem;} #TOC li{margin:.18rem 0;} #TOC a{color:#31485c;text-decoration:none;font-size:.93rem;} #TOC a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
+h1,h2,h3,h4{font-family:inherit;color:#1e3040;scroll-margin-top:25px;}
+h1:not(.title){margin-top:3.1rem;padding:1rem 1.05rem;border-radius:14px;background:linear-gradient(90deg,var(--brand-dark),var(--brand));color:#fff;font-size:1.75rem;line-height:1.25;letter-spacing:-.015em;box-shadow:0 7px 20px rgba(31,78,121,.16);}
+h2{margin-top:2.25rem;margin-bottom:.85rem;padding-left:.85rem;border-left:5px solid var(--brand2);color:var(--brand-dark);font-size:1.42rem;line-height:1.3;}
+h3{margin-top:1.8rem;color:#28485f;font-size:1.16rem;} h4{font-size:1.02rem;color:var(--brand);} p{margin:.68rem 0 1rem;} strong{color:#203449;} a{color:var(--brand2);text-underline-offset:3px;} hr{border:0;border-top:1px solid var(--line);margin:2rem 0;}
+.hero{position:relative;overflow:hidden;border:1px solid #cddde9;border-left:7px solid var(--brand);background:linear-gradient(120deg,#ffffff,#eef6fc);padding:1.45rem 1.55rem;border-radius:18px;margin:0 0 1.5rem 0;box-shadow:var(--shadow-sm);}
+.hero:after{content:"";position:absolute;width:160px;height:160px;right:-55px;bottom:-80px;border-radius:50%;background:rgba(45,106,159,.08);}
+.hero h2{margin:.05rem 0 .65rem;padding:0;border:0;color:var(--brand);font-size:1.45rem;} .hero p{max-width:930px;margin-bottom:.8rem;}
+.badge{display:inline-block;padding:.28rem .62rem;border-radius:999px;background:#e5f0f8;color:var(--brand);border:1px solid #d1e1ed;font-weight:800;font-size:.78rem;margin:.15rem .32rem .05rem 0;letter-spacing:.015em;}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.05rem 0 1.35rem;}
+.card{border:1px solid var(--line);border-radius:16px;padding:1.05rem 1.1rem;background:#fff;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.card:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(25,55,85,.10);border-color:#bdd1e0;} .card h4{margin:.05rem 0 .45rem;color:var(--brand);} .card p{margin-bottom:.25rem;}
+.callout-miai,.callout-key,.callout-error,.callout-attn{position:relative;padding:1rem 1.15rem 1rem 1.25rem;border-radius:14px;margin:1.15rem 0;border:1px solid var(--line);box-shadow:0 3px 12px rgba(25,55,85,.045);}
+.callout-miai{border-left:6px solid var(--brand2);background:#f4f9fd;} .callout-key{border-left:6px solid var(--accent);background:#f2fbf9;} .callout-error{border-left:6px solid #b42318;background:#fff6f5;} .callout-attn{border-left:6px solid #d97706;background:#fff9ef;}
+.callout-miai strong,.callout-key strong,.callout-error strong,.callout-attn strong{font-weight:850;}
+.eqbox{background:linear-gradient(180deg,#ffffff,#f8fbfe);border:1px solid #cedce8;border-radius:14px;padding:.9rem 1.1rem;margin:1rem 0 1.15rem;box-shadow:inset 4px 0 0 #b5cfe3;overflow-x:auto;} .math.display{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0 1.4rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,55,85,.05);} thead th,table th{background:#eaf2f8;color:#193a56;font-weight:800;text-align:left;} th,td{padding:.72rem .8rem;border-bottom:1px solid #e1e8ee;vertical-align:top;} tr:last-child td{border-bottom:0;} tbody tr:nth-child(even){background:#fbfcfe;} tbody tr:hover{background:#f4f8fb;}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;margin:.65rem 0;box-shadow:none;} .mini-table th,.mini-table td{border:0;border-bottom:1px solid #dce5ec;padding:.55rem .62rem;} .mini-table th{background:#eaf3fa;}
+svg.diagram{display:block;width:100%;max-width:960px;height:auto;border:1px solid #d6e1ea;border-radius:18px;background:#fff;margin:1rem auto 1.25rem;box-shadow:var(--shadow-sm);}
+.interactive{position:relative;overflow:hidden;border:1px solid #bcd2e3;border-top:6px solid var(--brand2);border-radius:20px;background:linear-gradient(180deg,#fbfdff,#f2f7fb);padding:1.25rem 1.3rem;margin:1.45rem 0;box-shadow:0 10px 26px rgba(31,78,121,.09);}
+.interactive:before{content:"INTERACTIVO";display:inline-block;margin:0 0 .65rem;padding:.22rem .55rem;border-radius:999px;color:var(--brand);background:#e3eef7;font-size:.72rem;font-weight:850;letter-spacing:.09em;}
+.interactive h3{margin:.05rem 0 .55rem;color:var(--brand);font-size:1.28rem;}
+.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:.9rem;align-items:end;margin-top:1rem;} .control-grid>div{background:rgba(255,255,255,.72);border:1px solid #d8e4ed;border-radius:12px;padding:.72rem;} .control-grid label{font-weight:750;display:block;margin-bottom:.35rem;color:#29455c;font-size:.91rem;}
+.control-grid input,.control-grid select{width:100%;box-sizing:border-box;padding:.58rem .62rem;border:1px solid #afc2d1;border-radius:9px;background:#fff;color:var(--ink);font:inherit;outline:none;transition:border-color .2s ease,box-shadow .2s ease;} .control-grid input:focus,.control-grid select:focus{border-color:var(--brand2);box-shadow:0 0 0 3px rgba(45,106,159,.12);} .control-grid input:disabled{background:#edf1f4;color:#82909d;}
+.result{background:#fff;border:1px solid #c8d8e4;border-radius:14px;padding:1rem 1.05rem;margin-top:1rem;box-shadow:var(--shadow-sm);} .kpi{font-size:1.35rem;font-weight:850;color:var(--brand);letter-spacing:-.02em;} .small{font-size:.88rem;color:var(--muted);} .status-ok{color:var(--ok);font-weight:800}.status-warn{color:var(--warn);font-weight:800}.status-bad{color:var(--bad);font-weight:800}
+canvas{display:block;width:100%;height:230px;border:1px solid #d1dde7;border-radius:14px;background:#fff;margin-top:1rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);}
+.quizbox{border:1px solid var(--line);border-left:5px solid #6c8faa;border-radius:14px;padding:1rem 1.05rem;margin:.9rem 0;background:#fff;box-shadow:var(--shadow-sm);} .quizbox p{margin:.15rem 0 .75rem;} .quizbox button{margin:.26rem .38rem .26rem 0;padding:.52rem .78rem;border-radius:9px;border:1px solid #b7c7d4;background:#f7fafc;color:#233b4f;font-weight:700;cursor:pointer;transition:all .18s ease;} .quizbox button:hover{background:#e8f1f7;border-color:#8eabc0;transform:translateY(-1px);} .quizbox button.is-correct{background:#edf9f1;border-color:#81bd91;color:#14532d;} .quizbox button.is-wrong{background:#fff1f0;border-color:#e0a29d;color:#8d1d18;} .feedback{margin-top:.65rem;padding:.55rem .7rem;border-radius:9px;background:#f5f8fb;font-weight:700;}
+.step{display:flex;gap:.85rem;margin:.72rem 0;align-items:flex-start;} .stepnum{flex:0 0 2rem;height:2rem;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;text-align:center;line-height:2rem;font-weight:850;box-shadow:0 4px 10px rgba(31,78,121,.18);} .stepbody{flex:1;padding-top:.15rem;}
+details{border:1px solid var(--line);border-radius:12px;padding:.68rem .85rem;margin:.7rem 0;background:#fff;box-shadow:0 2px 9px rgba(25,55,85,.04);} details summary{cursor:pointer;font-weight:800;color:var(--brand);} details[open]{border-color:#bed1e0;background:#fbfdff;}
+blockquote{margin:1.2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--brand2);border-radius:0 12px 12px 0;background:#f3f8fc;color:#29455a;font-size:1.03rem;}
+ul,ol{padding-left:1.45rem;} li{margin:.25rem 0;} h1#referencias-sugeridas+ul,h1#referencias+ul{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem 1rem 2.2rem;box-shadow:var(--shadow-sm);}
+@media (min-width:1180px){body{padding-left:330px !important;position:relative;} #TOC{position:fixed;left:max(24px,calc((100vw - 1180px)/2 + 10px));top:34px;width:250px;max-height:calc(100vh - 68px);overflow:auto;z-index:10;margin:0;}}
+@media (max-width:900px){body{padding:28px 24px 52px !important;} #title-block-header{padding:1.7rem 1.35rem;} #title-block-header .title{font-size:clamp(1.8rem,7vw,2.55rem);} h1:not(.title){font-size:1.5rem;} .interactive{padding:1rem;} .control-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:620px){body{padding:22px 14px 44px !important;font-size:15.8px;} #title-block-header{border-radius:18px;padding:1.35rem 1rem;} #title-block-header:before{font-size:.68rem;} #title-block-header .title{font-size:1.8rem;line-height:1.16;} #title-block-header .subtitle{font-size:.9rem;} .hero,.interactive{border-radius:15px;} .cardgrid,.control-grid{grid-template-columns:1fr;} h1:not(.title){font-size:1.35rem;padding:.85rem .9rem;} h2{font-size:1.22rem;} table{display:block;overflow-x:auto;white-space:normal;} .quizbox button{display:block;width:100%;text-align:left;margin:.35rem 0;}}
+@media print{body{background:#fff !important;max-width:none !important;padding:0 !important;color:#000;} body:before,#TOC{display:none !important;} #title-block-header,.hero,.card,.interactive,.quizbox,table,svg.diagram{box-shadow:none !important;} .interactive{break-inside:avoid;}}
+</style>
+<div class="hero">
+<h2>
+Del requisito de filtrado al circuito implementable
+</h2>
+<p>
+Una vez comprendida la respuesta en frecuencia, el siguiente paso es
+<strong>diseñar filtros activos</strong> que cumplan una frecuencia de
+corte, una ganancia y una selectividad determinadas. En este tema se
+integran cálculo, selección de componentes, comportamiento del
+amplificador operacional y aplicaciones concretas en telecomunicaciones.
+</p>
+<p><span class="badge">1.4.1 Filtros activos de primer y segundo
+orden</span> <span class="badge">1.4.2 Filtrado y selección de señales
+en telecomunicaciones</span></p>
+</div>
+<h1 id="resultado-esperado-del-tema">Resultado esperado del tema</h1>
+<p>Al finalizar este tema, el estudiante será capaz de <strong>diseñar y
+analizar filtros activos de primer y segundo orden para acondicionar y
+seleccionar señales en aplicaciones de telecomunicaciones</strong>,
+verificando frecuencia de corte, ganancia, orden y restricciones del
+amplificador operacional.</p>
+<div class="callout-key">
+<strong>Idea central.</strong> Diseñar un filtro no consiste solo en
+calcular R y C. La solución debe cumplir la respuesta requerida y,
+además, ser compatible con ganancia, alimentación, GBW, slew rate,
+impedancias, tolerancias y rango dinámico del circuito real.
+</div>
+<h1 id="conocimientos-previos">Conocimientos previos</h1>
+<div class="cardgrid">
+<div class="card">
+<h4>
+Filtros de primer orden
+</h4>
+<p>
+Frecuencia de corte, respuesta pasa bajos/pasa altos y pendiente de 20
+dB/década por polo.
+</p>
+</div>
+<div class="card">
+<h4>
+Op-amp
+</h4>
+<p>
+Configuraciones inversora/no inversora, saturación, GBW y slew rate.
+</p>
+</div>
+<div class="card">
+<h4>
+Respuesta en frecuencia
+</h4>
+<p>
+Magnitud, fase, ancho de banda y representación en dB.
+</p>
+</div>
+<div class="card">
+<h4>
+Componentes
+</h4>
+<p>
+Valores comerciales, tolerancias y efecto de R y C sobre la frecuencia
+característica.
+</p>
+</div>
+</div>
+<h1
+id="diseño-y-análisis-de-filtros-activos-de-primer-y-segundo-orden">1.4.1
+Diseño y análisis de filtros activos de primer y segundo orden</h1>
+<h2 id="qué-hace-activo-a-un-filtro">¿Qué hace “activo” a un
+filtro?</h2>
+<p>Un filtro activo combina elementos resistivos y capacitivos con un
+dispositivo activo, normalmente un amplificador operacional. Frente a un
+filtro RC puramente pasivo, puede aportar:</p>
+<ul>
+<li>ganancia de tensión;</li>
+<li>aislamiento entre etapas;</li>
+<li>baja impedancia de salida;</li>
+<li>implementación de respuestas de segundo orden sin inductores en
+muchas aplicaciones de baja y media frecuencia.</li>
+</ul>
+<div class="callout-attn">
+<strong>Condición práctica.</strong> El op-amp debe trabajar dentro de
+su rango válido. Un cálculo ideal de <span
+class="math inline">\(f_c\)</span> no garantiza el desempeño si la
+ganancia–ancho de banda o el slew rate son insuficientes.
+</div>
+<h2 id="filtro-activo-de-primer-orden-pasa-bajos">Filtro activo de
+primer orden pasa bajos</h2>
+<p>Una forma común consiste en una red RC seguida o integrada con una
+etapa no inversora. La frecuencia de corte se fija principalmente
+mediante:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+f_c=\frac{1}{2\pi RC}
+\]</span></p>
+</div>
+<p>Si la etapa no inversora aporta ganancia <span
+class="math inline">\(K\)</span>:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+K=1+\frac{R_f}{R_g}
+\]</span></p>
+<p><span class="math display">\[
+H_{LP}(s)=\frac{K}{1+sRC}
+\]</span></p>
+</div>
+<p>La magnitud es:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+|H_{LP}(j\omega)|=\frac{K}{\sqrt{1+(f/f_c)^2}}
+\]</span></p>
+</div>
+<h2 id="filtro-activo-de-primer-orden-pasa-altos">Filtro activo de
+primer orden pasa altos</h2>
+<p>Para una red pasa altos de primer orden con ganancia no inversora
+<span class="math inline">\(K\)</span>:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+H_{HP}(s)=K\frac{sRC}{1+sRC}
+\]</span></p>
+</div>
+<p>La misma relación <span class="math inline">\(f_c=1/(2\pi
+RC)\)</span> determina la frecuencia característica de la red RC.</p>
+<h2 id="procedimiento-de-diseño-de-primer-orden">Procedimiento de diseño
+de primer orden</h2>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Definir</strong> el tipo de respuesta y la frecuencia de corte
+requerida.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Seleccionar</strong> un valor práctico de C.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Calcular</strong> <span class="math inline">\(R=1/(2\pi
+f_cC)\)</span> y escoger el valor comercial cercano.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Definir</strong> la ganancia K, si es necesaria, y dimensionar
+<span class="math inline">\(R_f\)</span> y <span
+class="math inline">\(R_g\)</span>.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Recalcular</strong> la frecuencia real con los valores
+comerciales seleccionados.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+6
+</div>
+<div class="stepbody">
+<strong>Verificar</strong> límites del op-amp y validar por simulación y
+medición.
+</div>
+</div>
+<h2 id="ejemplo-resuelto-1-pasa-bajos-activo-de-primer-orden">Ejemplo
+resuelto 1 — pasa bajos activo de primer orden</h2>
+<h3 id="problema">Problema</h3>
+<p>Diseñar un filtro pasa bajos activo con <span
+class="math inline">\(f_c=3\)</span> kHz y ganancia de banda de paso
+<span class="math inline">\(K=2\)</span>. Se selecciona <span
+class="math inline">\(C=10\)</span> nF.</p>
+<h3 id="cálculo-de-r">Cálculo de R</h3>
+<div class="eqbox">
+<p><span class="math display">\[
+R=\frac{1}{2\pi f_cC}
+=\frac{1}{2\pi(3000)(10\times10^{-9})}
+\approx5.31\;k\Omega
+\]</span></p>
+</div>
+<p>Puede escogerse un valor comercial cercano, por ejemplo 5.36 kΩ si
+está disponible o 5.1 kΩ aceptando la desviación y recalculando <span
+class="math inline">\(f_c\)</span>.</p>
+<h3 id="ganancia">Ganancia</h3>
+<p>Para <span class="math inline">\(K=2\)</span>:</p>
+<p><span class="math display">\[
+2=1+\frac{R_f}{R_g}
+\]</span></p>
+<p>por tanto puede elegirse <span
+class="math inline">\(R_f=R_g\)</span>, por ejemplo 10 kΩ y 10 kΩ.</p>
+<h3 id="verificación">Verificación</h3>
+<p>Con <span class="math inline">\(R=5.1\)</span> kΩ y <span
+class="math inline">\(C=10\)</span> nF:</p>
+<p><span class="math display">\[
+f_c\approx\frac{1}{2\pi(5100)(10\times10^{-9})}\approx3121\;Hz
+\]</span></p>
+<p>El diseño real presenta una frecuencia de corte ligeramente superior
+al objetivo debido al valor comercial seleccionado.</p>
+<h2 id="filtros-de-segundo-orden">Filtros de segundo orden</h2>
+<p>Un filtro de segundo orden posee dos polos y puede describirse
+mediante una forma estándar:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+H_{LP}(s)=K\frac{\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}
+\]</span></p>
+</div>
+<p>Aquí:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(K\)</span></td>
+<td>Ganancia de banda de paso</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\omega_0=2\pi f_0\)</span></td>
+<td>Frecuencia natural angular</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Q\)</span></td>
+<td>Factor de calidad del par de polos</td>
+</tr>
+<tr class="even">
+<td>Orden 2</td>
+<td>Pendiente asintótica ≈ −40 dB/década</td>
+</tr>
+</tbody>
+</table>
+<p>El parámetro <span class="math inline">\(Q\)</span> controla la forma
+de la transición y la posible presencia de realce cerca de la frecuencia
+natural.</p>
+<h2 id="sallen-key-pasa-bajos-con-componentes-iguales">Sallen-Key pasa
+bajos con componentes iguales</h2>
+<p>Para una topología Sallen-Key pasa bajos con <span
+class="math inline">\(R_1=R_2=R\)</span> y <span
+class="math inline">\(C_1=C_2=C\)</span>, una relación de diseño
+ampliamente utilizada es:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+f_0=\frac{1}{2\pi RC}
+\]</span></p>
+<p><span class="math display">\[
+Q=\frac{1}{3-K}
+\]</span></p>
+</div>
+<p>Esta relación corresponde a la configuración no inversora Sallen-Key
+de componentes iguales considerada aquí.</p>
+<p>Para una respuesta Butterworth de segundo orden, <span
+class="math inline">\(Q\approx0.707\)</span>. Entonces:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+K=3-\frac{1}{Q}\approx3-1.414\approx1.586
+\]</span></p>
+</div>
+<div class="callout-error">
+<strong>Error frecuente.</strong> Aplicar fórmulas de <span
+class="math inline">\(Q\)</span> de una topología a otra. En filtros de
+segundo orden, la relación entre componentes, ganancia y Q depende de la
+arquitectura específica. Siempre identifique la topología antes de usar
+una ecuación.
+</div>
+<h2
+id="ejemplo-resuelto-2-sallen-key-butterworth-de-segundo-orden">Ejemplo
+resuelto 2 — Sallen-Key Butterworth de segundo orden</h2>
+<h3 id="problema-1">Problema</h3>
+<p>Diseñar una etapa Sallen-Key pasa bajos de segundo orden con <span
+class="math inline">\(f_0=5\)</span> kHz y respuesta Butterworth usando
+componentes iguales. Seleccionar <span
+class="math inline">\(C=10\)</span> nF.</p>
+<h3 id="frecuencia">Frecuencia</h3>
+<p><span class="math display">\[
+R=\frac{1}{2\pi f_0C}
+=\frac{1}{2\pi(5000)(10\times10^{-9})}
+\approx3.18\;k\Omega
+\]</span></p>
+<h3 id="ganancia-requerida">Ganancia requerida</h3>
+<p>Para <span class="math inline">\(Q=0.707\)</span>:</p>
+<p><span class="math display">\[
+K\approx1.586
+\]</span></p>
+<p>En una etapa no inversora:</p>
+<p><span class="math display">\[
+K=1+\frac{R_f}{R_g}
+\]</span></p>
+<p>Si se selecciona <span class="math inline">\(R_g=10\)</span> kΩ:</p>
+<p><span class="math display">\[
+R_f=(K-1)R_g\approx5.86\;k\Omega
+\]</span></p>
+<p>Se selecciona el valor comercial más próximo y se verifica la
+respuesta final mediante simulación.</p>
+<h3 id="interpretación">Interpretación</h3>
+<p>El segundo orden proporciona una transición más pronunciada que un
+primer orden con frecuencia similar, pero exige mayor cuidado en el
+ajuste de Q y en las tolerancias de los componentes.</p>
+<div class="interactive">
+<h3>
+Diseñador interactivo de filtros activos
+</h3>
+<p>
+Defina una frecuencia objetivo, un capacitor y el orden del filtro. El
+simulador calcula R, compara primer y segundo orden y permite verificar
+la magnitud a una frecuencia de prueba.
+</p>
+<div class="control-grid">
+<div>
+<label for="orderSel">Orden</label><select id="orderSel"><option value="1">Primer
+orden</option><option value="2">Segundo orden
+Butterworth</option></select>
+</div>
+<div>
+<label for="kindSel">Tipo</label><select id="kindSel"><option value="lp">Pasa
+bajos</option><option value="hp">Pasa altos</option></select>
+</div>
+<div>
+<label for="fcTarget">f objetivo
+(Hz)</label><input id="fcTarget" type="number" min="10" step="100" value="5000">
+</div>
+<div>
+<label for="capDesign">C
+(nF)</label><input id="capDesign" type="number" min="0.1" step="1" value="10">
+</div>
+<div>
+<label for="gainDesign">Ganancia K (1er
+orden)</label><input id="gainDesign" type="number" min="1" step="0.1" value="2">
+</div>
+<div>
+<label for="fProbe">Frecuencia de prueba
+(Hz)</label><input id="fProbe" type="number" min="1" step="500" value="10000">
+</div>
+</div>
+<div id="designResult" class="result">
+
+</div>
+<canvas id="designCanvas" width="900" height="320">
+</canvas>
+</div>
+<h1 id="verificación-del-amplificador-operacional">Verificación del
+amplificador operacional</h1>
+<p>Un filtro activo debe validarse con el dispositivo real. Como mínimo,
+conviene revisar:</p>
+<div class="cardgrid">
+<div class="card">
+<h4>
+GBW
+</h4>
+<p>
+Debe ser suficientemente mayor que la frecuencia de operación
+multiplicada por la ganancia requerida.
+</p>
+</div>
+<div class="card">
+<h4>
+Slew rate
+</h4>
+<p>
+Debe permitir la máxima pendiente de la señal sin distorsión apreciable.
+</p>
+</div>
+<div class="card">
+<h4>
+Rango de entrada
+</h4>
+<p>
+La señal no debe salir del rango de modo común permitido.
+</p>
+</div>
+<div class="card">
+<h4>
+Rango de salida
+</h4>
+<p>
+Debe existir margen respecto de los rieles de alimentación.
+</p>
+</div>
+<div class="card">
+<h4>
+Ruido
+</h4>
+<p>
+En señales pequeñas puede limitar la relación señal/ruido.
+</p>
+</div>
+<div class="card">
+<h4>
+Tolerancias
+</h4>
+<p>
+Variaciones de R y C modifican <span class="math inline">\(f_c\)</span>,
+Q y ganancia.
+</p>
+</div>
+</div>
+<p>Para una señal sinusoidal, el slew rate mínimo ideal aproximado puede
+estimarse como:</p>
+<div class="eqbox">
+<p><span class="math display">\[
+SR_{min}=2\pi fV_p
+\]</span></p>
+</div>
+<p>Esta condición es necesaria para evitar limitación por pendiente,
+aunque no sustituye la verificación completa del fabricante.</p>
+<h1
+id="aplicaciones-de-filtrado-y-selección-de-señales-en-sistemas-de-telecomunicaciones">1.4.2
+Aplicaciones de filtrado y selección de señales en sistemas de
+telecomunicaciones</h1>
+<h2 id="anti-aliasing-antes-de-un-adc">Anti-aliasing antes de un
+ADC</h2>
+<p>Antes de digitalizar una señal, un filtro analógico puede limitar la
+energía por encima de la banda útil y reducir componentes que
+producirían aliasing. El diseño se relaciona directamente con la
+frecuencia de muestreo y la banda de interés.</p>
+<h2 id="reconstrucción-después-de-un-dac">Reconstrucción después de un
+DAC</h2>
+<p>La salida de un convertidor digital-analógico puede contener
+componentes espectrales asociadas al proceso de muestreo. Un filtro de
+reconstrucción suaviza la señal y atenúa imágenes espectrales no
+deseadas.</p>
+<h2 id="selección-de-canal-y-banda">Selección de canal y banda</h2>
+<p>Los filtros pasa banda permiten conservar una región espectral
+concreta, mientras que los filtros notch pueden utilizarse para atenuar
+interferencias estrechas. La selectividad requerida determina el orden y
+la arquitectura.</p>
+<h2 id="acondicionamiento-de-banda-base">Acondicionamiento de banda
+base</h2>
+<p>En etapas de recepción o instrumentación, un filtro activo puede
+combinar ganancia y limitación de banda, mejorando la utilización del
+rango dinámico de la siguiente etapa.</p>
+<h2 id="flujo-de-diseño-orientado-a-telecomunicaciones">Flujo de diseño
+orientado a telecomunicaciones</h2>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Definir la banda útil:</strong> frecuencias que contienen la
+información.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Definir la interferencia:</strong> frecuencias que deben
+atenuarse y atenuación mínima deseada.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Elegir la respuesta:</strong> pasa bajos, pasa altos, pasa banda
+o rechazo.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Elegir el orden:</strong> compromiso entre selectividad y
+complejidad.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Dimensionar:</strong> calcular R, C, ganancia y, si corresponde,
+Q.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+6
+</div>
+<div class="stepbody">
+<strong>Verificar el op-amp:</strong> GBW, slew rate, alimentación y
+ruido.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+7
+</div>
+<div class="stepbody">
+<strong>Validar:</strong> simulación AC, señal temporal, montaje y
+medición.
+</div>
+</div>
+<h1 id="comprueba-tu-comprensión">Comprueba tu comprensión</h1>
+<div class="quizbox" data-answer="b"
+data-feedback-ok="Correcto. En primer orden, fc depende del producto RC."
+data-feedback-bad="Revise la expresión fc = 1/(2πRC).">
+<p>
+<strong>1.</strong> En un filtro activo de primer orden, ¿qué
+combinación determina principalmente la frecuencia de corte de la red
+RC?
+</p>
+<button data-choice="a">
+Solo Rf
+</button>
+<button data-choice="b">
+El producto R·C
+</button>
+<button data-choice="c">
+Solo la alimentación
+</button>
+<button data-choice="d">
+La corriente de bias únicamente
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="c"
+data-feedback-ok="Correcto. Un segundo orden aporta aproximadamente 40 dB/década de pendiente asintótica."
+data-feedback-bad="Cada polo aporta aproximadamente 20 dB/década.">
+<p>
+<strong>2.</strong> ¿Qué ventaja principal ofrece un filtro de segundo
+orden frente a uno de primer orden con frecuencia similar?
+</p>
+<button data-choice="a">
+Siempre consume cero potencia
+</button>
+<button data-choice="b">
+No necesita componentes
+</button>
+<button data-choice="c">
+Mayor selectividad
+</button>
+<button data-choice="d">
+Elimina toda fase
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="a"
+data-feedback-ok="Correcto. La respuesta Butterworth de segundo orden usa Q≈0.707 para una magnitud máximamente plana en banda de paso."
+data-feedback-bad="Revise el valor de Q utilizado en el ejemplo Sallen-Key Butterworth.">
+<p>
+<strong>3.</strong> ¿Qué valor de Q se asocia aproximadamente a una
+etapa Butterworth de segundo orden?
+</p>
+<button data-choice="a">
+0.707
+</button>
+<button data-choice="b">
+0
+</button>
+<button data-choice="c">
+10
+</button>
+<button data-choice="d">
+100
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<div class="quizbox" data-answer="d"
+data-feedback-ok="Correcto. La verificación del op-amp es parte del diseño, porque un filtro ideal puede fallar por limitaciones de GBW, slew rate o rango dinámico."
+data-feedback-bad="Un diseño activo depende tanto de R y C como del comportamiento real del amplificador operacional.">
+<p>
+<strong>4.</strong> ¿Cuál de las siguientes verificaciones es necesaria
+en un filtro activo real?
+</p>
+<button data-choice="a">
+Solo el color de las resistencias
+</button>
+<button data-choice="b">
+Solo la frecuencia de la red eléctrica
+</button>
+<button data-choice="c">
+Ninguna si la simulación funciona
+</button>
+<button data-choice="d">
+GBW, slew rate y rango de entrada/salida
+</button>
+<div class="feedback">
+Seleccione una respuesta.
+</div>
+</div>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos</h1>
+<h2 id="nivel-1-comprensión">Nivel 1 — Comprensión</h2>
+<ol type="1">
+<li>Explique por qué un filtro activo puede proporcionar simultáneamente
+filtrado y ganancia.</li>
+<li>Compare un filtro de primer orden con uno de segundo orden en
+términos de pendiente y complejidad.</li>
+<li>¿Qué función cumple Q en un filtro de segundo orden?</li>
+<li>Justifique por qué debe verificarse el GBW del op-amp después de
+calcular R y C.</li>
+</ol>
+<h2 id="nivel-2-aplicación">Nivel 2 — Aplicación</h2>
+<ol type="1">
+<li>Diseñe un pasa bajos activo de primer orden con <span
+class="math inline">\(f_c=2\)</span> kHz usando <span
+class="math inline">\(C=22\)</span> nF y <span
+class="math inline">\(K=1.5\)</span>.</li>
+<li>Diseñe un pasa altos activo de primer orden con <span
+class="math inline">\(f_c=1\)</span> kHz usando <span
+class="math inline">\(C=100\)</span> nF.</li>
+<li>Para una etapa Sallen-Key de componentes iguales con <span
+class="math inline">\(f_0=8\)</span> kHz y <span
+class="math inline">\(C=10\)</span> nF, determine R.</li>
+<li>Calcule el slew rate mínimo para una señal sinusoidal de 20 kHz y 4
+V pico.</li>
+</ol>
+<details>
+<summary>
+Pistas para el Nivel 2
+</summary>
+<p>
+<strong>1–3.</strong> Use <span class="math inline">\(R=1/(2\pi
+fC)\)</span>; para la ganancia no inversora, <span
+class="math inline">\(K=1+R_f/R_g\)</span>.
+</p>
+<p>
+<strong>4.</strong> Use <span class="math inline">\(SR_{min}=2\pi
+fV_p\)</span> y exprese el resultado en V/s o V/µs.
+</p>
+</details>
+<h2 id="nivel-3-transferencia-profesional">Nivel 3 — Transferencia
+profesional</h2>
+<p>Se requiere acondicionar una señal de banda base útil entre 0 y 6 kHz
+antes de un ADC de 25 kS/s. Existe interferencia significativa a partir
+de 11 kHz. Plantee un filtro activo que:</p>
+<ul>
+<li>conserve adecuadamente la banda útil;</li>
+<li>atenúe antes de la frecuencia de Nyquist;</li>
+<li>justifique primer o segundo orden;</li>
+<li>seleccione una frecuencia de corte inicial;</li>
+<li>estime R y C para una implementación;</li>
+<li>indique qué parámetros del op-amp deben verificarse;</li>
+<li>proponga un procedimiento de validación experimental.</li>
+</ul>
+<h1 id="caso-profesional-filtrado-previo-a-digitalización">Caso
+profesional — filtrado previo a digitalización</h1>
+<p>Una señal analógica de un receptor ocupa 0–4 kHz y debe digitalizarse
+a 20 kS/s. Un interferente aparece alrededor de 9 kHz.</p>
+<div class="step">
+<div class="stepnum">
+1
+</div>
+<div class="stepbody">
+<strong>Determine</strong> la frecuencia de Nyquist: 10 kHz.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+2
+</div>
+<div class="stepbody">
+<strong>Ubique</strong> la banda útil y el interferente.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+3
+</div>
+<div class="stepbody">
+<strong>Compare</strong> cuánto atenúa un primer y un segundo orden
+entre la banda útil y 9–10 kHz.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+4
+</div>
+<div class="stepbody">
+<strong>Seleccione</strong> una frecuencia de corte y orden como
+decisión preliminar de diseño.
+</div>
+</div>
+<div class="step">
+<div class="stepnum">
+5
+</div>
+<div class="stepbody">
+<strong>Implemente</strong> la respuesta elegida y verifique magnitud,
+saturación y ruido.
+</div>
+</div>
+<div class="callout-miai">
+<strong>Discusión.</strong> Una frecuencia de corte demasiado baja
+degrada la información útil; una demasiado alta deja pasar
+interferencia. El diseño consiste en administrar ese compromiso con el
+orden y la respuesta apropiados.
+</div>
+<h1 id="feedback-y-orientaciones">Feedback y orientaciones</h1>
+<ul>
+<li>Si R calculada es poco práctica, seleccione otro valor de C y repita
+el diseño.</li>
+<li>Si la frecuencia real se desplaza, considere tolerancias de R y C y
+recalcule con valores medidos.</li>
+<li>Si una etapa de segundo orden presenta realce inesperado, revise Q y
+la ganancia K de la topología.</li>
+<li>Si la simulación ideal funciona pero el montaje no, revise GBW, slew
+rate, alimentación, desacoplo y carga.</li>
+<li>Si la señal se recorta, el problema no necesariamente es el filtro:
+puede ser el rango de salida del op-amp.</li>
+</ul>
+<h1 id="síntesis">Síntesis</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Decisión de diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f_c\)</span> o <span
+class="math inline">\(f_0\)</span></td>
+<td>Define la ubicación espectral de la transición</td>
+</tr>
+<tr class="even">
+<td>Orden</td>
+<td>Define rapidez de atenuación y complejidad</td>
+</tr>
+<tr class="odd">
+<td>Ganancia K</td>
+<td>Ajusta nivel de señal y puede afectar Q según topología</td>
+</tr>
+<tr class="even">
+<td>Q</td>
+<td>Controla la forma de la respuesta de segundo orden</td>
+</tr>
+<tr class="odd">
+<td>R y C</td>
+<td>Materializan la frecuencia y deben elegirse con valores
+prácticos</td>
+</tr>
+<tr class="even">
+<td>Op-amp</td>
+<td>Debe soportar frecuencia, amplitud y carga requeridas</td>
+</tr>
+<tr class="odd">
+<td>Validación</td>
+<td>Cálculo → simulación → implementación → medición</td>
+</tr>
+</tbody>
+</table>
+<h1 id="reflexiona">Reflexiona</h1>
+<blockquote>
+<p>¿Por qué un filtro de segundo orden con cálculos perfectos puede no
+cumplir en laboratorio? Relacione su respuesta con tolerancias, Q, GBW,
+slew rate, alimentación, carga y montaje físico.</p>
+</blockquote>
+<h1 id="referencias-sugeridas">Referencias sugeridas</h1>
+<p>Para el desarrollo final del curso, estas referencias deben
+contrastarse con la <strong>bibliografía oficial del
+sílabo</strong>:</p>
+<ul>
+<li>Sedra, A. S. &amp; Smith, K. C. <em>Microelectronic
+Circuits</em>.</li>
+<li>Franco, S. <em>Design with Operational Amplifiers and Analog
+Integrated Circuits</em>.</li>
+<li>Boylestad, R. L. &amp; Nashelsky, L. <em>Electronic Devices and
+Circuit Theory</em>.</li>
+<li>Hojas de datos y notas de aplicación del fabricante del op-amp
+utilizado.</li>
+</ul>
+<script>
+(function(){
+ const $=id=>document.getElementById(id);
+ function fmt(x,d=2){if(!isFinite(x))return '—';return Number(x).toFixed(d).replace(/\.00$/,'');}
+ function response(order,kind,f,fc,K){
+   const r=f/fc;
+   if(order===1){return kind==='lp'?K/Math.sqrt(1+r*r):K*r/Math.sqrt(1+r*r);}
+   const Q=1/Math.sqrt(2); // Butterworth
+   if(kind==='lp') return 1/Math.sqrt(Math.pow(1-r*r,2)+Math.pow(r/Q,2));
+   return r*r/Math.sqrt(Math.pow(1-r*r,2)+Math.pow(r/Q,2));
+ }
+ function draw(){
+   const order=parseInt($('orderSel').value),kind=$('kindSel').value;
+   const fc=Math.max(1,parseFloat($('fcTarget').value)||1),C=Math.max(.01,parseFloat($('capDesign').value)||1)*1e-9;
+   const K1=Math.max(1,parseFloat($('gainDesign').value)||1),fp=Math.max(.01,parseFloat($('fProbe').value)||1);
+   const R=1/(2*Math.PI*fc*C); const K=order===2?1.586:K1; const Q=order===2?0.707:null;
+   const m=response(order,kind,fp,fc,K),db=20*Math.log10(Math.max(m,1e-9));
+   let extra=order===2?`<div><span class="small">Ganancia Sallen-Key igual-RC</span><div class="kpi">K ≈ 1.586</div></div><div><span class="small">Q</span><div class="kpi">≈ 0.707</div></div>`:`<div><span class="small">Ganancia de banda</span><div class="kpi">${fmt(K,2)}</div></div>`;
+   $('designResult').innerHTML=`<div class="cardgrid"><div><span class="small">R calculada</span><div class="kpi">${fmt(R/1000,3)} kΩ</div></div><div><span class="small">C seleccionada</span><div class="kpi">${fmt(C*1e9,2)} nF</div></div>${extra}<div><span class="small">Magnitud en f de prueba</span><div class="kpi">${fmt(m,3)} (${fmt(db,2)} dB)</div></div></div>`;
+   const c=$('designCanvas'),ctx=c.getContext('2d'),W=c.width,H=c.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+   const fmin=fc/100,fmax=fc*100,ymin=-70,ymax=10;
+   const xof=ff=>(Math.log10(ff)-Math.log10(fmin))/(Math.log10(fmax)-Math.log10(fmin))*W;
+   const yof=dd=>H-((dd-ymin)/(ymax-ymin))*H;
+   ctx.strokeStyle='#e0e7ed';ctx.lineWidth=1;for(let d=-60;d<=0;d+=10){let y=yof(d);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.fillStyle='#617282';ctx.font='13px sans-serif';ctx.fillText(d+' dB',6,y-4);}for(let i=0;i<=4;i++){let ff=fmin*Math.pow(10,i);let x=xof(ff);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.fillStyle='#617282';ctx.fillText(ff>=1000?(ff/1000).toFixed(1)+'k':ff.toFixed(0),x+4,H-8);}
+   ctx.strokeStyle='#2D6A9F';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<W;i++){let ff=Math.pow(10,Math.log10(fmin)+(i/(W-1))*(Math.log10(fmax)-Math.log10(fmin)));let mm=response(order,kind,ff,fc,K),dd=Math.max(ymin,20*Math.log10(Math.max(mm,1e-9))),y=yof(dd);if(i===0)ctx.moveTo(i,y);else ctx.lineTo(i,y);}ctx.stroke();
+   ctx.strokeStyle='#0f766e';ctx.setLineDash([7,5]);let xc=xof(fc);ctx.beginPath();ctx.moveTo(xc,0);ctx.lineTo(xc,H);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#0f766e';ctx.fillText('fc',Math.min(W-25,xc+5),18);
+   let xp=xof(Math.min(fmax,Math.max(fmin,fp))),yp=yof(Math.max(ymin,db));ctx.fillStyle='#b42318';ctx.beginPath();ctx.arc(xp,yp,6,0,Math.PI*2);ctx.fill();
+ }
+ ['orderSel','kindSel','fcTarget','capDesign','gainDesign','fProbe'].forEach(id=>$(id).addEventListener('input',draw));
+ document.querySelectorAll('.quizbox').forEach(box=>{box.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{let ok=btn.dataset.choice===box.dataset.answer;box.querySelectorAll('button').forEach(b=>b.classList.remove('is-correct','is-wrong'));btn.classList.add(ok?'is-correct':'is-wrong');let f=box.querySelector('.feedback');f.textContent=ok?box.dataset.feedbackOk:box.dataset.feedbackBad;f.className='feedback '+(ok?'status-ok':'status-warn');}))});
+ draw();
+})();
+</script>
+</body>
+</html>
