@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es"><head><base href="./"/><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>2.3 El teorema del valor medio</title>
+
+
+
+<link href="../../assets/css/bloque-02.css" rel="stylesheet"/></head>
+<body data-num="2.3"><header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>2.3. El teorema del valor medio</h1>
+<p>Cálculo Integral · Bloque 2 · El Teorema Fundamental del Cálculo</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout"><aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría</button><button data-go="profundizacion" type="button">Profundización</button><button data-go="demostracion" type="button">Desarrollo matemático</button><button data-go="ejemplos-extra" type="button">Más ejemplos</button><button data-go="errores" type="button">Errores frecuentes</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside><main>
+<section id="inicio"><h2>Introducción</h2><p>Si una función es continua, existe al menos un punto donde su valor coincide con el valor promedio de toda la función en el intervalo.</p><div class="callout"><strong>Objetivo:</strong> Interpretar y aplicar el Teorema del Valor Medio para integrales.</div></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul><li>Continuidad.</li><li>Integral definida.</li><li>Concepto de promedio.</li></ul></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>Una señal puede variar todo el tiempo, pero existe al menos un instante donde toma exactamente el nivel promedio del intervalo.</p></section>
+<section id="teoria"><h2>Teoría esencial</h2><div class="grid2"><div class="card"><h3>Enunciado</h3><p>Si f es continua en [a,b], existe c∈[a,b] tal que ∫ₐᵇf(x)dx=f(c)(b−a).</p></div><div class="card"><h3>Consecuencia</h3><p>f(c)=1/(b−a)·∫ₐᵇf(x)dx.</p></div><div class="card"><h3>Interpretación geométrica</h3><p>La integral equivale al área de un rectángulo de base b−a y altura f(c).</p></div></div></section>
+<section id="profundizacion">
+<h2>Profundización conceptual</h2>
+<p>Esta sección amplía la teoría esencial para comprender el <em>porqué</em> del procedimiento, no solamente su aplicación mecánica.</p>
+<div class="deep-grid"><div class="deep-card"><h3>Hipótesis esencial</h3><p>La función debe ser continua en [a,b] para aplicar la forma clásica del Teorema del Valor Medio para integrales.</p></div><div class="deep-card"><h3>Existencia, no necesariamente unicidad</h3><p>El teorema garantiza al menos un punto c, pero puede haber más de uno.</p></div><div class="deep-card"><h3>Rectángulo equivalente</h3><p>El área neta bajo la curva es igual al área de un rectángulo cuya base es b−a y cuya altura es f(c).</p></div><div class="deep-card"><h3>Cómo hallar c</h3><p>Primero se calcula el valor medio; luego se resuelve la ecuación f(c)=f_prom buscando soluciones dentro de [a,b].</p></div></div>
+<div class="concept-map"><span>Concepto</span><b>→</b><span>Interpretación</span><b>→</b><span>Procedimiento</span><b>→</b><span>Aplicación</span></div>
+</section>
+<section id="demostracion">
+<h2>Desarrollo matemático y razonamiento</h2>
+<p>Partimos de la relación:</p>
+<div class="formula">∫ₐᵇf(x)dx=f(c)(b−a)</div>
+<p>Dividiendo para la longitud del intervalo:</p>
+<div class="formula">f(c)=1/(b−a) · ∫ₐᵇf(x)dx</div>
+<p>El lado derecho es justamente el valor medio de f. Por tanto, el teorema afirma que una función continua alcanza su valor promedio en al menos un punto del intervalo.</p>
+</section>
+<section id="ejemplos-extra">
+<h2>Ejemplos adicionales explicados</h2>
+<p>Resuelve primero cada planteamiento y luego despliega el desarrollo para comparar tu procedimiento.</p>
+<details><summary><strong>Ejemplo adicional 1.</strong> f(x)=x²+1 en [0,1].</summary><div class="solution"><strong>Desarrollo:</strong> f_prom=4/3. Entonces c²+1=4/3 ⇒ c=1/√3.</div></details><details><summary><strong>Ejemplo adicional 2.</strong> f(x)=3x+2 en [1,3].</summary><div class="solution"><strong>Desarrollo:</strong> f_prom=8. Entonces 3c+2=8 ⇒ c=2.</div></details><details><summary><strong>No unicidad.</strong> f(x)=cos x en [0,2π].</summary><div class="solution"><strong>Desarrollo:</strong> El valor medio es 0. Los puntos c=π/2 y c=3π/2 satisfacen cos(c)=0.</div></details>
+</section>
+<section id="errores">
+<h2>Errores frecuentes y cómo evitarlos</h2>
+<div class="error-box"><ul><li>Confundir el valor c con el valor medio f(c).</li><li>Asumir que siempre existe un único c.</li><li>No verificar que c pertenezca al intervalo [a,b].</li><li>Aplicar el teorema sin comprobar la continuidad de la función.</li></ul></div>
+</section>
+<section id="ejemplos"><h2>Ejemplos resueltos</h2><details><summary><strong>Ejemplo 1.</strong> f(x)=x² en [0,1].</summary><div class="solution"><strong>Resolución:</strong> Valor medio=1/3. Entonces c=1/√3.</div></details><details><summary><strong>Ejemplo 2.</strong> f(x)=2x+1 en [0,2].</summary><div class="solution"><strong>Resolución:</strong> Valor medio=3. Entonces c=1.</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">Para una señal continua x(t), el teorema garantiza un instante c donde x(c) coincide con su valor medio en el intervalo.</div><div class="telecom-deep"><h3>Profundización aplicada</h3>
+<p>Considere una señal continua x(t) observada durante un intervalo. El teorema afirma que existe al menos un instante c donde x(c) coincide con el nivel promedio.</p>
+<p>Esto no significa que la señal permanezca en ese nivel; significa únicamente que alcanza ese valor en algún punto del intervalo.</p>
+</div></section>
+<section id="laboratorio"><h2>Laboratorio SVG interactivo</h2><div class="controls"><label>Función<select id="fn"><option value="x">x</option><option value="q">x²</option><option value="l">2x+1</option></select></label><label>b<input id="b" max="5" min="1" step=".1" type="range" value="2"/></label></div><svg id="labSvg" viewbox="0 0 820 320"></svg><div class="feedback" id="labOut"></div></section>
+<section id="entrenador"><h2>Entrenador de ejercicios aleatorios</h2><div class="trainer"><label>Nivel<select id="difficulty"><option value="easy">Básico</option><option selected="" value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><div class="score"><div><strong id="hits">0</strong>Aciertos</div><div><strong id="attempts">0</strong>Intentos</div><div><strong id="streak">0</strong>Racha</div></div></div><div class="challenge"><p id="exPrompt"></p><label>Respuesta<input id="exAns"/></label><div class="actions"><button id="newEx" type="button">Nuevo ejercicio</button><button class="secondary" id="checkEx" type="button">Comprobar</button></div><div class="feedback" id="exFeed"></div></div></section>
+<section id="banco"><h2>Banco de problemas por niveles</h2><p>18 problemas generados para este tema: 6 básicos, 6 intermedios y 6 avanzados.</p><div class="controls"><label>Nivel<select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><button id="bankRandom" type="button">Problema aleatorio</button></div><div class="bank"><div class="banklist" id="bankList"></div><div class="challenge"><p id="bankPrompt"></p><label>Respuesta<input id="bankAns"/></label><div class="actions"><button id="bankCheck" type="button">Comprobar</button><button class="secondary" id="bankHint" type="button">Pista</button></div><div class="feedback" id="bankFeed"></div></div></div></section>
+<section id="guiados"><h2>Ejercicios guiados</h2><details><summary><strong>G1.</strong> f(x)=x en [0,2]. Halla c.</summary><div class="solution"><strong>Respuesta guiada:</strong> c=1.</div></details><details><summary><strong>G2.</strong> f(x)=x+2 en [0,4]. Halla c.</summary><div class="solution"><strong>Respuesta guiada:</strong> c=2.</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Aplica el teorema a f(x)=x²+1 en [0,1].</li><li>Aplica el teorema a f(x)=3x+2 en [1,3].</li><li>Explica geométricamente qué representa el rectángulo de altura f(c).</li></ol><div class="callout warn"><strong>Recomendación:</strong> justificar el procedimiento y comprobar cuando sea posible.</div></section>
+<section id="juego"><h2>Aprende jugando <span class="optional">Opcional</span></h2><button id="toggleGame" type="button">Iniciar / ocultar juego</button><div class="challenge" hidden="" id="gamePanel"><svg viewbox="0 0 840 170"><path d="M65 85 C210 15,350 145,500 80 S690 35,785 85" fill="none" stroke="#9aa9b7" stroke-width="7"></path><circle cx="65" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="65" y="91">TX</text><circle cx="785" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="785" y="91">RX</text><circle cx="65" cy="85" fill="#f59e0b" id="packet" r="12"></circle></svg><p><strong id="gameStage">0/5</strong> desafíos</p><p id="gamePrompt"></p><label>Respuesta<input id="gameAns"/></label><div class="actions"><button id="gameCheck" type="button">Enviar</button><button class="secondary" id="gameReset" type="button">Reiniciar</button></div><div class="feedback" id="gameFeed"></div></div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="q"><p><strong>1.</strong> El teorema exige…</p><label><input name="q1" type="radio" value="0"/> continuidad</label><label><input name="q1" type="radio" value="1"/> discontinuidad</label><label><input name="q1" type="radio" value="2"/> solo polinomios</label></div><div class="q"><p><strong>2.</strong> Garantiza un c tal que…</p><label><input name="q2" type="radio" value="0"/> f(c)=f_prom</label><label><input name="q2" type="radio" value="1"/> f(c)=0 siempre</label><label><input name="q2" type="radio" value="2"/> f′(c)=0 siempre</label></div><div class="q"><p><strong>3.</strong> Para f=x en [0,2], c=</p><label><input name="q3" type="radio" value="0"/> 1</label><label><input name="q3" type="radio" value="1"/> 2</label><label><input name="q3" type="radio" value="2"/> 0</label></div><div class="q"><p><strong>4.</strong> Geométricamente se usa un rectángulo de altura…</p><label><input name="q4" type="radio" value="0"/> f(c)</label><label><input name="q4" type="radio" value="1"/> f′(c)</label><label><input name="q4" type="radio" value="2"/> b−a</label></div><div class="actions"><button type="submit">Calificar</button><button class="secondary" id="quizReset" type="button">Reiniciar</button></div><div class="feedback" id="quizOut"></div></form><script id="ansData" type="application/json">{"q1": 0, "q2": 0, "q3": 0, "q4": 0}</script></section>
+<section class="integrator" id="integradora"><div><h2>Actividad final integradora del Bloque 2</h2><p>Conecta los seis contenidos en un único problema aplicado a Telecomunicaciones.</p></div><a href="actividad-integradora.html">Abrir actividad →</a></section>
+<section id="resumen"><h2>Resumen</h2><div class="callout"><ul><li>El teorema requiere continuidad.</li><li>Existe c donde f(c) es igual al valor medio.</li><li>Geométricamente sustituye el área bajo la curva por un rectángulo equivalente.</li></ul></div></section>
+</main></div>
+
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 2 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+
+<script src="../../assets/js/bloque-02.js"></script></body></html>

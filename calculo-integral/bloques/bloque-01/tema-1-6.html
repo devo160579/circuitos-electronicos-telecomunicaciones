@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><base href="./"/>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>1.6 Límite de las sumatorias | Cálculo Integral UCACUE</title>
+
+
+
+
+<link href="../../assets/css/bloque-01.css" rel="stylesheet"/></head>
+<body>
+<header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>1.6. Límite de las sumatorias</h1>
+<p>Bloque 1: Notación Sigma e Integración · Clase interactiva autocontenida</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout">
+<aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button class="active" data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría</button><button data-go="visual" type="button">Representación</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="simulador" type="button">Simulador</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="telecom-lab" type="button">Caso Telecom</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside>
+<main>
+<section id="inicio"><h2>Introducción</h2><p class="lead">El paso decisivo del área aproximada al área exacta se produce mediante un límite: n aumenta y Δx disminuye.</p><div class="callout"><strong>Objetivo de la clase:</strong> Relacionar el límite de sumas de Riemann con la definición de integral definida.</div><p class="small">Ruta sugerida: comprender → observar → resolver → experimentar → comprobar.</p></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul class="clean"><li>Concepto de límite.</li><li>Sumatorias.</li><li>Aproximaciones de área.</li></ul><div class="callout warn"><strong>Comprobación rápida:</strong> si alguno de estos conocimientos no está claro, conviene repasarlo antes de avanzar.</div></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>No se trata de dibujar realmente infinitos rectángulos. El límite expresa el valor al que se acercan las sumas cuando la partición se refina indefinidamente.</p></section>
+<section id="teoria"><h2>Teoría esencial</h2><div class="grid2"><div class="card"><h3>Idea central</h3><p>∫ₐᵇf(x)dx = limₙ→∞ Σ f(xᵢ*)Δx, cuando el límite existe.</p></div><div class="card"><h3>Convergencia</h3><p>Una sucesión de aproximaciones converge si sus valores se acercan a un número fijo.</p></div><div class="card"><h3>Ancho</h3><p>Para una partición uniforme, Δx=(b−a)/n → 0 cuando n→∞.</p></div></div></section>
+<section id="visual"><h2>Representación conceptual</h2><div class="grid2"><div class="card"><h3>De lo discreto a lo continuo</h3><p>Una región se divide en franjas de ancho Δx. Cada franja se aproxima con un rectángulo y las áreas se suman.</p><div class="formula">Σ f(xᵢ*)Δx → ∫ₐᵇ f(x)dx</div></div><div class="card"><h3>Lectura gráfica</h3><p>Eje horizontal: variable independiente. Eje vertical: valor de la función. Los rectángulos muestran contribuciones locales a la acumulación total.</p></div></div></section>
+<section id="ejemplos"><h2>Ejemplos resueltos paso a paso</h2><details class="example"><summary><strong>Ejemplo 1.</strong> f(x)=x² en [0,1], suma derecha.</summary><div class="solution"><strong>Resolución:</strong> Rₙ=(1/n³)Σi²=[n(n+1)(2n+1)]/(6n³). Al tomar n→∞ se obtiene 1/3.</div></details><details class="example"><summary><strong>Ejemplo 2.</strong> Interpretación.</summary><div class="solution"><strong>Resolución:</strong> R₁₀≈0.385; R₁₀₀≈0.33835; R₁₀₀₀≈0.3338335. La secuencia se aproxima a 1/3.</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">El concepto de límite conecta modelos discretos con continuos. En telecomunicaciones, esta relación aparece al comparar representaciones muestreadas con modelos continuos.</div><p class="small">Esta aplicación contextualiza el concepto matemático; no sustituye el desarrollo formal del tema.</p></section>
+<section class="sim" id="simulador"><h2>Simulador interactivo</h2><p>Modifica los parámetros y observa cómo cambia el resultado.</p>
+<button id="run">Generar secuencia de aproximaciones</button>
+<div class="feedback" id="simout"></div>
+</section>
+<section class="advanced-lab" id="laboratorio">
+<h2>Laboratorio SVG avanzado: convergencia de las sumas</h2>
+<p>Observa cómo una sucesión de aproximaciones Rₙ se acerca al valor exacto de la integral cuando n crece.</p>
+<div class="lab-controls" id="labControls"></div>
+<svg aria-label="Visualización interactiva del tema 1.6" id="advancedSvg" role="img" viewbox="0 0 860 390"></svg>
+<div class="lab-metrics">
+<div><span id="m1">—</span><small id="m1l">Indicador 1</small></div>
+<div><span id="m2">—</span><small id="m2l">Indicador 2</small></div>
+<div><span id="m3">—</span><small id="m3l">Indicador 3</small></div>
+</div>
+<div class="feedback" id="labFeedback"></div>
+</section>
+<section id="entrenador">
+<h2>Entrenador de ejercicios aleatorios</h2>
+<p>Genera ejercicios nuevos cada vez. Selecciona la dificultad, resuelve sin mirar la respuesta y utiliza la retroalimentación para corregir el procedimiento.</p>
+<div class="trainer-head">
+<label>Nivel
+      <select id="difficulty">
+<option value="easy">Básico</option>
+<option selected="" value="medium">Intermedio</option>
+<option value="hard">Avanzado</option>
+</select>
+</label>
+<div class="scoreboard">
+<div><strong id="hits">0</strong><span>Aciertos</span></div>
+<div><strong id="attempts">0</strong><span>Intentos</span></div>
+<div><strong id="streak">0</strong><span>Racha</span></div>
+</div>
+</div>
+<div class="challenge">
+<p id="exercisePrompt"><strong>Presiona “Nuevo ejercicio”.</strong></p>
+<label>Tu respuesta
+      <input id="exerciseAnswer" inputmode="decimal" placeholder="Escribe únicamente el valor solicitado" type="text"/>
+</label>
+<div class="action-row">
+<button id="newExercise" type="button">Nuevo ejercicio</button>
+<button class="secondary" id="checkExercise" type="button">Comprobar</button>
+</div>
+<div aria-live="polite" class="feedback" id="exerciseFeedback"></div>
+</div>
+</section>
+<section id="banco">
+<h2>Banco de problemas por niveles</h2>
+<p>Esta clase contiene <strong>18 problemas</strong>: 6 básicos, 6 intermedios y 6 avanzados. Resuelve, solicita una pista cuando sea necesario y comprueba tu respuesta.</p>
+<div class="lab-controls">
+<label>Nivel
+      <select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select>
+</label>
+<button id="bankRandom" type="button">Problema aleatorio</button>
+</div>
+<div class="bank-grid">
+<div class="bank-list" id="bankList"></div>
+<div class="bank-problem">
+<p id="bankPrompt"><strong>Selecciona un problema.</strong></p>
+<label>Respuesta numérica
+        <input id="bankAnswer" inputmode="decimal" placeholder="Ej.: 1.333333" type="text"/>
+</label>
+<div class="action-row">
+<button id="bankCheck" type="button">Comprobar</button>
+<button class="secondary" id="bankHint" type="button">Pista</button>
+</div>
+<div aria-live="polite" class="feedback" id="bankFeedback"></div>
+</div>
+</div>
+</section>
+<section id="telecom-lab">
+<h2>Caso Telecom: del muestreo grueso a una representación refinada</h2>
+<div class="callout">Aumentar el número de muestras reduce el ancho temporal Δt. Bajo condiciones adecuadas, la aproximación discreta de una acumulación se acerca al modelo continuo.</div>
+<details class="example">
+<summary><strong>Actividad contextualizada</strong> — analizar el problema</summary>
+<div class="solution" id="telecomProblem"></div>
+</details>
+</section>
+<section id="juego">
+<h2>Aprende jugando <span class="optional-tag">Opcional</span></h2>
+<p>Completa cinco desafíos para llevar un paquete de información desde el transmisor hasta el receptor.</p>
+<button id="toggleGame" type="button">Iniciar juego</button>
+<div class="game-panel" hidden="" id="gamePanel">
+<svg aria-label="Ruta de un paquete desde transmisor hasta receptor" id="gameSvg" role="img" viewbox="0 0 860 180">
+<path d="M70 90 C220 20, 330 160, 460 90 S700 30, 790 90" fill="none" id="gamePath" stroke="#9aa9b7" stroke-linecap="round" stroke-width="7"></path>
+<circle cx="70" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="70" y="96">TX</text>
+<circle cx="790" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="790" y="96">RX</text>
+<circle cx="70" cy="90" fill="#f59e0b" id="packet" r="13" stroke="#7c4a03" stroke-width="2"></circle>
+</svg>
+<div class="game-status"><strong id="gameStage">0/5</strong> desafíos superados</div>
+<p id="gamePrompt"></p>
+<label>Respuesta
+      <input id="gameAnswer" inputmode="decimal" placeholder="Valor numérico" type="text"/>
+</label>
+<div class="action-row">
+<button id="gameCheck" type="button">Enviar respuesta</button>
+<button class="secondary" id="gameReset" type="button">Reiniciar juego</button>
+</div>
+<div aria-live="polite" class="feedback" id="gameFeedback"></div>
+</div>
+</section>
+<section id="guiados"><h2>Ejercicios guiados</h2><p>Intenta resolver cada ejercicio antes de desplegar la respuesta.</p><details class="example"><summary><strong>G1.</strong> Si Δx=2/n, ¿qué ocurre cuando n→∞?</summary><div class="solution"><strong>Respuesta guiada:</strong> Δx→0.</div></details><details class="example"><summary><strong>G2.</strong> ¿El límite requiere calcular infinitos términos físicamente?</summary><div class="solution"><strong>Respuesta guiada:</strong> No. Es una definición matemática del comportamiento de la secuencia.</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Deriva la expresión de Rₙ para f(x)=x en [0,1].</li><li>Calcula R₁₀, R₁₀₀ y R₁₀₀₀ para f(x)=x.</li><li>Explica con tus palabras el significado de n→∞.</li></ol><div class="callout warn"><strong>Recomendación:</strong> justifica el procedimiento, no presentes únicamente el resultado final.</div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="qitem"><p><strong>1.</strong> Cuando n→∞ en partición uniforme, Δx…</p><label><input name="q1" type="radio" value="0"/> →0</label><label><input name="q1" type="radio" value="1"/> →∞</label><label><input name="q1" type="radio" value="2"/> →1</label></div><div class="qitem"><p><strong>2.</strong> La integral definida se relaciona con…</p><label><input name="q2" type="radio" value="0"/> Límite de sumas</label><label><input name="q2" type="radio" value="1"/> Producto de derivadas</label><label><input name="q2" type="radio" value="2"/> Logaritmo de n</label></div><div class="qitem"><p><strong>3.</strong> Convergencia significa…</p><label><input name="q3" type="radio" value="0"/> Acercarse a un valor</label><label><input name="q3" type="radio" value="1"/> Oscilar necesariamente</label><label><input name="q3" type="radio" value="2"/> Crecer sin límite</label></div><div class="qitem"><p><strong>4.</strong> n→∞ exige dibujar infinitos rectángulos físicamente…</p><label><input name="q4" type="radio" value="0"/> Sí</label><label><input name="q4" type="radio" value="1"/> No</label><label><input name="q4" type="radio" value="2"/> Solo en GeoGebra</label></div><button type="submit">Calificar</button><button class="secondary" id="reset" type="button">Reiniciar</button><div aria-live="polite" class="feedback" id="quizout"></div></form></section>
+<section class="integrator-link" id="integradora">
+<div>
+<h2>Actividad final integradora del Bloque 1</h2>
+<p>Cuando completes las clases, conecta los doce subtemas en un único caso de Telecomunicaciones: <strong>energía recibida a partir del perfil de potencia p(t)=1+t² mW</strong> durante 1 s.</p>
+</div>
+<a href="actividad-integradora.html">Abrir actividad integradora →</a>
+</section>
+<section id="resumen"><h2>Resumen de la clase</h2><div class="summarybox"><ul><li>La integral definida surge como límite de sumas.</li><li>n→∞ implica Δx→0.</li><li>Convergencia significa aproximarse a un valor estable.</li></ul></div><div class="footer-actions"><button class="secondary" id="top">↑ Volver al inicio</button><span class="small">Fin de la clase 1.6</span></div></section>
+</main></div>
+<script>
+const root=document; const q=s=>root.querySelector(s),qa=s=>[...root.querySelectorAll(s)];
+const sections=qa('main section'), nav=qa('aside [data-go]');
+
+q('#top').addEventListener('click',()=>q('#inicio').scrollIntoView({behavior:'smooth'}));
+const answers={"q1": 0, "q2": 0, "q3": 0, "q4": 1};
+q('#quiz').addEventListener('submit',e=>{e.preventDefault();let score=0,done=0;Object.entries(answers).forEach(([name,ans])=>{let el=q(`input[name="${name}"]:checked`);if(el){done++;if(+el.value===ans)score++;}});if(done<Object.keys(answers).length){q('#quizout').innerHTML='<span class="bad">Responde todas las preguntas antes de calificar.</span>';return}let pct=Math.round(score/Object.keys(answers).length*100);q('#quizout').innerHTML=`Resultado: <strong>${score}/${Object.keys(answers).length} (${pct}%)</strong>. `+(pct>=80?'<span class="ok">Buen dominio. Puedes avanzar.</span>':'<span class="bad">Conviene repasar teoría, ejemplos y ejercicios guiados.</span>');});
+q('#reset').addEventListener('click',()=>{q('#quiz').reset();q('#quizout').textContent='';});
+q('#run').addEventListener('click',()=>{let ns=[2,5,10,50,100,500,1000],rows=ns.map(n=>{let r=(n*(n+1)*(2*n+1))/(6*n**3);return `<tr><td>${n}</td><td>${(1/n).toFixed(6)}</td><td>${r.toFixed(8)}</td></tr>`}).join('');q('#simout').innerHTML=`<table><thead><tr><th>n</th><th>Δx</th><th>Rₙ</th></tr></thead><tbody>${rows}</tbody></table>`});
+</script>
+<script src="../../assets/js/bloque-01/tema-1-6.js"></script>
+<script>
+(() => {
+  const BANK={"basic": [{"p": "Para x² en [0,1], calcula Rₙ con n=5.", "a": 0.44, "t": 1e-07, "s": "Rₙ=0.440000000."}, {"p": "Para x² en [0,1], calcula Rₙ con n=10.", "a": 0.385, "t": 1e-07, "s": "Rₙ=0.385000000."}, {"p": "Para x² en [0,1], calcula Rₙ con n=20.", "a": 0.35875, "t": 1e-07, "s": "Rₙ=0.358750000."}, {"p": "Para x² en [0,1], calcula Rₙ con n=40.", "a": 0.3459375, "t": 1e-07, "s": "Rₙ=0.345937500."}, {"p": "Para x² en [0,1], calcula Rₙ con n=80.", "a": 0.339609375, "t": 1e-07, "s": "Rₙ=0.339609375."}, {"p": "Para x² en [0,1], calcula Rₙ con n=160.", "a": 0.33646484375, "t": 1e-07, "s": "Rₙ=0.336464844."}], "medium": [{"p": "Para n=5, calcula Δx en [0,1].", "a": 0.2, "t": 1e-08, "s": "Δx=1/5=0.2."}, {"p": "Para n=10, calcula Δx en [0,1].", "a": 0.1, "t": 1e-08, "s": "Δx=1/10=0.1."}, {"p": "Para n=20, calcula Δx en [0,1].", "a": 0.05, "t": 1e-08, "s": "Δx=1/20=0.05."}, {"p": "Para n=40, calcula Δx en [0,1].", "a": 0.025, "t": 1e-08, "s": "Δx=1/40=0.025."}, {"p": "Para n=80, calcula Δx en [0,1].", "a": 0.0125, "t": 1e-08, "s": "Δx=1/80=0.0125."}, {"p": "Para n=160, calcula Δx en [0,1].", "a": 0.00625, "t": 1e-08, "s": "Δx=1/160=0.00625."}], "hard": [{"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=5.", "a": 0.10666666666666669, "t": 1e-07, "s": "Error=0.106666667."}, {"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=10.", "a": 0.051666666666666694, "t": 1e-07, "s": "Error=0.051666667."}, {"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=20.", "a": 0.0254166666666667, "t": 1e-07, "s": "Error=0.025416667."}, {"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=40.", "a": 0.012604166666666694, "t": 1e-07, "s": "Error=0.012604167."}, {"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=80.", "a": 0.006276041666666676, "t": 1e-07, "s": "Error=0.006276042."}, {"p": "Para x² en [0,1], calcula |Rₙ−1/3| con n=160.", "a": 0.003131510416666705, "t": 1e-07, "s": "Error=0.003131510."}]};
+  const q=s=>document.querySelector(s);
+  const qa=s=>[...document.querySelectorAll(s)];
+  const level=q("#bankLevel"), list=q("#bankList"), prompt=q("#bankPrompt"),
+        answer=q("#bankAnswer"), feedback=q("#bankFeedback"),
+        randomBtn=q("#bankRandom"), checkBtn=q("#bankCheck"), hintBtn=q("#bankHint");
+  if(!level || !list || !prompt || !answer || !feedback || !randomBtn || !checkBtn || !hintBtn) return;
+
+  let bankIndex=0;
+  const levelLabel={basic:"Básico",medium:"Intermedio",hard:"Avanzado"};
+  const currentSet=()=>BANK[level.value] || [];
+
+  function renderList(){
+    const set=currentSet();
+    list.innerHTML=set.map((x,i)=>
+      `<button type="button" class="bank-item ${i===bankIndex?"active":""}" data-i="${i}">${levelLabel[level.value]} ${i+1}</button>`
+    ).join("");
+    qa(".bank-item").forEach(btn=>btn.addEventListener("click",()=>{
+      bankIndex=+btn.dataset.i; renderProblem(); renderList();
+    }));
+  }
+  function renderProblem(){
+    const set=currentSet();
+    if(!set.length) return;
+    if(bankIndex>=set.length) bankIndex=0;
+    const x=set[bankIndex];
+    prompt.innerHTML="<strong>Problema:</strong> "+x.p;
+    answer.value="";
+    feedback.textContent="";
+  }
+
+  level.addEventListener("change",()=>{bankIndex=0;renderProblem();renderList();});
+  randomBtn.addEventListener("click",()=>{const set=currentSet();if(!set.length)return;bankIndex=Math.floor(Math.random()*set.length);renderProblem();renderList();});
+  hintBtn.addEventListener("click",()=>{const x=currentSet()[bankIndex];if(x)feedback.innerHTML="Pista: "+x.s;});
+  checkBtn.addEventListener("click",()=>{
+    const x=currentSet()[bankIndex]; if(!x)return;
+    const v=Number(answer.value.trim().replace(",","."));
+    if(!Number.isFinite(v)){feedback.innerHTML='<span class="bad">Ingresa una respuesta numérica válida.</span>';return;}
+    const tol=(x.t||1e-6)*Math.max(1,Math.abs(x.a));
+    feedback.innerHTML=Math.abs(v-x.a)<=tol
+      ? '<span class="ok">Correcto.</span> '+x.s
+      : '<span class="bad">Aún no.</span> Revisa el procedimiento y utiliza la pista.';
+  });
+  renderList(); renderProblem();
+})();
+</script>
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 1 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+<script id="ucacue-navigation-fix">
+(() => {
+  function initUcacueNav(){
+    const aside = document.querySelector('aside.class-nav');
+    if(!aside) return;
+    const buttons = [...aside.querySelectorAll('button[data-go]')];
+    const sections = buttons
+      .map(btn => document.getElementById(btn.dataset.go))
+      .filter(Boolean);
+
+    const activate = (id) => {
+      buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.go === id));
+    };
+
+    aside.addEventListener('click', (event) => {
+      const btn = event.target.closest('button[data-go]');
+      if(!btn || !aside.contains(btn)) return;
+      const target = document.getElementById(btn.dataset.go);
+      if(!target) return;
+      activate(btn.dataset.go);
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      try { history.replaceState(null, '', '#' + btn.dataset.go); } catch(e) {}
+    });
+
+    let scheduled = false;
+    function syncActive(){
+      scheduled = false;
+      let current = sections[0] || null;
+      for(const section of sections){
+        const top = section.getBoundingClientRect().top;
+        if(top <= 145) current = section;
+        else break;
+      }
+      if(current) activate(current.id);
+    }
+    window.addEventListener('scroll', () => {
+      if(!scheduled){
+        scheduled = true;
+        requestAnimationFrame(syncActive);
+      }
+    }, {passive:true});
+
+    const hash = location.hash ? location.hash.slice(1) : '';
+    if(hash && document.getElementById(hash)){
+      requestAnimationFrame(() => {
+        activate(hash);
+        document.getElementById(hash).scrollIntoView({block:'start'});
+      });
+    } else {
+      syncActive();
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initUcacueNav, {once:true});
+  } else {
+    initUcacueNav();
+  }
+})();
+</script>
+</body></html>

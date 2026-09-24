@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><base href="./"/>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>1.8 Definiciones y teoremas | Cálculo Integral UCACUE</title>
+
+
+
+
+<link href="../../assets/css/bloque-01.css" rel="stylesheet"/></head>
+<body>
+<header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>1.8. Definiciones y teoremas</h1>
+<p>Bloque 1: Notación Sigma e Integración · Clase interactiva autocontenida</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout">
+<aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button class="active" data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría</button><button data-go="visual" type="button">Representación</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="simulador" type="button">Simulador</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="telecom-lab" type="button">Caso Telecom</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside>
+<main>
+<section id="inicio"><h2>Introducción</h2><p class="lead">Antes de aplicar reglas mecánicamente, es importante conocer las propiedades que permiten transformar integrales de manera válida.</p><div class="callout"><strong>Objetivo de la clase:</strong> Reconocer definiciones y propiedades básicas que sustentan la integración.</div><p class="small">Ruta sugerida: comprender → observar → resolver → experimentar → comprobar.</p></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul class="clean"><li>Funciones continuas.</li><li>Sumas de Riemann.</li><li>Álgebra de funciones.</li></ul><div class="callout warn"><strong>Comprobación rápida:</strong> si alguno de estos conocimientos no está claro, conviene repasarlo antes de avanzar.</div></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>Las propiedades de la integral funcionan como reglas de conservación algebraica: permiten separar, combinar y cambiar intervalos sin alterar el significado matemático.</p></section>
+<section id="teoria"><h2>Teoría esencial</h2><div class="grid2"><div class="card"><h3>Linealidad</h3><p>∫ₐᵇ[αf(x)+βg(x)]dx = α∫ₐᵇf(x)dx + β∫ₐᵇg(x)dx.</p></div><div class="card"><h3>Cambio de orientación</h3><p>∫ₐᵇf(x)dx = −∫ᵦᵃf(x)dx.</p></div><div class="card"><h3>Aditividad del intervalo</h3><p>Si a<c<b, +="" entonces="" p="" ∫ₐᵇf="∫ₐᶜf" ∫𝑐ᵇf.<=""></c<b,></p></div><div class="card"><h3>Intervalo nulo</h3><p>∫ₐᵃf(x)dx=0.</p></div></div></section>
+<section id="visual"><h2>Representación conceptual</h2><div class="card"><h3>Mapa de propiedades</h3><p><strong>Linealidad</strong> permite separar funciones; <strong>aditividad</strong> permite separar intervalos; <strong>orientación</strong> controla el signo; <strong>intervalo nulo</strong> produce cero.</p></div></section>
+<section id="ejemplos"><h2>Ejemplos resueltos paso a paso</h2><details class="example"><summary><strong>Ejemplo 1.</strong> Si ∫₀²f=5, hallar ∫₂⁰f.</summary><div class="solution"><strong>Resolución:</strong> Por cambio de orientación: −5.</div></details><details class="example"><summary><strong>Ejemplo 2.</strong> Si ∫₀¹f=2 y ∫₁³f=7, hallar ∫₀³f.</summary><div class="solution"><strong>Resolución:</strong> Por aditividad: 2+7=9.</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">La linealidad es una propiedad central también en sistemas lineales. Aunque aquí se estudia desde la integral, la misma estructura algebraica reaparecerá en análisis de señales.</div><p class="small">Esta aplicación contextualiza el concepto matemático; no sustituye el desarrollo formal del tema.</p></section>
+<section class="sim" id="simulador"><h2>Simulador interactivo</h2><p>Modifica los parámetros y observa cómo cambia el resultado.</p>
+<div class="simgrid">
+<label>∫ₐᶜ f = <input id="p1" type="number" value="2"/></label>
+<label>∫𝑐ᵇ f = <input id="p2" type="number" value="7"/></label></div>
+<button id="run">Aplicar aditividad</button><div class="feedback" id="simout"></div>
+</section>
+<section class="advanced-lab" id="laboratorio">
+<h2>Laboratorio SVG: propiedades de la integral</h2>
+<p>Explora aditividad de intervalos, cambio de orientación y linealidad con representaciones geométricas simples.</p>
+<div class="lab-controls" id="labControls"></div>
+<svg aria-label="Visualización interactiva del tema 1.8" id="advancedSvg" role="img" viewbox="0 0 860 390"></svg>
+<div class="lab-metrics">
+<div><span id="m1">—</span><small id="m1l">Indicador 1</small></div>
+<div><span id="m2">—</span><small id="m2l">Indicador 2</small></div>
+<div><span id="m3">—</span><small id="m3l">Indicador 3</small></div>
+</div>
+<div class="feedback" id="labFeedback"></div>
+</section>
+<section id="entrenador">
+<h2>Entrenador de ejercicios aleatorios</h2>
+<p>Genera ejercicios nuevos cada vez. Selecciona la dificultad, resuelve sin mirar la respuesta y utiliza la retroalimentación para corregir el procedimiento.</p>
+<div class="trainer-head">
+<label>Nivel
+      <select id="difficulty">
+<option value="easy">Básico</option>
+<option selected="" value="medium">Intermedio</option>
+<option value="hard">Avanzado</option>
+</select>
+</label>
+<div class="scoreboard">
+<div><strong id="hits">0</strong><span>Aciertos</span></div>
+<div><strong id="attempts">0</strong><span>Intentos</span></div>
+<div><strong id="streak">0</strong><span>Racha</span></div>
+</div>
+</div>
+<div class="challenge">
+<p id="exercisePrompt"><strong>Presiona “Nuevo ejercicio”.</strong></p>
+<label>Tu respuesta
+      <input id="exerciseAnswer" inputmode="decimal" placeholder="Escribe únicamente el valor solicitado" type="text"/>
+</label>
+<div class="action-row">
+<button id="newExercise" type="button">Nuevo ejercicio</button>
+<button class="secondary" id="checkExercise" type="button">Comprobar</button>
+</div>
+<div aria-live="polite" class="feedback" id="exerciseFeedback"></div>
+</div>
+</section>
+<section id="banco">
+<h2>Banco de problemas por niveles</h2>
+<p>Esta clase contiene <strong>18 problemas</strong>: 6 básicos, 6 intermedios y 6 avanzados. Resuelve, solicita una pista cuando sea necesario y comprueba tu respuesta.</p>
+<div class="lab-controls">
+<label>Nivel
+      <select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select>
+</label>
+<button id="bankRandom" type="button">Problema aleatorio</button>
+</div>
+<div class="bank-grid">
+<div class="bank-list" id="bankList"></div>
+<div class="bank-problem">
+<p id="bankPrompt"><strong>Selecciona un problema.</strong></p>
+<label>Respuesta numérica
+        <input id="bankAnswer" inputmode="decimal" placeholder="Ej.: 1.333333" type="text"/>
+</label>
+<div class="action-row">
+<button id="bankCheck" type="button">Comprobar</button>
+<button class="secondary" id="bankHint" type="button">Pista</button>
+</div>
+<div aria-live="polite" class="feedback" id="bankFeedback"></div>
+</div>
+</div>
+</section>
+<section id="telecom-lab">
+<h2>Caso Telecom: combinación lineal de señales</h2>
+<div class="callout">La linealidad de la integral permite integrar una combinación αx₁(t)+βx₂(t) separando las contribuciones. Esta estructura reaparece en el estudio de sistemas lineales.</div>
+<details class="example">
+<summary><strong>Actividad contextualizada</strong> — analizar el problema</summary>
+<div class="solution" id="telecomProblem"></div>
+</details>
+</section>
+<section id="juego">
+<h2>Aprende jugando <span class="optional-tag">Opcional</span></h2>
+<p>Completa cinco desafíos para llevar un paquete de información desde el transmisor hasta el receptor.</p>
+<button id="toggleGame" type="button">Iniciar juego</button>
+<div class="game-panel" hidden="" id="gamePanel">
+<svg aria-label="Ruta de un paquete desde transmisor hasta receptor" id="gameSvg" role="img" viewbox="0 0 860 180">
+<path d="M70 90 C220 20, 330 160, 460 90 S700 30, 790 90" fill="none" id="gamePath" stroke="#9aa9b7" stroke-linecap="round" stroke-width="7"></path>
+<circle cx="70" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="70" y="96">TX</text>
+<circle cx="790" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="790" y="96">RX</text>
+<circle cx="70" cy="90" fill="#f59e0b" id="packet" r="13" stroke="#7c4a03" stroke-width="2"></circle>
+</svg>
+<div class="game-status"><strong id="gameStage">0/5</strong> desafíos superados</div>
+<p id="gamePrompt"></p>
+<label>Respuesta
+      <input id="gameAnswer" inputmode="decimal" placeholder="Valor numérico" type="text"/>
+</label>
+<div class="action-row">
+<button id="gameCheck" type="button">Enviar respuesta</button>
+<button class="secondary" id="gameReset" type="button">Reiniciar juego</button>
+</div>
+<div aria-live="polite" class="feedback" id="gameFeedback"></div>
+</div>
+</section>
+<section id="guiados"><h2>Ejercicios guiados</h2><p>Intenta resolver cada ejercicio antes de desplegar la respuesta.</p><details class="example"><summary><strong>G1.</strong> Si ∫₀²f=4, ¿cuánto vale ∫₀²3f?</summary><div class="solution"><strong>Respuesta guiada:</strong> 12.</div></details><details class="example"><summary><strong>G2.</strong> Si ∫₁¹f, ¿cuánto vale?</summary><div class="solution"><strong>Respuesta guiada:</strong> 0.</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Usa linealidad para simplificar ∫(4f−2g).</li><li>Si ∫₀²f=3 y ∫₂⁵f=8, calcula ∫₀⁵f.</li><li>Explica por qué invertir límites cambia el signo.</li></ol><div class="callout warn"><strong>Recomendación:</strong> justifica el procedimiento, no presentes únicamente el resultado final.</div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="qitem"><p><strong>1.</strong> La integral es lineal respecto a…</p><label><input name="q1" type="radio" value="0"/> Suma y escalares</label><label><input name="q1" type="radio" value="1"/> Solo productos</label><label><input name="q1" type="radio" value="2"/> Solo límites</label></div><div class="qitem"><p><strong>2.</strong> ∫ₐᵃf vale…</p><label><input name="q2" type="radio" value="0"/> 1</label><label><input name="q2" type="radio" value="1"/> 0</label><label><input name="q2" type="radio" value="2"/> f(a)</label></div><div class="qitem"><p><strong>3.</strong> Invertir límites…</p><label><input name="q3" type="radio" value="0"/> Cambia el signo</label><label><input name="q3" type="radio" value="1"/> No cambia nada</label><label><input name="q3" type="radio" value="2"/> Duplica la integral</label></div><div class="qitem"><p><strong>4.</strong> La aditividad permite…</p><label><input name="q4" type="radio" value="0"/> Dividir intervalos</label><label><input name="q4" type="radio" value="1"/> Eliminar dx</label><label><input name="q4" type="radio" value="2"/> Cambiar f por f'</label></div><button type="submit">Calificar</button><button class="secondary" id="reset" type="button">Reiniciar</button><div aria-live="polite" class="feedback" id="quizout"></div></form></section>
+<section class="integrator-link" id="integradora">
+<div>
+<h2>Actividad final integradora del Bloque 1</h2>
+<p>Cuando completes las clases, conecta los doce subtemas en un único caso de Telecomunicaciones: <strong>energía recibida a partir del perfil de potencia p(t)=1+t² mW</strong> durante 1 s.</p>
+</div>
+<a href="actividad-integradora.html">Abrir actividad integradora →</a>
+</section>
+<section id="resumen"><h2>Resumen de la clase</h2><div class="summarybox"><ul><li>La integral es lineal.</li><li>Los intervalos pueden dividirse y recombinarse.</li><li>Invertir límites cambia el signo.</li></ul></div><div class="footer-actions"><button class="secondary" id="top">↑ Volver al inicio</button><span class="small">Fin de la clase 1.8</span></div></section>
+</main></div>
+<script>
+const root=document; const q=s=>root.querySelector(s),qa=s=>[...root.querySelectorAll(s)];
+const sections=qa('main section'), nav=qa('aside [data-go]');
+
+q('#top').addEventListener('click',()=>q('#inicio').scrollIntoView({behavior:'smooth'}));
+const answers={"q1": 0, "q2": 1, "q3": 0, "q4": 0};
+q('#quiz').addEventListener('submit',e=>{e.preventDefault();let score=0,done=0;Object.entries(answers).forEach(([name,ans])=>{let el=q(`input[name="${name}"]:checked`);if(el){done++;if(+el.value===ans)score++;}});if(done<Object.keys(answers).length){q('#quizout').innerHTML='<span class="bad">Responde todas las preguntas antes de calificar.</span>';return}let pct=Math.round(score/Object.keys(answers).length*100);q('#quizout').innerHTML=`Resultado: <strong>${score}/${Object.keys(answers).length} (${pct}%)</strong>. `+(pct>=80?'<span class="ok">Buen dominio. Puedes avanzar.</span>':'<span class="bad">Conviene repasar teoría, ejemplos y ejercicios guiados.</span>');});
+q('#reset').addEventListener('click',()=>{q('#quiz').reset();q('#quizout').textContent='';});
+q('#run').addEventListener('click',()=>{let a=+q('#p1').value,b=+q('#p2').value;q('#simout').innerHTML=`∫ₐᵇ f = ${a} + ${b} = <strong>${a+b}</strong>. Si inviertes los límites: <strong>${-(a+b)}</strong>.`});
+</script>
+<script src="../../assets/js/bloque-01/tema-1-8.js"></script>
+<script>
+(() => {
+  const BANK={"basic": [{"p": "Si ∫ₐᶜf=2 y ∫𝑐ᵇf=3, calcula ∫ₐᵇf.", "a": 5, "s": "Aditividad: 2+3=5."}, {"p": "Si ∫ₐᶜf=3 y ∫𝑐ᵇf=4, calcula ∫ₐᵇf.", "a": 7, "s": "Aditividad: 3+4=7."}, {"p": "Si ∫ₐᶜf=4 y ∫𝑐ᵇf=5, calcula ∫ₐᵇf.", "a": 9, "s": "Aditividad: 4+5=9."}, {"p": "Si ∫ₐᶜf=5 y ∫𝑐ᵇf=6, calcula ∫ₐᵇf.", "a": 11, "s": "Aditividad: 5+6=11."}, {"p": "Si ∫ₐᶜf=6 y ∫𝑐ᵇf=7, calcula ∫ₐᵇf.", "a": 13, "s": "Aditividad: 6+7=13."}, {"p": "Si ∫ₐᶜf=7 y ∫𝑐ᵇf=8, calcula ∫ₐᵇf.", "a": 15, "s": "Aditividad: 7+8=15."}], "medium": [{"p": "Si ∫ₐᵇf=5, calcula ∫ᵦᵃf.", "a": -5, "s": "Al invertir límites cambia el signo."}, {"p": "Si ∫ₐᵇf=7, calcula ∫ᵦᵃf.", "a": -7, "s": "Al invertir límites cambia el signo."}, {"p": "Si ∫ₐᵇf=9, calcula ∫ᵦᵃf.", "a": -9, "s": "Al invertir límites cambia el signo."}, {"p": "Si ∫ₐᵇf=11, calcula ∫ᵦᵃf.", "a": -11, "s": "Al invertir límites cambia el signo."}, {"p": "Si ∫ₐᵇf=13, calcula ∫ᵦᵃf.", "a": -13, "s": "Al invertir límites cambia el signo."}, {"p": "Si ∫ₐᵇf=15, calcula ∫ᵦᵃf.", "a": -15, "s": "Al invertir límites cambia el signo."}], "hard": [{"p": "Si ∫ₐᵇf=5, calcula ∫ₐᵇ 3f(x)dx.", "a": 15, "s": "Linealidad: 3·5=15."}, {"p": "Si ∫ₐᵇf=7, calcula ∫ₐᵇ 4f(x)dx.", "a": 28, "s": "Linealidad: 4·7=28."}, {"p": "Si ∫ₐᵇf=9, calcula ∫ₐᵇ 2f(x)dx.", "a": 18, "s": "Linealidad: 2·9=18."}, {"p": "Si ∫ₐᵇf=11, calcula ∫ₐᵇ 3f(x)dx.", "a": 33, "s": "Linealidad: 3·11=33."}, {"p": "Si ∫ₐᵇf=13, calcula ∫ₐᵇ 4f(x)dx.", "a": 52, "s": "Linealidad: 4·13=52."}, {"p": "Si ∫ₐᵇf=15, calcula ∫ₐᵇ 2f(x)dx.", "a": 30, "s": "Linealidad: 2·15=30."}]};
+  const q=s=>document.querySelector(s);
+  const qa=s=>[...document.querySelectorAll(s)];
+  const level=q("#bankLevel"), list=q("#bankList"), prompt=q("#bankPrompt"),
+        answer=q("#bankAnswer"), feedback=q("#bankFeedback"),
+        randomBtn=q("#bankRandom"), checkBtn=q("#bankCheck"), hintBtn=q("#bankHint");
+  if(!level || !list || !prompt || !answer || !feedback || !randomBtn || !checkBtn || !hintBtn) return;
+
+  let bankIndex=0;
+  const levelLabel={basic:"Básico",medium:"Intermedio",hard:"Avanzado"};
+  const currentSet=()=>BANK[level.value] || [];
+
+  function renderList(){
+    const set=currentSet();
+    list.innerHTML=set.map((x,i)=>
+      `<button type="button" class="bank-item ${i===bankIndex?"active":""}" data-i="${i}">${levelLabel[level.value]} ${i+1}</button>`
+    ).join("");
+    qa(".bank-item").forEach(btn=>btn.addEventListener("click",()=>{
+      bankIndex=+btn.dataset.i; renderProblem(); renderList();
+    }));
+  }
+  function renderProblem(){
+    const set=currentSet();
+    if(!set.length) return;
+    if(bankIndex>=set.length) bankIndex=0;
+    const x=set[bankIndex];
+    prompt.innerHTML="<strong>Problema:</strong> "+x.p;
+    answer.value="";
+    feedback.textContent="";
+  }
+
+  level.addEventListener("change",()=>{bankIndex=0;renderProblem();renderList();});
+  randomBtn.addEventListener("click",()=>{const set=currentSet();if(!set.length)return;bankIndex=Math.floor(Math.random()*set.length);renderProblem();renderList();});
+  hintBtn.addEventListener("click",()=>{const x=currentSet()[bankIndex];if(x)feedback.innerHTML="Pista: "+x.s;});
+  checkBtn.addEventListener("click",()=>{
+    const x=currentSet()[bankIndex]; if(!x)return;
+    const v=Number(answer.value.trim().replace(",","."));
+    if(!Number.isFinite(v)){feedback.innerHTML='<span class="bad">Ingresa una respuesta numérica válida.</span>';return;}
+    const tol=(x.t||1e-6)*Math.max(1,Math.abs(x.a));
+    feedback.innerHTML=Math.abs(v-x.a)<=tol
+      ? '<span class="ok">Correcto.</span> '+x.s
+      : '<span class="bad">Aún no.</span> Revisa el procedimiento y utiliza la pista.';
+  });
+  renderList(); renderProblem();
+})();
+</script>
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 1 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+<script id="ucacue-navigation-fix">
+(() => {
+  function initUcacueNav(){
+    const aside = document.querySelector('aside.class-nav');
+    if(!aside) return;
+    const buttons = [...aside.querySelectorAll('button[data-go]')];
+    const sections = buttons
+      .map(btn => document.getElementById(btn.dataset.go))
+      .filter(Boolean);
+
+    const activate = (id) => {
+      buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.go === id));
+    };
+
+    aside.addEventListener('click', (event) => {
+      const btn = event.target.closest('button[data-go]');
+      if(!btn || !aside.contains(btn)) return;
+      const target = document.getElementById(btn.dataset.go);
+      if(!target) return;
+      activate(btn.dataset.go);
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      try { history.replaceState(null, '', '#' + btn.dataset.go); } catch(e) {}
+    });
+
+    let scheduled = false;
+    function syncActive(){
+      scheduled = false;
+      let current = sections[0] || null;
+      for(const section of sections){
+        const top = section.getBoundingClientRect().top;
+        if(top <= 145) current = section;
+        else break;
+      }
+      if(current) activate(current.id);
+    }
+    window.addEventListener('scroll', () => {
+      if(!scheduled){
+        scheduled = true;
+        requestAnimationFrame(syncActive);
+      }
+    }, {passive:true});
+
+    const hash = location.hash ? location.hash.slice(1) : '';
+    if(hash && document.getElementById(hash)){
+      requestAnimationFrame(() => {
+        activate(hash);
+        document.getElementById(hash).scrollIntoView({block:'start'});
+      });
+    } else {
+      syncActive();
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initUcacueNav, {once:true});
+  } else {
+    initUcacueNav();
+  }
+})();
+</script>
+</body></html>

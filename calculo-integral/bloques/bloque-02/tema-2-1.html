@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es"><head><base href="./"/><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>2.1 El teorema fundamental del cálculo</title>
+
+
+
+<link href="../../assets/css/bloque-02.css" rel="stylesheet"/></head>
+<body data-num="2.1"><header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>2.1. El teorema fundamental del cálculo</h1>
+<p>Cálculo Integral · Bloque 2 · El Teorema Fundamental del Cálculo</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout"><aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría</button><button data-go="profundizacion" type="button">Profundización</button><button data-go="demostracion" type="button">Desarrollo matemático</button><button data-go="ejemplos-extra" type="button">Más ejemplos</button><button data-go="errores" type="button">Errores frecuentes</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside><main>
+<section id="inicio"><h2>Introducción</h2><p>Este tema conecta dos procesos centrales del cálculo: acumular mediante una integral y medir cambios mediante una derivada.</p><div class="callout"><strong>Objetivo:</strong> Relacionar la integral acumulada con la derivación mediante el Teorema Fundamental del Cálculo.</div></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul><li>Sumas de Riemann e integral definida.</li><li>Antiderivadas.</li><li>Derivación de funciones elementales.</li></ul></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>Si A(x) mide cuánto se ha acumulado desde a hasta x, la rapidez con la que cambia A(x) está dada por el valor instantáneo de la función que se acumula.</p></section>
+<section id="teoria"><h2>Teoría esencial</h2><div class="grid2"><div class="card"><h3>Función de acumulación</h3><p>A(x)=∫ₐˣ f(t)dt.</p></div><div class="card"><h3>Relación fundamental</h3><p>Si f es continua, entonces A′(x)=f(x).</p></div><div class="card"><h3>Interpretación</h3><p>La derivada de la acumulación devuelve la tasa instantánea que produjo esa acumulación.</p></div></div></section>
+<section id="profundizacion">
+<h2>Profundización conceptual</h2>
+<p>Esta sección amplía la teoría esencial para comprender el <em>porqué</em> del procedimiento, no solamente su aplicación mecánica.</p>
+<div class="deep-grid"><div class="deep-card"><h3>¿Por qué este teorema es tan importante?</h3><p>Antes del Teorema Fundamental, la derivada y la integral pueden parecer operaciones independientes. El teorema demuestra que, bajo condiciones de continuidad, ambas están profundamente relacionadas: integrar construye acumulación y derivar esa acumulación recupera la función original.</p></div><div class="deep-card"><h3>Condición de continuidad</h3><p>La formulación básica que usamos en este curso supone que f es continua en el intervalo de interés. Esta hipótesis garantiza que la función de acumulación A(x)=∫ₐˣf(t)dt es derivable y que A′(x)=f(x).</p></div><div class="deep-card"><h3>Función de acumulación</h3><p>A(x)=∫ₐˣf(t)dt no es un número fijo: es una nueva función. Su valor depende de x porque el extremo superior de integración cambia. A medida que x avanza, se acumulan nuevas contribuciones de f(t).</p></div><div class="deep-card"><h3>Lectura geométrica</h3><p>Si f(x)&gt;0, A(x) aumenta porque se añade área positiva. Si f(x)&lt;0, A(x) puede disminuir porque se añade acumulación negativa. Por eso el signo de f controla localmente el crecimiento de A.</p></div></div>
+<div class="concept-map"><span>Concepto</span><b>→</b><span>Interpretación</span><b>→</b><span>Procedimiento</span><b>→</b><span>Aplicación</span></div>
+</section>
+<section id="demostracion">
+<h2>Desarrollo matemático y razonamiento</h2>
+<p>Considere la función de acumulación:</p>
+<div class="formula">A(x)=∫ₐˣ f(t)dt</div>
+<p>Para estudiar su derivada usamos la definición:</p>
+<div class="formula">A′(x)=lim<sub>h→0</sub> [A(x+h)−A(x)]/h</div>
+<p>Por aditividad de la integral:</p>
+<div class="formula">A(x+h)−A(x)=∫ₓˣ⁺ʰ f(t)dt</div>
+<p>Entonces:</p>
+<div class="formula">A′(x)=lim<sub>h→0</sub> (1/h)∫ₓˣ⁺ʰ f(t)dt</div>
+<p>La expresión entre paréntesis es el valor medio de f en un intervalo muy pequeño. Cuando h→0 y f es continua, ese promedio se aproxima a f(x). Por tanto:</p>
+<div class="formula">A′(x)=f(x)</div>
+</section>
+<section id="ejemplos-extra">
+<h2>Ejemplos adicionales explicados</h2>
+<p>Resuelve primero cada planteamiento y luego despliega el desarrollo para comparar tu procedimiento.</p>
+<details><summary><strong>Ejemplo adicional 1.</strong> A(x)=∫₁ˣ(4t³−2t)dt. Hallar A′(2).</summary><div class="solution"><strong>Desarrollo:</strong> A′(x)=4x³−2x. Entonces A′(2)=32−4=28.</div></details><details><summary><strong>Ejemplo adicional 2.</strong> E(t)=∫₀ᵗ(2+sin τ)dτ. Hallar E′(π/2).</summary><div class="solution"><strong>Desarrollo:</strong> E′(t)=2+sin t. Por tanto E′(π/2)=3.</div></details><details><summary><strong>Extensión con regla de la cadena.</strong> H(x)=∫₀ˣ²(1+t³)dt.</summary><div class="solution"><strong>Desarrollo:</strong> Como el extremo superior es x², H′(x)=[1+(x²)³]·2x=2x(1+x⁶). Esta es una ampliación útil del teorema.</div></details>
+</section>
+<section id="errores">
+<h2>Errores frecuentes y cómo evitarlos</h2>
+<div class="error-box"><ul><li>Confundir la variable muda t con la variable externa x.</li><li>Pensar que ∫ₐˣf(t)dt es siempre un número fijo; en realidad depende de x.</li><li>Olvidar que la formulación básica utilizada aquí presupone continuidad de f.</li><li>Cuando el límite superior es una función g(x), olvidar multiplicar por g′(x).</li></ul></div>
+</section>
+<section id="ejemplos"><h2>Ejemplos resueltos</h2><details><summary><strong>Ejemplo 1.</strong> A(x)=∫₀ˣ(t²+1)dt. Hallar A′(x).</summary><div class="solution"><strong>Resolución:</strong> A′(x)=x²+1.</div></details><details><summary><strong>Ejemplo 2.</strong> Q(x)=∫₂ˣ√(t+1)dt. Hallar Q′(x).</summary><div class="solution"><strong>Resolución:</strong> Q′(x)=√(x+1).</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">Si E(x)=∫₀ˣp(t)dt representa energía acumulada a partir de una potencia p(t), entonces E′(x)=p(x).</div><div class="telecom-deep"><h3>Profundización aplicada</h3>
+<p><strong>Energía y potencia:</strong> si p(t) es potencia instantánea, E(t)=∫₀ᵗp(τ)dτ representa energía acumulada. El TFC produce E′(t)=p(t).</p>
+<p><strong>Carga y corriente:</strong> si i(t) es corriente, q(t)=∫₀ᵗi(τ)dτ representa carga acumulada y q′(t)=i(t).</p>
+<p>Estas dos relaciones muestran por qué el Teorema Fundamental aparece de manera natural en señales, circuitos y sistemas físicos.</p>
+</div></section>
+<section id="laboratorio"><h2>Laboratorio SVG interactivo</h2><div class="controls"><label>Integrando<select id="fn"><option value="q">t²+1</option><option value="l">3t−2</option><option value="c">cos(t)</option></select></label><label>x<input id="x" max="3" min="0" step=".05" type="range" value="1"/></label></div><svg id="labSvg" viewbox="0 0 820 320"></svg><div class="feedback" id="labOut"></div></section>
+<section id="entrenador"><h2>Entrenador de ejercicios aleatorios</h2><div class="trainer"><label>Nivel<select id="difficulty"><option value="easy">Básico</option><option selected="" value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><div class="score"><div><strong id="hits">0</strong>Aciertos</div><div><strong id="attempts">0</strong>Intentos</div><div><strong id="streak">0</strong>Racha</div></div></div><div class="challenge"><p id="exPrompt"></p><label>Respuesta<input id="exAns"/></label><div class="actions"><button id="newEx" type="button">Nuevo ejercicio</button><button class="secondary" id="checkEx" type="button">Comprobar</button></div><div class="feedback" id="exFeed"></div></div></section>
+<section id="banco"><h2>Banco de problemas por niveles</h2><p>18 problemas generados para este tema: 6 básicos, 6 intermedios y 6 avanzados.</p><div class="controls"><label>Nivel<select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><button id="bankRandom" type="button">Problema aleatorio</button></div><div class="bank"><div class="banklist" id="bankList"></div><div class="challenge"><p id="bankPrompt"></p><label>Respuesta<input id="bankAns"/></label><div class="actions"><button id="bankCheck" type="button">Comprobar</button><button class="secondary" id="bankHint" type="button">Pista</button></div><div class="feedback" id="bankFeed"></div></div></div></section>
+<section id="guiados"><h2>Ejercicios guiados</h2><details><summary><strong>G1.</strong> F(x)=∫₁ˣ(3t²−2)dt. Hallar F′(x).</summary><div class="solution"><strong>Respuesta guiada:</strong> 3x²−2.</div></details><details><summary><strong>G2.</strong> G(x)=∫₀ˣcos(t)dt. Hallar G′(x).</summary><div class="solution"><strong>Respuesta guiada:</strong> cos(x).</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Halla d/dx[∫₀ˣ(2t+5)dt].</li><li>Halla d/dx[∫₃ˣeᵗdt].</li><li>Explica por qué integración acumulativa y derivación actúan como procesos inversos bajo las condiciones del teorema.</li></ol><div class="callout warn"><strong>Recomendación:</strong> justificar el procedimiento y comprobar cuando sea posible.</div></section>
+<section id="juego"><h2>Aprende jugando <span class="optional">Opcional</span></h2><button id="toggleGame" type="button">Iniciar / ocultar juego</button><div class="challenge" hidden="" id="gamePanel"><svg viewbox="0 0 840 170"><path d="M65 85 C210 15,350 145,500 80 S690 35,785 85" fill="none" stroke="#9aa9b7" stroke-width="7"></path><circle cx="65" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="65" y="91">TX</text><circle cx="785" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="785" y="91">RX</text><circle cx="65" cy="85" fill="#f59e0b" id="packet" r="12"></circle></svg><p><strong id="gameStage">0/5</strong> desafíos</p><p id="gamePrompt"></p><label>Respuesta<input id="gameAns"/></label><div class="actions"><button id="gameCheck" type="button">Enviar</button><button class="secondary" id="gameReset" type="button">Reiniciar</button></div><div class="feedback" id="gameFeed"></div></div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="q"><p><strong>1.</strong> Si A(x)=∫ₐˣf(t)dt, A′(x) es…</p><label><input name="q1" type="radio" value="0"/> f(x)</label><label><input name="q1" type="radio" value="1"/> 0</label><label><input name="q1" type="radio" value="2"/> F(a)</label></div><div class="q"><p><strong>2.</strong> El teorema conecta…</p><label><input name="q2" type="radio" value="0"/> integración y derivación</label><label><input name="q2" type="radio" value="1"/> matrices y vectores</label><label><input name="q2" type="radio" value="2"/> solo álgebra</label></div><div class="q"><p><strong>3.</strong> A(x)=∫₀ˣ(t²+1)dt; A′(2)=</p><label><input name="q3" type="radio" value="0"/> 3</label><label><input name="q3" type="radio" value="1"/> 5</label><label><input name="q3" type="radio" value="2"/> 8</label></div><div class="q"><p><strong>4.</strong> Una función de acumulación mide…</p><label><input name="q4" type="radio" value="0"/> cantidad acumulada</label><label><input name="q4" type="radio" value="1"/> solo pendiente</label><label><input name="q4" type="radio" value="2"/> solo máximos</label></div><div class="actions"><button type="submit">Calificar</button><button class="secondary" id="quizReset" type="button">Reiniciar</button></div><div class="feedback" id="quizOut"></div></form><script id="ansData" type="application/json">{"q1": 0, "q2": 0, "q3": 1, "q4": 0}</script></section>
+<section class="integrator" id="integradora"><div><h2>Actividad final integradora del Bloque 2</h2><p>Conecta los seis contenidos en un único problema aplicado a Telecomunicaciones.</p></div><a href="actividad-integradora.html">Abrir actividad →</a></section>
+<section id="resumen"><h2>Resumen</h2><div class="callout"><ul><li>A(x)=∫ₐˣf(t)dt define una acumulación.</li><li>Si f es continua, A′(x)=f(x).</li><li>La relación tiene interpretación directa en magnitudes acumuladas como energía.</li></ul></div></section>
+</main></div>
+
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 2 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+
+<script src="../../assets/js/bloque-02.js"></script></body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><base href="./"/>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>1.10 Reglas básicas para la integración | Cálculo Integral UCACUE</title>
+
+
+
+
+<link href="../../assets/css/bloque-01.css" rel="stylesheet"/></head>
+<body>
+<header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>1.10. Reglas básicas para la integración</h1>
+<p>Bloque 1: Notación Sigma e Integración · Clase interactiva autocontenida</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout">
+<aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button class="active" data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría</button><button data-go="visual" type="button">Representación</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="simulador" type="button">Simulador</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="telecom-lab" type="button">Caso Telecom</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside>
+<main>
+<section id="inicio"><h2>Introducción</h2><p class="lead">Las reglas básicas permiten integrar polinomios y combinaciones elementales sin recurrir todavía a técnicas avanzadas.</p><div class="callout"><strong>Objetivo de la clase:</strong> Aplicar reglas elementales de integración a funciones algebraicas sencillas.</div><p class="small">Ruta sugerida: comprender → observar → resolver → experimentar → comprobar.</p></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul class="clean"><li>Antiderivadas.</li><li>Leyes de exponentes.</li><li>Linealidad.</li></ul><div class="callout warn"><strong>Comprobación rápida:</strong> si alguno de estos conocimientos no está claro, conviene repasarlo antes de avanzar.</div></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>Para integrar una potencia xⁿ, aumentamos el exponente en 1 y dividimos por el nuevo exponente. Luego verificamos derivando.</p></section>
+<section id="teoria"><h2>Teoría esencial</h2><div class="grid2"><div class="card"><h3>Potencia</h3><p>∫xⁿdx = xⁿ⁺¹/(n+1)+C, n≠−1.</p></div><div class="card"><h3>Constante</h3><p>∫k dx = kx+C.</p></div><div class="card"><h3>Factor constante</h3><p>∫k f(x)dx = k∫f(x)dx.</p></div><div class="card"><h3>Suma</h3><p>∫[f(x)+g(x)]dx = ∫f(x)dx+∫g(x)dx.</p></div></div></section>
+<section id="visual"><h2>Representación conceptual</h2><div class="grid2"><div class="card"><h3>Cadena conceptual</h3><p>Función original F(x) → derivar → f(x). En sentido inverso: f(x) → antiderivar → F(x)+C.</p><div class="formula">F′(x)=f(x) ⇔ ∫f(x)dx=F(x)+C</div></div><div class="card"><h3>Control de calidad</h3><p>Una respuesta de integración indefinida se verifica derivándola. Si no recuperas el integrando, existe un error.</p></div></div></section>
+<section id="ejemplos"><h2>Ejemplos resueltos paso a paso</h2><details class="example"><summary><strong>Ejemplo 1.</strong> ∫(3x²+4)dx.</summary><div class="solution"><strong>Resolución:</strong> x³+4x+C.</div></details><details class="example"><summary><strong>Ejemplo 2.</strong> ∫(5x⁴−2x+7)dx.</summary><div class="solution"><strong>Resolución:</strong> x⁵−x²+7x+C.</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">Los modelos de aproximación polinómica aparecen en calibración, interpolación y análisis numérico. Integrar polinomios es una habilidad base para esas aplicaciones.</div><p class="small">Esta aplicación contextualiza el concepto matemático; no sustituye el desarrollo formal del tema.</p></section>
+<section class="sim" id="simulador"><h2>Simulador interactivo</h2><p>Modifica los parámetros y observa cómo cambia el resultado.</p>
+<div class="simgrid"><label>Coeficiente a<input id="coef" type="number" value="5"/></label><label>Exponente n<input id="pow" max="12" min="0" type="number" value="4"/></label></div>
+<button id="run">Integrar a·xⁿ</button><div class="feedback" id="simout"></div>
+</section>
+<section class="advanced-lab" id="laboratorio">
+<h2>Laboratorio SVG: regla de potencia y verificación</h2>
+<p>Genera integrales de la forma a·xⁿ, observa su antiderivada y verifica la relación derivando.</p>
+<div class="lab-controls" id="labControls"></div>
+<svg aria-label="Visualización interactiva del tema 1.10" id="advancedSvg" role="img" viewbox="0 0 860 390"></svg>
+<div class="lab-metrics">
+<div><span id="m1">—</span><small id="m1l">Indicador 1</small></div>
+<div><span id="m2">—</span><small id="m2l">Indicador 2</small></div>
+<div><span id="m3">—</span><small id="m3l">Indicador 3</small></div>
+</div>
+<div class="feedback" id="labFeedback"></div>
+</section>
+<section id="entrenador">
+<h2>Entrenador de ejercicios aleatorios</h2>
+<p>Genera ejercicios nuevos cada vez. Selecciona la dificultad, resuelve sin mirar la respuesta y utiliza la retroalimentación para corregir el procedimiento.</p>
+<div class="trainer-head">
+<label>Nivel
+      <select id="difficulty">
+<option value="easy">Básico</option>
+<option selected="" value="medium">Intermedio</option>
+<option value="hard">Avanzado</option>
+</select>
+</label>
+<div class="scoreboard">
+<div><strong id="hits">0</strong><span>Aciertos</span></div>
+<div><strong id="attempts">0</strong><span>Intentos</span></div>
+<div><strong id="streak">0</strong><span>Racha</span></div>
+</div>
+</div>
+<div class="challenge">
+<p id="exercisePrompt"><strong>Presiona “Nuevo ejercicio”.</strong></p>
+<label>Tu respuesta
+      <input id="exerciseAnswer" inputmode="decimal" placeholder="Escribe únicamente el valor solicitado" type="text"/>
+</label>
+<div class="action-row">
+<button id="newExercise" type="button">Nuevo ejercicio</button>
+<button class="secondary" id="checkExercise" type="button">Comprobar</button>
+</div>
+<div aria-live="polite" class="feedback" id="exerciseFeedback"></div>
+</div>
+</section>
+<section id="banco">
+<h2>Banco de problemas por niveles</h2>
+<p>Esta clase contiene <strong>18 problemas</strong>: 6 básicos, 6 intermedios y 6 avanzados. Resuelve, solicita una pista cuando sea necesario y comprueba tu respuesta.</p>
+<div class="lab-controls">
+<label>Nivel
+      <select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select>
+</label>
+<button id="bankRandom" type="button">Problema aleatorio</button>
+</div>
+<div class="bank-grid">
+<div class="bank-list" id="bankList"></div>
+<div class="bank-problem">
+<p id="bankPrompt"><strong>Selecciona un problema.</strong></p>
+<label>Respuesta numérica
+        <input id="bankAnswer" inputmode="decimal" placeholder="Ej.: 1.333333" type="text"/>
+</label>
+<div class="action-row">
+<button id="bankCheck" type="button">Comprobar</button>
+<button class="secondary" id="bankHint" type="button">Pista</button>
+</div>
+<div aria-live="polite" class="feedback" id="bankFeedback"></div>
+</div>
+</div>
+</section>
+<section id="telecom-lab">
+<h2>Caso Telecom: aproximación polinómica</h2>
+<div class="callout">En calibración y aproximación numérica pueden aparecer modelos polinómicos. Integrarlos término a término es una habilidad básica antes de abordar modelos más complejos.</div>
+<details class="example">
+<summary><strong>Actividad contextualizada</strong> — analizar el problema</summary>
+<div class="solution" id="telecomProblem"></div>
+</details>
+</section>
+<section id="juego">
+<h2>Aprende jugando <span class="optional-tag">Opcional</span></h2>
+<p>Completa cinco desafíos para llevar un paquete de información desde el transmisor hasta el receptor.</p>
+<button id="toggleGame" type="button">Iniciar juego</button>
+<div class="game-panel" hidden="" id="gamePanel">
+<svg aria-label="Ruta de un paquete desde transmisor hasta receptor" id="gameSvg" role="img" viewbox="0 0 860 180">
+<path d="M70 90 C220 20, 330 160, 460 90 S700 30, 790 90" fill="none" id="gamePath" stroke="#9aa9b7" stroke-linecap="round" stroke-width="7"></path>
+<circle cx="70" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="70" y="96">TX</text>
+<circle cx="790" cy="90" fill="#AF1C32" r="24"></circle><text fill="white" font-size="14" text-anchor="middle" x="790" y="96">RX</text>
+<circle cx="70" cy="90" fill="#f59e0b" id="packet" r="13" stroke="#7c4a03" stroke-width="2"></circle>
+</svg>
+<div class="game-status"><strong id="gameStage">0/5</strong> desafíos superados</div>
+<p id="gamePrompt"></p>
+<label>Respuesta
+      <input id="gameAnswer" inputmode="decimal" placeholder="Valor numérico" type="text"/>
+</label>
+<div class="action-row">
+<button id="gameCheck" type="button">Enviar respuesta</button>
+<button class="secondary" id="gameReset" type="button">Reiniciar juego</button>
+</div>
+<div aria-live="polite" class="feedback" id="gameFeedback"></div>
+</div>
+</section>
+<section id="guiados"><h2>Ejercicios guiados</h2><p>Intenta resolver cada ejercicio antes de desplegar la respuesta.</p><details class="example"><summary><strong>G1.</strong> Integra 4x³.</summary><div class="solution"><strong>Respuesta guiada:</strong> x⁴+C.</div></details><details class="example"><summary><strong>G2.</strong> Integra 6x²−3.</summary><div class="solution"><strong>Respuesta guiada:</strong> 2x³−3x+C.</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Integra 2x⁵+3x²−4.</li><li>Integra 7−5x+2x³.</li><li>Deriva tus respuestas para comprobarlas.</li></ol><div class="callout warn"><strong>Recomendación:</strong> justifica el procedimiento, no presentes únicamente el resultado final.</div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="qitem"><p><strong>1.</strong> ∫xⁿdx para n≠−1 es…</p><label><input name="q1" type="radio" value="0"/> xⁿ⁺¹/(n+1)+C</label><label><input name="q1" type="radio" value="1"/> nxⁿ⁻¹+C</label><label><input name="q1" type="radio" value="2"/> xⁿ/n+C</label></div><div class="qitem"><p><strong>2.</strong> ∫k dx es…</p><label><input name="q2" type="radio" value="0"/> k+C</label><label><input name="q2" type="radio" value="1"/> kx+C</label><label><input name="q2" type="radio" value="2"/> x/k+C</label></div><div class="qitem"><p><strong>3.</strong> ∫3x²dx es…</p><label><input name="q3" type="radio" value="0"/> x³+C</label><label><input name="q3" type="radio" value="1"/> 6x+C</label><label><input name="q3" type="radio" value="2"/> 3x³+C</label></div><div class="qitem"><p><strong>4.</strong> Una forma de verificar es…</p><label><input name="q4" type="radio" value="0"/> Derivar la respuesta</label><label><input name="q4" type="radio" value="1"/> Multiplicar por C</label><label><input name="q4" type="radio" value="2"/> Cambiar los límites</label></div><button type="submit">Calificar</button><button class="secondary" id="reset" type="button">Reiniciar</button><div aria-live="polite" class="feedback" id="quizout"></div></form></section>
+<section class="integrator-link" id="integradora">
+<div>
+<h2>Actividad final integradora del Bloque 1</h2>
+<p>Cuando completes las clases, conecta los doce subtemas en un único caso de Telecomunicaciones: <strong>energía recibida a partir del perfil de potencia p(t)=1+t² mW</strong> durante 1 s.</p>
+</div>
+<a href="actividad-integradora.html">Abrir actividad integradora →</a>
+</section>
+<section id="resumen"><h2>Resumen de la clase</h2><div class="summarybox"><ul><li>La regla de potencia aumenta el exponente y divide por el nuevo valor.</li><li>La integral respeta suma y factores constantes.</li><li>Siempre puedes comprobar una antiderivada derivándola.</li></ul></div><div class="footer-actions"><button class="secondary" id="top">↑ Volver al inicio</button><span class="small">Fin de la clase 1.10</span></div></section>
+</main></div>
+<script>
+const root=document; const q=s=>root.querySelector(s),qa=s=>[...root.querySelectorAll(s)];
+const sections=qa('main section'), nav=qa('aside [data-go]');
+
+q('#top').addEventListener('click',()=>q('#inicio').scrollIntoView({behavior:'smooth'}));
+const answers={"q1": 0, "q2": 1, "q3": 0, "q4": 0};
+q('#quiz').addEventListener('submit',e=>{e.preventDefault();let score=0,done=0;Object.entries(answers).forEach(([name,ans])=>{let el=q(`input[name="${name}"]:checked`);if(el){done++;if(+el.value===ans)score++;}});if(done<Object.keys(answers).length){q('#quizout').innerHTML='<span class="bad">Responde todas las preguntas antes de calificar.</span>';return}let pct=Math.round(score/Object.keys(answers).length*100);q('#quizout').innerHTML=`Resultado: <strong>${score}/${Object.keys(answers).length} (${pct}%)</strong>. `+(pct>=80?'<span class="ok">Buen dominio. Puedes avanzar.</span>':'<span class="bad">Conviene repasar teoría, ejemplos y ejercicios guiados.</span>');});
+q('#reset').addEventListener('click',()=>{q('#quiz').reset();q('#quizout').textContent='';});
+q('#run').addEventListener('click',()=>{let a=+q('#coef').value,n=+q('#pow').value,np=n+1,c=a/np;q('#simout').innerHTML=`∫ ${a}x<sup>${n}</sup> dx = <strong>${Number(c.toFixed(6))}x<sup>${np}</sup> + C</strong>.<br>Comprobación: ${Number(c.toFixed(6))}·${np}x<sup>${n}</sup> = ${a}x<sup>${n}</sup>.`});
+</script>
+<script src="../../assets/js/bloque-01/tema-1-10.js"></script>
+<script>
+(() => {
+  const BANK={"basic": [{"p": "En ∫2x^2dx, ¿qué exponente tendrá x en la antiderivada?", "a": 3, "s": "Se incrementa el exponente: 2+1=3."}, {"p": "En ∫3x^3dx, ¿qué exponente tendrá x en la antiderivada?", "a": 4, "s": "Se incrementa el exponente: 3+1=4."}, {"p": "En ∫4x^4dx, ¿qué exponente tendrá x en la antiderivada?", "a": 5, "s": "Se incrementa el exponente: 4+1=5."}, {"p": "En ∫5x^1dx, ¿qué exponente tendrá x en la antiderivada?", "a": 2, "s": "Se incrementa el exponente: 1+1=2."}, {"p": "En ∫6x^2dx, ¿qué exponente tendrá x en la antiderivada?", "a": 3, "s": "Se incrementa el exponente: 2+1=3."}, {"p": "En ∫7x^3dx, ¿qué exponente tendrá x en la antiderivada?", "a": 4, "s": "Se incrementa el exponente: 3+1=4."}], "medium": [{"p": "En ∫2x^2dx, ¿cuál es el coeficiente de x^3?", "a": 0.6666666666666666, "t": 1e-07, "s": "2/(2+1)=0.6666666666666666."}, {"p": "En ∫3x^3dx, ¿cuál es el coeficiente de x^4?", "a": 0.75, "t": 1e-07, "s": "3/(3+1)=0.75."}, {"p": "En ∫4x^4dx, ¿cuál es el coeficiente de x^5?", "a": 0.8, "t": 1e-07, "s": "4/(4+1)=0.8."}, {"p": "En ∫5x^1dx, ¿cuál es el coeficiente de x^2?", "a": 2.5, "t": 1e-07, "s": "5/(1+1)=2.5."}, {"p": "En ∫6x^2dx, ¿cuál es el coeficiente de x^3?", "a": 2.0, "t": 1e-07, "s": "6/(2+1)=2.0."}, {"p": "En ∫7x^3dx, ¿cuál es el coeficiente de x^4?", "a": 1.75, "t": 1e-07, "s": "7/(3+1)=1.75."}], "hard": [{"p": "Tomando C=0, evalúa una antiderivada de 2x^2 en x=2.", "a": 5.333333333333333, "t": 1e-07, "s": "F(2)=0.6666666666666666·2^3=5.333333333333333."}, {"p": "Tomando C=0, evalúa una antiderivada de 3x^3 en x=2.", "a": 12.0, "t": 1e-07, "s": "F(2)=0.75·2^4=12.0."}, {"p": "Tomando C=0, evalúa una antiderivada de 4x^4 en x=2.", "a": 25.6, "t": 1e-07, "s": "F(2)=0.8·2^5=25.6."}, {"p": "Tomando C=0, evalúa una antiderivada de 5x^1 en x=2.", "a": 10.0, "t": 1e-07, "s": "F(2)=2.5·2^2=10.0."}, {"p": "Tomando C=0, evalúa una antiderivada de 6x^2 en x=2.", "a": 16.0, "t": 1e-07, "s": "F(2)=2.0·2^3=16.0."}, {"p": "Tomando C=0, evalúa una antiderivada de 7x^3 en x=2.", "a": 28.0, "t": 1e-07, "s": "F(2)=1.75·2^4=28.0."}]};
+  const q=s=>document.querySelector(s);
+  const qa=s=>[...document.querySelectorAll(s)];
+  const level=q("#bankLevel"), list=q("#bankList"), prompt=q("#bankPrompt"),
+        answer=q("#bankAnswer"), feedback=q("#bankFeedback"),
+        randomBtn=q("#bankRandom"), checkBtn=q("#bankCheck"), hintBtn=q("#bankHint");
+  if(!level || !list || !prompt || !answer || !feedback || !randomBtn || !checkBtn || !hintBtn) return;
+
+  let bankIndex=0;
+  const levelLabel={basic:"Básico",medium:"Intermedio",hard:"Avanzado"};
+  const currentSet=()=>BANK[level.value] || [];
+
+  function renderList(){
+    const set=currentSet();
+    list.innerHTML=set.map((x,i)=>
+      `<button type="button" class="bank-item ${i===bankIndex?"active":""}" data-i="${i}">${levelLabel[level.value]} ${i+1}</button>`
+    ).join("");
+    qa(".bank-item").forEach(btn=>btn.addEventListener("click",()=>{
+      bankIndex=+btn.dataset.i; renderProblem(); renderList();
+    }));
+  }
+  function renderProblem(){
+    const set=currentSet();
+    if(!set.length) return;
+    if(bankIndex>=set.length) bankIndex=0;
+    const x=set[bankIndex];
+    prompt.innerHTML="<strong>Problema:</strong> "+x.p;
+    answer.value="";
+    feedback.textContent="";
+  }
+
+  level.addEventListener("change",()=>{bankIndex=0;renderProblem();renderList();});
+  randomBtn.addEventListener("click",()=>{const set=currentSet();if(!set.length)return;bankIndex=Math.floor(Math.random()*set.length);renderProblem();renderList();});
+  hintBtn.addEventListener("click",()=>{const x=currentSet()[bankIndex];if(x)feedback.innerHTML="Pista: "+x.s;});
+  checkBtn.addEventListener("click",()=>{
+    const x=currentSet()[bankIndex]; if(!x)return;
+    const v=Number(answer.value.trim().replace(",","."));
+    if(!Number.isFinite(v)){feedback.innerHTML='<span class="bad">Ingresa una respuesta numérica válida.</span>';return;}
+    const tol=(x.t||1e-6)*Math.max(1,Math.abs(x.a));
+    feedback.innerHTML=Math.abs(v-x.a)<=tol
+      ? '<span class="ok">Correcto.</span> '+x.s
+      : '<span class="bad">Aún no.</span> Revisa el procedimiento y utiliza la pista.';
+  });
+  renderList(); renderProblem();
+})();
+</script>
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 1 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+<script id="ucacue-navigation-fix">
+(() => {
+  function initUcacueNav(){
+    const aside = document.querySelector('aside.class-nav');
+    if(!aside) return;
+    const buttons = [...aside.querySelectorAll('button[data-go]')];
+    const sections = buttons
+      .map(btn => document.getElementById(btn.dataset.go))
+      .filter(Boolean);
+
+    const activate = (id) => {
+      buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.go === id));
+    };
+
+    aside.addEventListener('click', (event) => {
+      const btn = event.target.closest('button[data-go]');
+      if(!btn || !aside.contains(btn)) return;
+      const target = document.getElementById(btn.dataset.go);
+      if(!target) return;
+      activate(btn.dataset.go);
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      try { history.replaceState(null, '', '#' + btn.dataset.go); } catch(e) {}
+    });
+
+    let scheduled = false;
+    function syncActive(){
+      scheduled = false;
+      let current = sections[0] || null;
+      for(const section of sections){
+        const top = section.getBoundingClientRect().top;
+        if(top <= 145) current = section;
+        else break;
+      }
+      if(current) activate(current.id);
+    }
+    window.addEventListener('scroll', () => {
+      if(!scheduled){
+        scheduled = true;
+        requestAnimationFrame(syncActive);
+      }
+    }, {passive:true});
+
+    const hash = location.hash ? location.hash.slice(1) : '';
+    if(hash && document.getElementById(hash)){
+      requestAnimationFrame(() => {
+        activate(hash);
+        document.getElementById(hash).scrollIntoView({block:'start'});
+      });
+    } else {
+      syncActive();
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initUcacueNav, {once:true});
+  } else {
+    initUcacueNav();
+  }
+})();
+</script>
+</body></html>

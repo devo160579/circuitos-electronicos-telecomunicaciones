@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es"><head><base href="./"/><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>3.2 Otras aplicaciones de la integral definida</title>
+
+
+<link href="../../assets/css/bloque-03.css" rel="stylesheet"/></head>
+<body><header class="ucacue-header">
+<div class="ucacue-brand-shell">
+<div class="ucacue-logo-frame">
+<img alt="Universidad Católica de Cuenca" class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp"/>
+</div>
+<div class="ucacue-course-meta">
+<div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+<h1>3.2. Otras aplicaciones de la integral definida</h1>
+<p>Cálculo Integral · Bloque 3 · Aplicaciones de la Integral en la Ingeniería</p>
+</div>
+</div>
+<div aria-hidden="true" class="ucacue-chevron"></div>
+</header>
+<div class="layout"><aside aria-label="Navegación de la clase" class="class-nav"><div class="class-nav-title">Navegación de la clase</div><button data-go="inicio" type="button">Inicio</button><button data-go="prerrequisitos" type="button">Prerrequisitos</button><button data-go="intuicion" type="button">Explicación intuitiva</button><button data-go="teoria" type="button">Teoría ampliada</button><button data-go="desarrollo" type="button">Desarrollo matemático</button><button data-go="ejemplos" type="button">Ejemplos</button><button data-go="telecom" type="button">Telecomunicaciones</button><button data-go="errores" type="button">Errores frecuentes</button><button data-go="laboratorio" type="button">Laboratorio SVG</button><button data-go="entrenador" type="button">Entrenador aleatorio</button><button data-go="banco" type="button">Banco por niveles</button><button data-go="guiados" type="button">Ejercicios guiados</button><button data-go="propuestos" type="button">Ejercicios propuestos</button><button data-go="juego" type="button">Aprende jugando</button><button data-go="evaluacion" type="button">Autoevaluación</button><button data-go="integradora" type="button">Actividad integradora</button><button data-go="resumen" type="button">Resumen</button></aside><main>
+<section id="inicio"><h2>Introducción</h2><p>Una integral definida no sirve únicamente para calcular áreas. Su significado más general es acumulación: si conocemos una tasa instantánea, la integral permite obtener la cantidad total acumulada.</p><div class="callout"><strong>Objetivo:</strong> Aplicar integrales definidas a magnitudes acumuladas de ingeniería, interpretando correctamente el integrando, la variable, las unidades y el resultado.</div><div class="source-note"><strong>Alcance:</strong> Contenido oficial del sílabo: otras aplicaciones de la integral definida. Las aplicaciones concretas siguientes son un desarrollo didáctico propuesto para ingeniería y Telecomunicaciones.</div></section>
+<section id="prerrequisitos"><h2>Prerrequisitos</h2><ul><li>Integral definida y unidades.</li><li>Interpretación de funciones como tasas.</li><li>Potencia, corriente y señales básicas.</li><li>Valor medio de funciones.</li></ul></section>
+<section id="intuicion"><h2>Explicación intuitiva</h2><p>Cuando una magnitud cambia continuamente, podemos pensar en pequeños aportes: energía durante un pequeño tiempo, carga transportada en un pequeño intervalo o desplazamiento durante un instante. La integral suma todos esos aportes.</p></section>
+<section id="teoria"><h2>Teoría ampliada</h2><div class="grid2"><div class="card"><h3>Acumulación desde una tasa</h3><p>Si q′(t)=r(t), entonces q(b)−q(a)=∫ₐᵇr(t)dt.</p></div><div class="card"><h3>Carga eléctrica</h3><p>Si i(t) es corriente, Q=∫i(t)dt. A·s equivale a coulomb.</p></div><div class="card"><h3>Energía desde potencia</h3><p>Si p(t) es potencia, E=∫p(t)dt. W·s equivale a joule.</p></div><div class="card"><h3>Desplazamiento desde velocidad</h3><p>Si v(t) es velocidad, el desplazamiento neto es ∫v(t)dt.</p></div><div class="card"><h3>Valor RMS como aplicación propuesta</h3><p>Para una señal periódica x(t), x_RMS=√[(1/T)∫₀ᵀx²(t)dt]. Es una aplicación especialmente relevante en señales y circuitos.</p></div></div></section>
+<section id="desarrollo"><h2>Desarrollo matemático y razonamiento</h2>
+<h3>De potencia a energía</h3>
+<p>La potencia puede interpretarse como rapidez de transferencia de energía:</p>
+<div class="formula">p(t)=dE/dt</div>
+<p>Por integración:</p>
+<div class="formula">E(b)−E(a)=∫ₐᵇp(t)dt</div>
+<h3>De corriente a carga</h3>
+<div class="formula">i(t)=dq/dt ⟹ q(b)−q(a)=∫ₐᵇi(t)dt</div>
+<h3>Valor eficaz o RMS</h3>
+<p>Para una señal periódica, primero se eleva al cuadrado, luego se obtiene su valor medio y finalmente se calcula la raíz:</p>
+<div class="formula">x_RMS=√[(1/T)∫₀ᵀx²(t)dt]</div>
+</section>
+<section id="ejemplos"><h2>Ejemplos resueltos paso a paso</h2><details><summary><strong>Energía.</strong> p(t)=10+2t W durante 0≤t≤5 s.</summary><div class="solution"><strong>Desarrollo:</strong> E=∫₀⁵(10+2t)dt=[10t+t²]₀⁵=75 J.</div></details><details><summary><strong>Carga.</strong> i(t)=2t A durante 0≤t≤3 s.</summary><div class="solution"><strong>Desarrollo:</strong> Q=∫₀³2t dt=[t²]₀³=9 C.</div></details><details><summary><strong>RMS de una señal sinusoidal.</strong> x(t)=A sin(2πt/T).</summary><div class="solution"><strong>Desarrollo:</strong> x_RMS=A/√2. Se obtiene integrando x²(t) sobre un periodo.</div></details></section>
+<section id="telecom"><h2>Aplicación en Telecomunicaciones</h2><div class="callout">
+<p>En Telecomunicaciones aparecen varias acumulaciones importantes:</p>
+<ul>
+<li><strong>Energía de una señal:</strong> E=∫|x(t)|²dt para señales de energía.</li>
+<li><strong>Potencia media:</strong> puede obtenerse promediando una potencia instantánea sobre un intervalo o periodo.</li>
+<li><strong>Carga:</strong> útil al relacionar corriente con dispositivos y circuitos.</li>
+<li><strong>RMS:</strong> permite comparar el efecto energético de señales variables con un valor equivalente constante.</li>
+</ul>
+<p>Estas aplicaciones son una propuesta didáctica coherente con el contenido genérico «otras aplicaciones de la integral definida» del sílabo.</p>
+</div></section>
+<section id="errores"><h2>Errores frecuentes y cómo evitarlos</h2><div class="error-box"><ul><li>Integrar una magnitud sin analizar qué representa físicamente.</li><li>Ignorar las unidades del integrando y de dt.</li><li>Confundir desplazamiento neto con distancia recorrida.</li><li>Confundir valor medio con valor RMS.</li><li>Olvidar elevar al cuadrado antes de promediar en RMS.</li></ul></div></section>
+<section id="laboratorio"><h2>Laboratorio SVG interactivo</h2><div class="controls"><label>Aplicación<select id="labType"><option value="energy">Energía: p(t)=5+t²</option><option value="charge">Carga: i(t)=1+2t</option><option value="rms">RMS: 4sin(2πt)</option></select></label><label>Extremo T<input id="labB" max="3" min=".5" step=".05" type="range" value="2"/></label></div><svg id="labSvg" viewbox="0 0 820 320"></svg><div class="feedback" id="labOut"></div></section>
+<section id="entrenador"><h2>Entrenador de ejercicios aleatorios</h2><div class="trainer"><label>Nivel<select id="difficulty"><option value="easy">Básico</option><option selected="" value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><div class="score"><div><strong id="hits">0</strong>Aciertos</div><div><strong id="attempts">0</strong>Intentos</div><div><strong id="streak">0</strong>Racha</div></div></div><div class="challenge"><p id="exPrompt"></p><label>Respuesta<input id="exAns"/></label><div class="actions"><button id="newEx" type="button">Nuevo ejercicio</button><button class="secondary" id="checkEx" type="button">Comprobar</button></div><div class="feedback" id="exFeed"></div></div></section>
+<section id="banco"><h2>Banco de problemas por niveles</h2><p>18 problemas: 6 básicos, 6 intermedios y 6 avanzados.</p><div class="controls"><label>Nivel<select id="bankLevel"><option value="basic">Básico</option><option value="medium">Intermedio</option><option value="hard">Avanzado</option></select></label><button id="bankRandom" type="button">Problema aleatorio</button></div><div class="bank"><div class="banklist" id="bankList"></div><div class="challenge"><p id="bankPrompt"></p><label>Respuesta<input id="bankAns"/></label><div class="actions"><button id="bankCheck" type="button">Comprobar</button><button class="secondary" id="bankHint" type="button">Pista</button></div><div class="feedback" id="bankFeed"></div></div></div></section>
+<section id="guiados"><h2>Ejercicios guiados</h2><details><summary><strong>G1.</strong> p(t)=4t W en 0≤t≤2 s. Hallar energía.</summary><div class="solution"><strong>Respuesta guiada:</strong> E=∫₀²4t dt=8 J.</div></details><details><summary><strong>G2.</strong> i(t)=3 A durante 4 s. Hallar carga.</summary><div class="solution"><strong>Respuesta guiada:</strong> Q=∫₀⁴3 dt=12 C.</div></details></section>
+<section id="propuestos"><h2>Ejercicios propuestos</h2><ol><li>Calcula la energía entregada por p(t)=5+t² W entre 0 y 2 s.</li><li>Calcula la carga transportada por i(t)=1+2t A entre 0 y 3 s.</li><li>Para x(t)=4sin(2πt) V, determina su RMS sobre un periodo.</li><li>Explica por qué las unidades son esenciales para interpretar una integral aplicada.</li></ol><div class="callout warn"><strong>Recomendación:</strong> identifica primero la magnitud elemental, establece límites, resuelve y verifica unidades.</div></section>
+<section id="juego"><h2>Aprende jugando <span class="optional">Opcional</span></h2><p>Resuelve cinco desafíos para llevar una señal desde TX hasta RX.</p><button id="toggleGame" type="button">Iniciar / ocultar juego</button><div class="challenge" hidden="" id="gamePanel"><svg viewbox="0 0 840 170"><path d="M65 85 C210 15,350 145,500 80 S690 35,785 85" fill="none" stroke="#9aa9b7" stroke-width="7"></path><circle cx="65" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="65" y="91">TX</text><circle cx="785" cy="85" fill="#AF1C32" r="23"></circle><text fill="white" text-anchor="middle" x="785" y="91">RX</text><circle cx="65" cy="85" fill="#f59e0b" id="packet" r="12"></circle></svg><p><strong id="gameStage">0/5</strong> desafíos</p><p id="gamePrompt"></p><label>Respuesta<input id="gameAns"/></label><div class="actions"><button id="gameCheck" type="button">Enviar</button><button class="secondary" id="gameReset" type="button">Reiniciar</button></div><div class="feedback" id="gameFeed"></div></div></section>
+<section id="evaluacion"><h2>Autoevaluación</h2><form id="quiz"><div class="q"><p><strong>1.</strong> Si p(t) está en W, ∫p(t)dt está en…</p><label><input name="q1" type="radio" value="0"/> J</label><label><input name="q1" type="radio" value="1"/> A</label><label><input name="q1" type="radio" value="2"/> Hz</label></div><div class="q"><p><strong>2.</strong> Q=∫i(t)dt representa…</p><label><input name="q2" type="radio" value="0"/> carga</label><label><input name="q2" type="radio" value="1"/> potencia</label><label><input name="q2" type="radio" value="2"/> resistencia</label></div><div class="q"><p><strong>3.</strong> RMS requiere integrar…</p><label><input name="q3" type="radio" value="0"/> x²(t)</label><label><input name="q3" type="radio" value="1"/> x(t) solamente</label><label><input name="q3" type="radio" value="2"/> x′(t)</label></div><div class="q"><p><strong>4.</strong> La integral aplicada representa principalmente…</p><label><input name="q4" type="radio" value="0"/> acumulación</label><label><input name="q4" type="radio" value="1"/> solo área geométrica</label><label><input name="q4" type="radio" value="2"/> solo pendiente</label></div><div class="actions"><button type="submit">Calificar</button><button class="secondary" id="quizReset" type="button">Reiniciar</button></div><div class="feedback" id="quizOut"></div></form></section>
+<section class="integrator" id="integradora"><div><h2>Actividad final integradora del Bloque 3</h2><p>Integra geometría, acumulación temporal y distribución espacial en un caso de Telecomunicaciones.</p></div><a href="actividad-integradora.html">Abrir actividad →</a></section>
+<section id="resumen"><h2>Resumen</h2><div class="callout"><ul><li>La integral definida acumula tasas continuas.</li><li>Potencia→energía y corriente→carga son ejemplos directos.</li><li>El valor RMS es una aplicación integral muy relevante en Telecomunicaciones.</li><li>La interpretación física y las unidades son parte de la solución.</li></ul></div></section>
+</main></div>
+
+<footer class="ucacue-footer">
+<div class="ucacue-footer-inner">
+<span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+<span>Cálculo Integral · Bloque 3 · Material interactivo para estudiantes</span>
+</div>
+</footer>
+
+<script src="../../assets/js/bloque-03/tema-3-2.js"></script></body></html>

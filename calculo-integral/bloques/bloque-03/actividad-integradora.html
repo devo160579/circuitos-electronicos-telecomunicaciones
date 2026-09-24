@@ -1,0 +1,147 @@
+<!doctype html><html lang='es'><head><base href="./"><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Actividad integradora Bloque 3</title>
+<style>
+:root{--b:#E20613;--b2:#AF1C32;--ink:#1f2937;--mut:#64748b;--bg:#F7F7F7;--line:#E6E6E6;--ok:#166534;--bad:#b42318;--gold:#9a6700}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.58}
+header{background:linear-gradient(135deg,var(--b2),var(--b));color:white;padding:28px 18px}.wrap{max-width:1120px;margin:auto}.ey{font-size:.84rem;font-weight:800;text-transform:uppercase;opacity:.9}h1{margin:.25rem 0;font-size:clamp(1.6rem,3vw,2.5rem)}
+.layout{max-width:1120px;margin:20px auto;padding:0 14px 35px;display:grid;grid-template-columns:235px 1fr;gap:18px}aside{position:sticky;top:10px;align-self:start;background:white;border:1px solid var(--line);border-radius:14px;padding:9px}aside button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:9px;border-radius:8px;cursor:pointer}aside button:hover{background:#FFF0F1;color:var(--b);font-weight:800}
+section{background:white;border:1px solid var(--line);border-radius:15px;padding:19px;margin-bottom:15px}h2,h3{color:var(--b)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fff}.callout{border-left:5px solid var(--b);background:#f4f9fd;padding:13px;border-radius:9px}.warn{border-left-color:var(--gold);background:#fff9eb}.source-note{background:#FFF1F2;border:1px solid #F3C2C7;border-radius:10px;padding:12px}
+.formula{font-family:"Cambria Math","Times New Roman",serif;font-size:1.13rem;background:#f8fafc;border-left:4px solid var(--b);padding:11px 13px;border-radius:8px;margin:9px 0;overflow:auto}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:9px 0;background:#fbfdff}summary{cursor:pointer}.solution{padding-top:9px;color:#334155}
+label{display:block;margin:7px 0}input,select{width:100%;max-width:470px;padding:10px;border:1px solid #CFCFCF;border-radius:9px;font-size:1rem;background:white}input[type=radio]{width:auto}
+button{border:0;border-radius:9px;padding:10px 13px;background:var(--b);color:white;font-weight:800;cursor:pointer}.secondary{background:#F2F2F2;color:var(--b)}.actions,.controls,.trainer{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.controls label,.trainer label{min-width:150px;flex:1}.feedback{margin-top:10px;min-height:28px}.ok{color:var(--ok)}.bad{color:var(--bad)}
+svg{width:100%;height:auto;border:1px solid var(--line);border-radius:11px;background:white;margin-top:10px}.axis{stroke:#64748b}.gridline{stroke:#e1e7ed}.curve{fill:none;stroke:#1f2937;stroke-width:3}.curve2{fill:none;stroke:#9a6700;stroke-width:3}.area{fill:rgba(226,6,19,.16)}.cell{stroke:#E20613;fill:rgba(226,6,19,.15)}
+.score{display:flex;gap:8px;flex-wrap:wrap}.score div{border:1px solid var(--line);border-radius:9px;padding:8px 11px;text-align:center}.score strong{display:block;color:var(--b)}
+.challenge{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfdff;margin-top:11px}.bank{display:grid;grid-template-columns:205px 1fr;gap:13px}.banklist{display:grid;gap:6px;max-height:370px;overflow:auto}.bankitem{background:#FBEAEC;color:var(--b);text-align:left}.bankitem.active{background:var(--b);color:white}
+.error-box{background:#fff8ed;border:1px solid #ead5ad;border-left:5px solid var(--gold);padding:13px;border-radius:10px}.optional{font-size:.72rem;background:#FFF0F1;color:var(--b);padding:4px 7px;border-radius:999px}
+.q{border-bottom:1px solid var(--line);padding:9px 0}.integrator{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:linear-gradient(135deg,#f1f6fb,#fff)}.integrator a{background:var(--b);color:white;text-decoration:none;padding:11px 14px;border-radius:9px;font-weight:800}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:static;display:flex;overflow:auto;gap:5px}aside button{min-width:max-content}.grid2,.bank{grid-template-columns:1fr}}@media(max-width:600px){.integrator{grid-template-columns:1fr}}
+</style>
+
+<style id="ucacue-brand-overrides">
+:root{
+  --b:#E20613 !important;
+  --b2:#AF1C32 !important;
+  --blue:#E20613 !important;
+  --blue2:#AF1C32 !important;
+  --brand-red:#E20613;
+  --brand-band1:#DC2137;
+  --brand-band2:#AF1C32;
+  --brand-gray:#E6E6E6;
+  --ink:#272222 !important;
+  --mut:#686868 !important;
+  --muted:#686868 !important;
+  --bg:#F7F7F7 !important;
+  --line:#E6E6E6 !important;
+}
+body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3","Source Sans Pro","Segoe UI",Arial,sans-serif;}
+header.ucacue-header{
+  background:#fff !important;color:var(--ink) !important;padding:0 !important;
+  border-top:8px solid var(--brand-red);box-shadow:0 1px 0 rgba(0,0,0,.06);
+}
+.ucacue-brand-shell{
+  max-width:1180px;margin:auto;padding:22px;
+  display:grid;grid-template-columns:minmax(245px,340px) 1fr;gap:34px;align-items:center;
+}
+.ucacue-logo-frame{min-height:132px;padding:18px 20px;display:flex;align-items:center;justify-content:center;background:#fff;}
+.ucacue-logo{display:block;width:100%;max-width:340px;min-width:245px;height:auto;object-fit:contain;}
+.ucacue-course-meta{border-left:4px solid var(--brand-red);padding-left:22px;}
+.ucacue-course-meta .institutional-kicker{
+  color:#595959;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;
+}
+.ucacue-course-meta h1{
+  color:#252020 !important;margin:.3rem 0 .35rem;font-size:clamp(1.7rem,3vw,2.55rem);line-height:1.08;font-weight:800;
+}
+.ucacue-course-meta p{color:#555 !important;opacity:1 !important;margin:0;}
+.ucacue-chevron{
+  height:26px;background:linear-gradient(90deg,var(--brand-band1) 0 50%,var(--brand-band2) 50% 100%);
+  clip-path:polygon(0 0,50% 62%,100% 0,100% 42%,50% 100%,0 42%);
+}
+.layout{max-width:1180px !important;}
+aside.class-nav{
+  border-top:5px solid var(--brand-red) !important;
+  box-shadow:0 7px 22px rgba(38,26,26,.06);
+  max-height:calc(100vh - 24px);overflow:auto;
+}
+.class-nav-title{
+  padding:7px 9px 10px;color:#585858;font-size:.76rem;font-weight:900;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line);margin-bottom:5px;
+}
+aside.class-nav button{
+  position:relative;border-radius:7px !important;
+  transition:background .16s ease,color .16s ease,padding-left .16s ease;
+}
+aside.class-nav button:hover{background:#FFF0F1 !important;color:#9E0A16 !important;}
+aside.class-nav button.active{
+  background:#FDE8EA !important;color:#A60E1C !important;font-weight:900 !important;padding-left:18px;
+}
+aside.class-nav button.active::before{
+  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:4px;border-radius:4px;background:var(--brand-red);
+}
+main section{scroll-margin-top:18px;border-color:var(--line) !important;box-shadow:0 4px 14px rgba(33,24,24,.025);}
+h2,h3{color:#97101B !important;}
+.callout,.formula{border-left-color:var(--brand-red) !important;}
+button:not(.topic):not(.bankitem):not(.bank-item){
+  background:var(--brand-red);
+}
+button.secondary{background:#F2F2F2 !important;color:#8F101A !important;}
+button:focus,input:focus,select:focus{outline:3px solid rgba(226,6,19,.18) !important;outline-offset:1px;}
+.score strong,.scoreboard strong{color:#A60E1C !important;}
+th{background:#F7EDEE !important;}
+.source-note{background:#FFF4F5 !important;border-color:#F2C5C9 !important;}
+.ucacue-footer{margin-top:18px;border-top:4px solid var(--brand-red);background:#fff;}
+.ucacue-footer-inner{
+  max-width:1180px;margin:auto;padding:16px 20px 22px;display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;color:#5b5b5b;font-size:.88rem;
+}
+.ucacue-footer strong{color:#2b2222;}
+@media(max-width:820px){
+  .ucacue-brand-shell{grid-template-columns:1fr;gap:10px;text-align:center;}
+  .ucacue-logo-frame{min-height:auto;padding:13px 18px;}
+  .ucacue-logo{margin:auto;}
+  .ucacue-course-meta{border-left:0;border-top:3px solid var(--brand-red);padding:15px 4px 0;}
+  aside.class-nav{max-height:none;overflow-x:auto;overflow-y:hidden;border-top:4px solid var(--brand-red) !important;}
+  .class-nav-title{display:none;}
+}
+@media(max-width:360px){.ucacue-logo{min-width:0;max-width:100%;}}
+</style>
+</head>
+<body><header class="ucacue-header">
+<div class="ucacue-brand-shell">
+  <div class="ucacue-logo-frame">
+    <img class="ucacue-logo" src="../../assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca">
+  </div>
+  <div class="ucacue-course-meta">
+    <div class="institutional-kicker">Carrera de Telecomunicaciones · Tercer ciclo</div>
+    <h1>Actividad final integradora · Bloque 3</h1>
+    <p>Cálculo Integral · Bloque 3 · Aplicaciones de la Integral en la Ingeniería</p>
+  </div>
+</div>
+<div class="ucacue-chevron" aria-hidden="true"></div>
+</header>
+<div class='layout' style='display:block'><main>
+<section><h2>Situación profesional</h2><p>Se analiza un pequeño módulo de Telecomunicaciones mediante tres modelos:</p>
+<div class='grid2'>
+<div class='card'><h3>Geometría</h3><p>Perfil radial de una cubierta: r(x)=1+0.2x cm, 0≤x≤5 cm.</p></div>
+<div class='card'><h3>Acumulación temporal</h3><p>Potencia consumida: p(t)=5+t² W, 0≤t≤2 s.</p></div>
+<div class='card'><h3>Distribución espacial</h3><p>Densidad de potencia: S(x,y)=1+x+y W/m² sobre [0,1]×[0,1].</p></div>
+</div>
+</section>
+<section><h2>Ruta integradora</h2><div id='stageButtons' class='actions'></div><div class='challenge'><p id='stageTitle'></p><p id='stagePrompt'></p><label>Respuesta numérica<input id='stageAns'></label><div class='actions'><button id='stageCheck'>Comprobar</button><button id='stageHint' class='secondary'>Pista</button><button id='stageNext' class='secondary'>Siguiente</button></div><div id='stageFeed' class='feedback'></div></div></section>
+<section><h2>Cierre</h2><div id='finalResult' class='callout'>Completa las tres etapas para conectar los contenidos del Bloque 3.</div><p><a href='index.html'>← Volver al Bloque 3</a></p></section>
+</main></div>
+<script>
+(()=>{const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
+const V=Math.PI*(5+5+5/3), E=10+8/3, P=2;
+const stages=[
+{n:"3.1",p:"Calcula el volumen V=π∫₀⁵(1+0.2x)²dx, en cm³.",a:V,h:"Expande (1+0.2x)²=1+0.4x+0.04x².",s:"V=π(5+5+5/3)=35π/3≈"+V.toFixed(6)+" cm³."},
+{n:"3.2",p:"Calcula la energía E=∫₀²(5+t²)dt, en joule.",a:E,h:"Integra 5+t²: 5t+t³/3.",s:"E=10+8/3=38/3≈"+E.toFixed(6)+" J."},
+{n:"3.3",p:"Calcula P=∫₀¹∫₀¹(1+x+y)dy dx, en watt.",a:P,h:"Integra primero respecto de y.",s:"P=2 W."}
+];let cur=0,done=Array(3).fill(false);
+function buttons(){q("#stageButtons").innerHTML=stages.map((x,i)=>`<button class="${i===cur?'':'secondary'}" data-i="${i}">${x.n}${done[i]?' ✓':''}</button>`).join("");qa("#stageButtons button").forEach(b=>b.onclick=()=>{cur=+b.dataset.i;render()})}
+function render(){let x=stages[cur];q("#stageTitle").innerHTML="<strong>"+x.n+"</strong>";q("#stagePrompt").textContent=x.p;q("#stageAns").value="";q("#stageFeed").textContent="";buttons();if(done.every(Boolean))q("#finalResult").innerHTML="<span class='ok'><strong>Actividad completada.</strong></span> Has utilizado una integral para volumen, una integral definida para energía y una integral doble para potencia distribuida."}
+q("#stageHint").onclick=()=>q("#stageFeed").textContent="Pista: "+stages[cur].h;
+q("#stageCheck").onclick=()=>{let x=stages[cur],v=Number(q("#stageAns").value.replace(",","."));if(!Number.isFinite(v))return;if(Math.abs(v-x.a)<=1e-4*Math.max(1,Math.abs(x.a))){done[cur]=true;q("#stageFeed").innerHTML="<span class='ok'>Correcto.</span> "+x.s}else q("#stageFeed").innerHTML="<span class='bad'>Revisa.</span> "+x.h;buttons();if(done.every(Boolean))q("#finalResult").innerHTML="<span class='ok'><strong>Actividad completada.</strong></span> Has integrado geometría, acumulación temporal y distribución espacial."};
+q("#stageNext").onclick=()=>{if(cur<2){cur++;render()}};render()})();
+</script><footer class="ucacue-footer"><div class="ucacue-footer-inner">
+    <span><strong>Universidad Católica de Cuenca</strong> · Carrera de Telecomunicaciones</span>
+    <span>Cálculo Integral · Bloque 3</span></div></footer></body></html>
