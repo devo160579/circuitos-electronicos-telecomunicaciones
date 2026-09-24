@@ -1,0 +1,52 @@
+name: Importar modulos de Calculo Integral
+
+on:
+  push:
+    paths:
+      - '.github/import/calculo-integral-upload.tar.xz'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extraer materiales
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARCHIVO='.github/import/calculo-integral-upload.tar.xz'
+          if [ ! -f "$ARCHIVO" ]; then
+            echo 'El paquete de importacion no existe; no hay cambios que aplicar.'
+            exit 0
+          fi
+          TMP="$(mktemp -d)"
+          tar -xJf "$ARCHIVO" -C "$TMP"
+          mkdir -p calculo-integral/assets
+          mkdir -p calculo-integral/bloques/bloque-01
+          mkdir -p calculo-integral/bloques/bloque-02
+          mkdir -p calculo-integral/bloques/bloque-03
+          cp -R "$TMP/assets/." calculo-integral/assets/
+          cp -R "$TMP/bloque-01/." calculo-integral/bloques/bloque-01/
+          cp -R "$TMP/bloque-02/." calculo-integral/bloques/bloque-02/
+          cp -R "$TMP/bloque-03/." calculo-integral/bloques/bloque-03/
+
+      - name: Confirmar materiales importados
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add calculo-integral
+          if git diff --cached --quiet; then
+            echo 'No existen cambios pendientes.'
+            exit 0
+          fi
+          git commit -m 'Cargar modulos HTML de Calculo Integral'
+          git push
