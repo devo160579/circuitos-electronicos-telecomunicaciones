@@ -1,0 +1,55 @@
+asignatura:
+  codigo: CI-IT-03
+  nombre: Cálculo Integral
+  ciclo: Tercer Ciclo
+  carrera: Telecomunicaciones
+  modalidad: Presencial
+  periodo: Septiembre 2026 - Febrero 2027
+  creditos: 3
+  horas_semanales: 4
+  horas_contacto_docente: 64
+  horas_autonomo: 64
+  horas_practico_experimental: 16
+  horas_totales: 144
+  prerrequisito: Cálculo Diferencial
+  resultado_aprendizaje: "Aplicar los fundamentos del cálculo integral para la solución de problemas relacionados con el área de ingeniería y la arquitectura."
+
+bloques:
+  - numero: 1
+    nombre: Notación Sigma e Integración
+    periodo: 14-09-2026 a 14-10-2026
+    practica: "Estimación de áreas empleando Sumatorias de Riemann y GeoGebra."
+    temas:
+      - "1.1 La notación sigma"
+      - "1.2 Evaluación de sumas"
+      - "1.3 El área de una región plana"
+      - "1.4 Aproximaciones al cálculo del área"
+      - "1.5 Sumas superiores e inferiores"
+      - "1.6 Límite de las sumatorias"
+      - "1.7 Sumas de Riemann"
+      - "1.8 Definiciones y teoremas"
+      - "1.9 Notación para antiderivadas"
+      - "1.10 Reglas básicas para la integración"
+      - "1.11 Determinación de soluciones particulares"
+      - "1.12 La integral indefinida"
+
+  - numero: 2
+    nombre: El Teorema Fundamental del Cálculo
+    periodo: 19-10-2026 a 09-12-2026
+    practica: "Aplicación de integral definida a la solución de problemas."
+    temas:
+      - "2.1 El teorema fundamental del cálculo"
+      - "2.2 Cálculo de integrales definidas"
+      - "2.3 El teorema del valor medio"
+      - "2.4 Valor medio de una función"
+      - "2.5 El segundo teorema fundamental del cálculo"
+      - "2.6 Técnicas de integración: sustitución, por partes y otras"
+
+  - numero: 3
+    nombre: Aplicaciones de la Integral en la Ingeniería
+    periodo: 14-12-2026 a 20-01-2027
+    practica: "Construcción y análisis de volumen de sólidos con integrales."
+    temas:
+      - "3.1 Determinación de áreas y volúmenes"
+      - "3.2 Otras aplicaciones de la integral definida"
+      - "3.3 Integrales múltiples"
