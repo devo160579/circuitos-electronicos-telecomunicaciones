@@ -3,7 +3,7 @@ name: Importar modulos de Calculo Integral
 on:
   push:
     paths:
-      - '.github/import/calculo-integral-upload.tar.xz'
+      - '.github/import/READY'
   workflow_dispatch:
 
 permissions:
@@ -18,17 +18,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Extraer materiales
+      - name: Reconstruir y extraer materiales
         shell: bash
         run: |
           set -euo pipefail
-          ARCHIVO='.github/import/calculo-integral-upload.tar.xz'
-          if [ ! -f "$ARCHIVO" ]; then
-            echo 'El paquete de importacion no existe; no hay cambios que aplicar.'
+          PARTES='.github/import/parts'
+          if [ ! -f '.github/import/READY' ]; then
+            echo 'No existe la señal READY; no hay importación pendiente.'
             exit 0
           fi
+          if [ ! -d "$PARTES" ]; then
+            echo 'No existen partes del paquete.'
+            exit 1
+          fi
+          cat "$PARTES"/*.b64 | base64 -d > /tmp/calculo-integral-upload.tar.xz
           TMP="$(mktemp -d)"
-          tar -xJf "$ARCHIVO" -C "$TMP"
+          tar -xJf /tmp/calculo-integral-upload.tar.xz -C "$TMP"
           mkdir -p calculo-integral/assets
           mkdir -p calculo-integral/bloques/bloque-01
           mkdir -p calculo-integral/bloques/bloque-02
