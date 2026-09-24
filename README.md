@@ -1,14 +1,12 @@
-# Circuitos Electrónicos para Telecomunicaciones
+# Material académico de Telecomunicaciones
 
-Repositorio académico organizado por bloques y temas.
+Repositorio general para organizar varias asignaturas de la carrera de Telecomunicaciones.
 
-## Estructura
-- `index.html`: portal principal.
-- `curso.yml`: estructura académica.
-- `assets/`: estilos, scripts, imágenes e iconos.
-- `bloques/`: contenidos del sílabo.
-- `shared/`: recursos reutilizables.
-- `docs/`: documentación del repositorio.
+## Asignaturas
+- `circuitos-electronicos/`: Circuitos Electrónicos para Telecomunicaciones.
+- `calculo-integral/`: Cálculo Integral.
 
-## Asignaturas adicionales
-- `calculo-integral/`: estructura académica independiente para Cálculo Integral.
+Cada asignatura mantiene su propia portada, bloques, recursos y archivos de configuración.
+
+## Convención
+Las nuevas asignaturas deberán crearse como carpetas independientes en la raíz del repositorio, usando nombres en minúsculas y guiones medios.
