@@ -9,3 +9,6 @@ Repositorio académico organizado por bloques y temas.
 - `bloques/`: contenidos del sílabo.
 - `shared/`: recursos reutilizables.
 - `docs/`: documentación del repositorio.
+
+## Asignaturas adicionales
+- `calculo-integral/`: estructura académica independiente para Cálculo Integral.
