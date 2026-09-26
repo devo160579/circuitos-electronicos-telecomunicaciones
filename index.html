@@ -10,7 +10,10 @@
     *{box-sizing:border-box} body{margin:0;background:var(--page);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.55}
     body:before{content:"";display:block;height:6px;background:linear-gradient(90deg,var(--red),var(--red2))}
     .wrap{width:min(1120px,calc(100% - 32px));margin:auto}
-    header{background:#fff;border-bottom:1px solid var(--line);padding:36px 0}
+    header{background:#fff;border-bottom:1px solid var(--line);padding:30px 0 36px}
+    .brand{display:flex;align-items:center;justify-content:space-between;gap:34px;margin-bottom:26px}
+    .brand img{width:340px;max-width:46vw;height:auto;display:block}
+    .brandline{flex:1;height:1px;background:linear-gradient(90deg,#e8e8e8,transparent)}
     .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red2);margin:0 0 8px}
     h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.3rem);margin:0 0 12px;line-height:1.1}
     header p{margin:0;color:var(--muted);max-width:760px}
@@ -23,11 +26,18 @@
     .card h3{margin:0 0 8px;font-size:1.35rem}.card p{margin:0 0 20px;color:var(--muted)}
     .go{margin-top:auto;font-weight:800;color:var(--red2)}
     footer{border-top:1px solid var(--line);background:#fff;padding:20px 0;color:var(--muted);font-size:.9rem}
+    @media(max-width:700px){
+      header{padding-top:22px}.brand{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:22px}.brand img{width:300px;max-width:88vw}.brandline{display:none}
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="wrap">
+    <div class="brand">
+      <img src="calculo-integral/assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca">
+      <div class="brandline" aria-hidden="true"></div>
+    </div>
     <p class="eyebrow">Universidad Católica de Cuenca · Telecomunicaciones</p>
     <h1>Material Académico</h1>
     <p>Portal general de asignaturas. Cada materia conserva su propia estructura de bloques, contenidos, recursos y evaluaciones.</p>
