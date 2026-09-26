@@ -1,4 +1,9 @@
 (function(){
+  function topicFromFile(href){
+    const m=(href||'').match(/tema-(\d+)-(\d+)\.html(?:$|[?#])/i);
+    return m?m[1]+'.'+m[2]:null;
+  }
+
   function enhanceCalcNav(frame){
     try{
       const d=frame.contentDocument,w=frame.contentWindow;
@@ -70,5 +75,26 @@
       sync();
     }catch(e){console.warn('No se pudo aplicar la navegación unificada de Cálculo Integral',e)}
   }
+
+  function prepareBlockPage(){
+    document.querySelectorAll('a.filelink').forEach(a=>{
+      const topic=topicFromFile(a.getAttribute('href'));
+      if(topic)a.setAttribute('href','?tema='+encodeURIComponent(topic));
+    });
+    const direct=document.getElementById('directLink');
+    if(direct){
+      direct.addEventListener('click',e=>{
+        const topic=topicFromFile(direct.getAttribute('href'));
+        if(topic){e.preventDefault();location.href='?tema='+encodeURIComponent(topic);}
+      });
+    }
+    const requested=new URLSearchParams(location.search).get('tema');
+    if(requested){
+      const button=document.querySelector('.topic[data-topic="'+CSS.escape(requested)+'"]');
+      if(button)button.click();
+    }
+  }
+
   window.enhanceCalcNav=enhanceCalcNav;
+  setTimeout(prepareBlockPage,0);
 })();
