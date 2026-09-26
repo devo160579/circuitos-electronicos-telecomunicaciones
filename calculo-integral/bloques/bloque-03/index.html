@@ -21,9 +21,11 @@ footer{border-top:4px solid var(--red);background:#fff;margin-top:22px}footer di
 <div class="files"><h2 style="color:#98111C">Archivos individuales</h2><div class="filelinks"><a class="filelink" href="tema-3-1.html">3.1 · Determinación de áreas y volúmenes</a><a class="filelink" href="tema-3-2.html">3.2 · Otras aplicaciones de la integral definida</a><a class="filelink" href="tema-3-3.html">3.3 · Integrales múltiples</a><a class="filelink" href="actividad-integradora.html">Actividad final integradora</a></div></div>
 </main>
 <footer><div><strong>Universidad Católica de Cuenca</strong> · Cálculo Integral · Bloque 3 · Material interactivo para estudiantes</div></footer>
+<script src="../../assets/js/navegacion-clase.js"></script>
 <script>
 const DATA={"3.1":{"title":"Determinación de áreas y volúmenes","file":"tema-3-1.html"},"3.2":{"title":"Otras aplicaciones de la integral definida","file":"tema-3-2.html"},"3.3":{"title":"Integrales múltiples","file":"tema-3-3.html"}};
 const viewer=document.getElementById("viewer"),title=document.getElementById("viewerTitle"),status=document.getElementById("viewerStatus"),direct=document.getElementById("directLink");
+viewer.addEventListener("load",()=>window.enhanceCalcNav&&window.enhanceCalcNav(viewer));
 function loadTopic(num){const item=DATA[num];if(!item)return;document.querySelectorAll(".topic").forEach(b=>b.classList.toggle("active",b.dataset.topic===num));title.textContent=num+" · "+item.title;status.textContent="Clase cargada. Puede trabajarla directamente en este visor o abrirla en una pestaña independiente.";direct.href=item.file;direct.style.display="inline-block";viewer.removeAttribute("srcdoc");viewer.src=item.file;viewer.scrollIntoView({behavior:"smooth",block:"start"});}
 document.querySelectorAll(".topic").forEach(b=>b.addEventListener("click",()=>loadTopic(b.dataset.topic)));
 document.getElementById("openFinal").addEventListener("click",()=>{document.querySelectorAll(".topic").forEach(b=>b.classList.remove("active"));title.textContent="Actividad final integradora · Bloque 3";status.textContent="Integra los contenidos del bloque.";direct.href="actividad-integradora.html";direct.style.display="inline-block";viewer.removeAttribute("srcdoc");viewer.src="actividad-integradora.html";viewer.scrollIntoView({behavior:"smooth",block:"start"});});
