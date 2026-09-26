@@ -1,32 +1,48 @@
-<!doctype html><html lang="es"><head><base href="./"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cálculo Integral · Bloque 3 · UCACUE</title>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloque 3 | Cálculo Integral</title>
 <style>
-:root{--red:#E20613;--band1:#DC2137;--band2:#AF1C32;--ink:#272222;--muted:#686868;--bg:#F7F7F7;--line:#E6E6E6}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3","Source Sans Pro","Segoe UI",Arial,sans-serif}
-header{background:#fff;border-top:8px solid var(--red)}.brand{max-width:1180px;margin:auto;padding:22px;display:grid;grid-template-columns:minmax(245px,340px) 1fr;gap:34px;align-items:center}
-.logo-frame{padding:18px 20px;background:#fff}.logo{display:block;width:100%;max-width:340px;min-width:245px;height:auto}.meta{border-left:4px solid var(--red);padding-left:22px}.meta .kick{font-size:.78rem;letter-spacing:.08em;font-weight:900;text-transform:uppercase;color:#606060}.meta h1{margin:.3rem 0;color:#262020;font-size:clamp(1.8rem,3.5vw,2.7rem)}.meta p{margin:0;color:#5b5b5b}.chevron{height:26px;background:linear-gradient(90deg,var(--band1) 0 50%,var(--band2) 50% 100%);clip-path:polygon(0 0,50% 62%,100% 0,100% 42%,50% 100%,0 42%)}
-main{max-width:1180px;margin:22px auto;padding:0 14px 34px}.features{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}.features span{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);padding:8px 11px;border-radius:9px;font-size:.9rem}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:18px}.topic{text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;color:var(--ink);box-shadow:0 3px 12px rgba(0,0,0,.025)}.topic:hover,.topic.active{border-color:#E7A8AE;background:#FFF7F7}.n{display:inline-block;background:#FDE8EA;color:#A60E1C;font-weight:900;padding:5px 8px;border-radius:7px}.topic strong,.topic small{display:block}.topic strong{margin-top:10px}.topic small{margin-top:7px;color:var(--muted)}
-.viewer-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.viewer-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding:13px 14px;border-bottom:1px solid var(--line);border-top:4px solid var(--red)}.viewer-head strong{color:#98111C}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button,.actions a{border:0;border-radius:8px;padding:10px 12px;background:var(--red);color:#fff;text-decoration:none;font-weight:800;cursor:pointer}.actions .secondary{background:#F2F2F2;color:#8F101A}iframe{display:block;width:100%;height:1040px;border:0;background:white}
-.files{margin-top:17px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px}.filelinks{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.filelink{color:#95101A;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:9px;background:#fff}
-footer{border-top:4px solid var(--red);background:#fff;margin-top:22px}footer div{max-width:1180px;margin:auto;padding:16px 20px;color:#5b5b5b;font-size:.88rem}
-@media(max-width:900px){.brand{grid-template-columns:1fr;text-align:center}.logo{margin:auto}.meta{border-left:0;border-top:3px solid var(--red);padding:14px 0 0}.grid{grid-template-columns:repeat(2,1fr)}.filelinks{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}.filelinks{grid-template-columns:1fr}iframe{height:880px}.logo{min-width:0}}
-</style></head><body>
-<header><div class="brand"><div class="logo-frame"><img class="logo" src="../../assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca"></div><div class="meta"><div class="kick">Carrera de Telecomunicaciones · Tercer ciclo</div><h1>Cálculo Integral · Bloque 3</h1><p>Aplicaciones de la Integral en la Ingeniería · Objetos Virtuales de Aprendizaje</p></div></div><div class="chevron" aria-hidden="true"></div></header>
-<main>
-<div class="features"><span>Identidad visual UCACUE</span><span>SVG interactivo</span><span>Banco por niveles</span><span>Contexto Telecom</span><span>Aprende jugando</span><span>Autoevaluación</span></div>
-<div class="grid"><button class="topic" type="button" data-topic="3.1"><span class="n">3.1</span><strong>Determinación de áreas y volúmenes</strong><small>Abrir clase interactiva</small></button><button class="topic" type="button" data-topic="3.2"><span class="n">3.2</span><strong>Otras aplicaciones de la integral definida</strong><small>Abrir clase interactiva</small></button><button class="topic" type="button" data-topic="3.3"><span class="n">3.3</span><strong>Integrales múltiples</strong><small>Abrir clase interactiva</small></button></div>
-<div class="viewer-card"><div class="viewer-head"><div><strong id="viewerTitle">Seleccione una clase 3.1–3.3</strong><div id="viewerStatus" style="color:var(--muted);font-size:.9rem">La clase se visualizará aquí mismo.</div></div><div class="actions"><button type="button" id="openFinal">Actividad integradora</button><a id="directLink" class="secondary" href="#" style="display:none">Abrir archivo individual</a></div></div><iframe id="viewer" title="Visor OVA Bloque 3" srcdoc="<html><body style='font-family:Arial;padding:32px;color:#444'><h2>Seleccione una clase</h2><p>Use las tarjetas superiores para abrir el OVA.</p></body></html>"></iframe></div>
-<div class="files"><h2 style="color:#98111C">Archivos individuales</h2><div class="filelinks"><a class="filelink" href="tema-3-1.html">3.1 · Determinación de áreas y volúmenes</a><a class="filelink" href="tema-3-2.html">3.2 · Otras aplicaciones de la integral definida</a><a class="filelink" href="tema-3-3.html">3.3 · Integrales múltiples</a><a class="filelink" href="actividad-integradora.html">Actividad final integradora</a></div></div>
-</main>
-<footer><div><strong>Universidad Católica de Cuenca</strong> · Cálculo Integral · Bloque 3 · Material interactivo para estudiantes</div></footer>
+:root{--red:#E20613;--dark:#AF1C32;--ink:#242424;--muted:#666;--line:#e3e3e3;--bg:#f5f6f7;--soft:#fff1f2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif}body:before{content:"";display:block;height:6px;background:linear-gradient(90deg,var(--red),var(--dark))}.wrap{width:min(1240px,calc(100% - 32px));margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);padding:18px 0 22px}.brand{display:flex;align-items:center;gap:22px}.brand img{width:260px;max-width:45vw;height:auto}.brandcopy{border-left:4px solid var(--red);padding-left:18px}.brandcopy b{display:block;color:var(--dark);text-transform:uppercase;letter-spacing:.07em;font-size:.78rem}.brandcopy span{display:block;color:#666;margin-top:4px}.crumbs{margin-top:16px;font-size:.9rem}.crumbs a{color:var(--dark);font-weight:800;text-decoration:none}h1{margin:8px 0 5px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05}.lead{margin:0;color:var(--muted)}
+main{padding:22px 0 34px}.topicbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}.topicbtn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 13px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;font-weight:750;transition:.15s}.topicbtn:hover{border-color:#d9a5ac;background:#fff8f8}.topicbtn.active{background:var(--soft);border-color:#e7a8af;color:var(--dark);box-shadow:inset 4px 0 0 var(--red)}
+.viewer{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.07)}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;border-bottom:1px solid var(--line);background:#fff;border-top:5px solid var(--red)}.current{font-weight:900;color:#333}.tools{display:flex;flex-wrap:wrap;gap:8px}.tool{border:1px solid #ddd;background:#f7f7f7;color:#333;border-radius:8px;padding:8px 10px;font-weight:800;text-decoration:none;cursor:pointer}.tool.primary{background:var(--red);border-color:var(--red);color:#fff}.tool.integrator{background:var(--dark);border-color:var(--dark);color:#fff}.tool:disabled{opacity:.42;cursor:not-allowed}iframe{display:block;width:100%;height:78vh;min-height:650px;border:0;background:#fff}.hint{margin:12px 2px 0;color:#666;font-size:.86rem}
+@media(max-width:900px){.topicbar{grid-template-columns:1fr 1fr}.brand{align-items:flex-start}.brand img{width:230px}.toolbar{align-items:flex-start;flex-direction:column}iframe{height:74vh;min-height:600px}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1240px)}.brand{flex-direction:column}.brandcopy{border-left:0;border-top:4px solid var(--red);padding:12px 0 0}.brand img{max-width:82vw}.topicbar{grid-template-columns:1fr}.tools{width:100%}.tool{flex:1;text-align:center}iframe{min-height:560px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><img src="../../assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca"><div class="brandcopy"><b>Universidad Católica de Cuenca · Carrera de Telecomunicaciones</b><span>Cálculo Integral · Tercer ciclo</span></div></div>
+  <div class="crumbs"><a href="../../index.html">Cálculo Integral</a> / Bloque 3</div>
+  <h1>Aplicaciones de la Integral en la Ingeniería</h1>
+  <p class="lead">Selecciona un tema. La primera clase se abre automáticamente y puedes avanzar con Anterior y Siguiente.</p>
+</div></header>
+<main><div class="wrap">
+  <nav class="topicbar" aria-label="Temas del Bloque 3">
+    <button class="topicbtn active" data-i="0">3.1 Determinación de áreas y volúmenes</button>
+    <button class="topicbtn" data-i="1">3.2 Otras aplicaciones de la integral definida</button>
+    <button class="topicbtn" data-i="2">3.3 Integrales múltiples</button>
+  </nav>
+  <section class="viewer">
+    <div class="toolbar"><div class="current" id="currentTitle">3.1 Determinación de áreas y volúmenes</div><div class="tools"><button class="tool" id="prev">← Anterior</button><button class="tool" id="next">Siguiente →</button><a class="tool primary" id="openFull" target="_blank" rel="noopener">Abrir página completa</a><a class="tool integrator" href="actividad-integradora.html" target="_blank" rel="noopener">Actividad integradora</a></div></div>
+    <iframe id="classFrame" title="Clase interactiva de Cálculo Integral"></iframe>
+  </section>
+  <p class="hint">En computador, el navegador de la clase permanece a la izquierda. En pantallas pequeñas se adapta para conservar la legibilidad.</p>
+</div></main>
 <script src="../../assets/js/navegacion-clase.js"></script>
 <script>
-const DATA={"3.1":{"title":"Determinación de áreas y volúmenes","file":"tema-3-1.html"},"3.2":{"title":"Otras aplicaciones de la integral definida","file":"tema-3-2.html"},"3.3":{"title":"Integrales múltiples","file":"tema-3-3.html"}};
-const viewer=document.getElementById("viewer"),title=document.getElementById("viewerTitle"),status=document.getElementById("viewerStatus"),direct=document.getElementById("directLink");
-viewer.addEventListener("load",()=>window.enhanceCalcNav&&window.enhanceCalcNav(viewer));
-function loadTopic(num){const item=DATA[num];if(!item)return;document.querySelectorAll(".topic").forEach(b=>b.classList.toggle("active",b.dataset.topic===num));title.textContent=num+" · "+item.title;status.textContent="Clase cargada. Puede trabajarla directamente en este visor o abrirla en una pestaña independiente.";direct.href=item.file;direct.style.display="inline-block";viewer.removeAttribute("srcdoc");viewer.src=item.file;viewer.scrollIntoView({behavior:"smooth",block:"start"});}
-document.querySelectorAll(".topic").forEach(b=>b.addEventListener("click",()=>loadTopic(b.dataset.topic)));
-document.getElementById("openFinal").addEventListener("click",()=>{document.querySelectorAll(".topic").forEach(b=>b.classList.remove("active"));title.textContent="Actividad final integradora · Bloque 3";status.textContent="Integra los contenidos del bloque.";direct.href="actividad-integradora.html";direct.style.display="inline-block";viewer.removeAttribute("srcdoc");viewer.src="actividad-integradora.html";viewer.scrollIntoView({behavior:"smooth",block:"start"});});
-</script></body></html>
+const topics=[
+ {n:'3.1',t:'Determinación de áreas y volúmenes',f:'tema-3-1.html'},
+ {n:'3.2',t:'Otras aplicaciones de la integral definida',f:'tema-3-2.html'},
+ {n:'3.3',t:'Integrales múltiples',f:'tema-3-3.html'}
+];
+let idx=0;const frame=document.getElementById('classFrame'),title=document.getElementById('currentTitle'),full=document.getElementById('openFull'),prev=document.getElementById('prev'),next=document.getElementById('next'),buttons=[...document.querySelectorAll('.topicbtn')];
+function load(i,scroll=false){idx=Math.max(0,Math.min(topics.length-1,i));const x=topics[idx];frame.src=x.f;title.textContent=x.n+' '+x.t;full.href=x.f;buttons.forEach((b,j)=>b.classList.toggle('active',j===idx));prev.disabled=idx===0;next.disabled=idx===topics.length-1;try{history.replaceState(null,'','?tema='+encodeURIComponent(x.n))}catch(e){}if(scroll)document.querySelector('.viewer').scrollIntoView({behavior:'smooth',block:'start'});}
+buttons.forEach((b,i)=>b.addEventListener('click',()=>load(i,true)));prev.addEventListener('click',()=>load(idx-1));next.addEventListener('click',()=>load(idx+1));frame.addEventListener('load',()=>window.enhanceCalcNav&&window.enhanceCalcNav(frame));
+const q=new URLSearchParams(location.search).get('tema');const qi=topics.findIndex(x=>x.n===q);load(qi>=0?qi:0,false);
+</script>
+</body></html>
