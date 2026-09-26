@@ -14,43 +14,70 @@
     return id;
   }
 
-  function buildToc(d,toc){
-    let headings=[...d.querySelectorAll('h2,h3')]
-      .filter(h=>!h.closest('#TOC') && !h.closest('footer') && h.textContent.trim().length>2);
+  function discoverTargets(d){
+    const valid=(el)=>el && !el.closest('#TOC') && !el.closest('footer') && !el.closest('.ucacue-footer');
 
-    // Si el documento usa una jerarquía muy ligera, incorporamos h4 para no dejar temas fuera.
-    if(headings.length<3){
-      headings=[...d.querySelectorAll('h2,h3,h4')]
-        .filter(h=>!h.closest('#TOC') && !h.closest('footer') && h.textContent.trim().length>2);
+    // Prioridad 1: las tarjetas/secciones reales usadas por los módulos MIAI de B2 y B3.
+    let sections=[...d.querySelectorAll('.section')].filter(valid);
+    if(sections.length>=2){
+      return sections.map((el,i)=>{
+        const titleEl=el.querySelector('h1,h2,h3,h4,.head,.section-title,.title,.formula-label');
+        let label=(titleEl?.textContent||'').replace(/\s+/g,' ').trim();
+        if(!label){
+          const strong=el.querySelector('strong,b');
+          label=(strong?.textContent||'').replace(/\s+/g,' ').trim();
+        }
+        if(!label)label=`Sección ${i+1}`;
+        if(label.length>88)label=label.slice(0,85)+'…';
+        return {el,label,level:2};
+      });
     }
 
-    // Evitar duplicados por texto/elemento conservando el orden del documento.
-    const seen=new Set();
-    headings=headings.filter(h=>{
-      if(seen.has(h))return false;
-      seen.add(h);return true;
-    });
+    // Prioridad 2: secciones semánticas.
+    sections=[...d.querySelectorAll('main section,article')].filter(valid);
+    if(sections.length>=2){
+      return sections.map((el,i)=>{
+        const titleEl=el.querySelector('h1,h2,h3,h4,.head,.section-title,.title');
+        let label=(titleEl?.textContent||'').replace(/\s+/g,' ').trim()||`Sección ${i+1}`;
+        if(label.length>88)label=label.slice(0,85)+'…';
+        return {el,label,level:2};
+      });
+    }
 
+    // Prioridad 3: encabezados tradicionales.
+    let headings=[...d.querySelectorAll('h2,h3,h4')]
+      .filter(h=>valid(h) && h.textContent.trim().length>2);
+    return headings.map(h=>({
+      el:h,
+      label:h.textContent.replace(/\s+/g,' ').trim(),
+      level:h.tagName==='H4'?4:(h.tagName==='H3'?3:2)
+    }));
+  }
+
+  function buildToc(d,toc){
+    const targets=discoverTargets(d);
     let ul=toc.querySelector('ul');
     if(!ul){ul=d.createElement('ul');toc.appendChild(ul)}
     ul.innerHTML='';
 
-    headings.forEach(h=>{
-      if(!h.id)h.id=uniqueId(d,slugify(h.textContent));
+    targets.forEach((item,i)=>{
+      const el=item.el;
+      if(!el.id)el.id=uniqueId(d,slugify(item.label||`seccion-${i+1}`));
       const li=d.createElement('li');
-      if(h.tagName==='H3')li.className='toc-level-3';
-      if(h.tagName==='H4')li.className='toc-level-4';
+      li.className=`toc-level-${item.level||2}`;
       const a=d.createElement('a');
-      a.href='#'+h.id;
-      a.textContent=h.textContent.trim();
-      li.appendChild(a);ul.appendChild(li);
+      a.href='#'+el.id;
+      a.textContent=item.label;
+      li.appendChild(a);
+      ul.appendChild(li);
     });
+    return targets.length;
   }
 
   function enhance(){
     try{
       const d=frame.contentDocument,w=frame.contentWindow;
-      if(!d||!w)return;
+      if(!d||!w||!d.body)return;
 
       let toc=d.getElementById('TOC');
       if(!toc){
@@ -59,16 +86,16 @@
         d.body.prepend(toc);
       }
 
-      // En algunos módulos de B2/B3 el TOC existe pero llega vacío.
-      // Si tiene menos de dos enlaces útiles, se reconstruye desde los encabezados reales.
-      if(toc.querySelectorAll('a[href^="#"]').length<2)buildToc(d,toc);
+      // Reconstruimos siempre el menú a partir de la estructura real del módulo.
+      buildToc(d,toc);
 
-      if(!toc.querySelector('.class-nav-title')){
-        const lab=d.createElement('div');
+      let lab=toc.querySelector('.class-nav-title');
+      if(!lab){
+        lab=d.createElement('div');
         lab.className='class-nav-title';
-        lab.textContent='Navegación de la clase';
         toc.prepend(lab);
       }
+      lab.textContent='Navegación de la clase';
 
       const old=d.getElementById('student-nav-enhancement');
       if(old)old.remove();
@@ -76,12 +103,12 @@
       style.id='student-nav-enhancement';
       style.textContent=`
         #TOC:before{display:none!important}
-        #TOC .class-nav-title{padding:8px 10px 11px;color:#585858;font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #e6e6e6;margin-bottom:6px}
-        #TOC ul{list-style:none!important;padding:0!important;margin:0!important}
-        #TOC li{margin:2px 0!important;padding:0!important}
+        #TOC .class-nav-title{display:block!important;padding:8px 10px 11px;color:#585858;font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #e6e6e6;margin-bottom:6px}
+        #TOC ul{display:block!important;visibility:visible!important;opacity:1!important;list-style:none!important;padding:0!important;margin:0!important}
+        #TOC li{display:block!important;visibility:visible!important;opacity:1!important;margin:2px 0!important;padding:0!important}
+        #TOC a{display:block!important;visibility:visible!important;opacity:1!important;padding:8px 10px!important;border-radius:7px!important;text-decoration:none!important;color:#444!important;font-size:.88rem!important;line-height:1.25!important;transition:.15s!important}
         #TOC li.toc-level-3 a{padding-left:18px!important;font-size:.85rem!important}
         #TOC li.toc-level-4 a{padding-left:27px!important;font-size:.82rem!important;color:#5a5a5a!important}
-        #TOC a{display:block!important;padding:8px 10px!important;border-radius:7px!important;text-decoration:none!important;color:#444!important;font-size:.88rem!important;line-height:1.25!important;transition:.15s!important}
         #TOC a:hover{background:#FFF0F1!important;color:#9E0A16!important}
         #TOC a.active{background:#FDE8EA!important;color:#A60E1C!important;font-weight:900!important;box-shadow:inset 4px 0 0 #E20613!important;padding-left:15px!important}
         #TOC::-webkit-scrollbar{width:10px}
@@ -89,10 +116,10 @@
         #TOC::-webkit-scrollbar-thumb{background:#888;border-radius:10px;border:2px solid #f2f2f2}
         @media(min-width:1180px){
           body{max-width:1180px!important;padding-left:330px!important;padding-right:34px!important}
-          #TOC{position:fixed!important;left:max(20px,calc((100vw - 1180px)/2 + 6px))!important;top:24px!important;width:270px!important;max-height:calc(100vh - 48px)!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:1000!important;background:#fff!important;border:1px solid #E6E6E6!important;border-top:5px solid #E20613!important;border-left:1px solid #E6E6E6!important;border-radius:12px!important;padding:10px!important;box-shadow:0 7px 22px rgba(38,26,26,.08)!important;scrollbar-color:#888 #f2f2f2!important;scrollbar-width:auto!important}
+          #TOC{display:block!important;position:fixed!important;left:max(20px,calc((100vw - 1180px)/2 + 6px))!important;top:24px!important;width:270px!important;max-height:calc(100vh - 48px)!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:1000!important;background:#fff!important;border:1px solid #E6E6E6!important;border-top:5px solid #E20613!important;border-left:1px solid #E6E6E6!important;border-radius:12px!important;padding:10px!important;box-shadow:0 7px 22px rgba(38,26,26,.08)!important;scrollbar-color:#888 #f2f2f2!important;scrollbar-width:auto!important}
         }
         @media(max-width:1179px){
-          #TOC{position:relative!important;left:auto!important;top:auto!important;width:auto!important;max-height:none!important;margin:0 0 18px!important;border-top:5px solid #E20613!important;border-left:1px solid #E6E6E6!important}
+          #TOC{display:block!important;position:relative!important;left:auto!important;top:auto!important;width:auto!important;max-height:none!important;margin:0 0 18px!important;border-top:5px solid #E20613!important;border-left:1px solid #E6E6E6!important;background:#fff!important}
         }`;
       d.head.appendChild(style);
 
@@ -104,9 +131,7 @@
 
       const sync=()=>{
         let current=pairs[0]?.a||null;
-        for(const x of pairs){
-          if(x.el.getBoundingClientRect().top<=155)current=x.a;
-        }
+        for(const x of pairs){if(x.el.getBoundingClientRect().top<=155)current=x.a;}
         links.forEach(a=>a.classList.toggle('active',a===current));
       };
 
@@ -121,6 +146,6 @@
     }
   }
 
-  frame.addEventListener('load',enhance);
-  if(frame.contentDocument?.readyState==='complete')enhance();
+  frame.addEventListener('load',()=>setTimeout(enhance,0));
+  if(frame.contentDocument?.readyState==='complete')setTimeout(enhance,0);
 })();
