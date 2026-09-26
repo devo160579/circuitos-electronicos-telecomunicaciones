@@ -2,6 +2,41 @@
   const frame=document.getElementById('classFrame');
   if(!frame)return;
 
+  const topicMeta={
+    'Tema_2_1_Fundamentos_Osciladores_MIAI.html':{
+      why:'Los osciladores son esenciales en telecomunicaciones porque permiten generar señales periódicas sin una excitación externa continua. Se emplean como portadoras, relojes, referencias de frecuencia y fuentes de señal en transmisores, receptores y sistemas electrónicos.',
+      result:'Al finalizar este tema, el estudiante será capaz de explicar el principio de funcionamiento de un oscilador, interpretar las condiciones de oscilación y reconocer los parámetros principales que determinan su amplitud, frecuencia y estabilidad.'
+    },
+    'Tema_2_2_Osciladores_RC_LC_MIAI.html':{
+      why:'Comprender los osciladores RC y LC permite seleccionar y diseñar circuitos generadores de señal según el rango de frecuencia requerido. Estas topologías aparecen en generadores, sintetizadores y etapas de radiofrecuencia de numerosos sistemas de telecomunicaciones.',
+      result:'Al finalizar este tema, el estudiante será capaz de analizar osciladores RC y LC, identificar sus componentes de realimentación y determinar de forma básica la frecuencia de oscilación y los criterios de selección de sus elementos.'
+    },
+    'Tema_2_3_Modulacion_AM_MIAI.html':{
+      why:'La modulación AM permite comprender cómo una señal de información puede trasladarse a una frecuencia adecuada para su transmisión. Es una base conceptual para estudiar espectro, ancho de banda, portadoras, bandas laterales y procesos de demodulación.',
+      result:'Al finalizar este tema, el estudiante será capaz de explicar el proceso de modulación AM, interpretar su espectro, calcular el índice de modulación y el ancho de banda, y relacionar estos parámetros con aplicaciones de telecomunicaciones.'
+    },
+    'Tema_2_4_Modulacion_FM_MIAI.html':{
+      why:'La modulación FM es ampliamente utilizada por su mejor comportamiento frente al ruido y su capacidad para transportar información mediante variaciones de frecuencia. Su estudio permite entender sistemas de radiodifusión y enlaces analógicos modernos.',
+      result:'Al finalizar este tema, el estudiante será capaz de explicar la modulación FM, interpretar la desviación de frecuencia y el índice de modulación, estimar el ancho de banda y reconocer sus principales métodos de generación y demodulación.'
+    },
+    'Tema_3_1_Fundamentos_RF_MIAI.html':{
+      why:'En radiofrecuencia, los circuitos dejan de comportarse como en baja frecuencia debido a efectos de longitud de onda, parasitismos, impedancias y propagación. Comprender estos fenómenos es indispensable para diseñar y analizar sistemas de comunicaciones inalámbricas.',
+      result:'Al finalizar este tema, el estudiante será capaz de reconocer los parámetros fundamentales de radiofrecuencia y relacionar frecuencia, longitud de onda, impedancia, potencia y efectos parásitos con el comportamiento de circuitos de telecomunicaciones.'
+    },
+    'Tema_3_2_Resonancia_Adaptacion_RF_MIAI.html':{
+      why:'La resonancia y la adaptación de impedancias permiten transferir potencia de manera eficiente y reducir reflexiones en sistemas de RF. Estos conceptos son fundamentales en antenas, líneas de transmisión, amplificadores y filtros.',
+      result:'Al finalizar este tema, el estudiante será capaz de analizar condiciones de resonancia, interpretar el factor de calidad y aplicar conceptos básicos de adaptación de impedancias, coeficiente de reflexión y ROE en circuitos de RF.'
+    },
+    'Tema_3_3_Amplificadores_Filtros_RF_MIAI.html':{
+      why:'Los amplificadores y filtros de RF permiten acondicionar, seleccionar y amplificar señales sin degradar excesivamente su calidad. Son bloques esenciales en transmisores y receptores de cualquier sistema de telecomunicaciones.',
+      result:'Al finalizar este tema, el estudiante será capaz de identificar los parámetros principales de amplificadores y filtros de RF, analizar ganancia, ancho de banda y selectividad, y relacionarlos con el desempeño de un enlace de telecomunicaciones.'
+    },
+    'Tema_3_4_Integracion_Validacion_MIAI.html':{
+      why:'Un sistema de telecomunicaciones no funciona como etapas aisladas: requiere que amplificadores, filtros, osciladores y bloques de RF operen de forma compatible. La integración y validación permiten verificar que el sistema completo cumple los requisitos de diseño.',
+      result:'Al finalizar este tema, el estudiante será capaz de integrar funcionalmente los principales bloques de un sistema electrónico de telecomunicaciones y proponer una estrategia básica de validación mediante mediciones, criterios de desempeño y análisis de resultados.'
+    }
+  };
+
   const slugify=(text)=>text
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     .toLowerCase().trim()
@@ -14,10 +49,45 @@
     return id;
   }
 
+  function getCurrentMeta(){
+    const src=(frame.getAttribute('src')||'').split('?')[0].split('/').pop();
+    return topicMeta[src]||null;
+  }
+
+  function injectIntroSections(d){
+    const meta=getCurrentMeta();
+    if(!meta)return;
+
+    const existingWhy=d.getElementById('por-que-aprender');
+    const existingResult=d.getElementById('resultado-esperado');
+    if(existingWhy&&existingResult)return;
+
+    const firstSection=d.querySelector('.section');
+    const container=firstSection?.parentElement || d.querySelector('.page') || d.body;
+    const before=firstSection || null;
+
+    if(!existingWhy){
+      const s=d.createElement('section');
+      s.className='section nav-intro-section';
+      s.id='por-que-aprender';
+      s.innerHTML='<h2>¿Por qué necesito aprender esto?</h2><p></p>';
+      s.querySelector('p').textContent=meta.why;
+      container.insertBefore(s,before);
+    }
+
+    if(!existingResult){
+      const s=d.createElement('section');
+      s.className='section nav-intro-section';
+      s.id='resultado-esperado';
+      s.innerHTML='<h2>Resultado esperado del tema</h2><p></p>';
+      s.querySelector('p').textContent=meta.result;
+      const why=d.getElementById('por-que-aprender');
+      if(why?.nextSibling)container.insertBefore(s,why.nextSibling);else container.appendChild(s);
+    }
+  }
+
   function discoverTargets(d){
     const valid=(el)=>el && !el.closest('#TOC') && !el.closest('footer') && !el.closest('.ucacue-footer');
-
-    // Prioridad 1: las tarjetas/secciones reales usadas por los módulos MIAI de B2 y B3.
     let sections=[...d.querySelectorAll('.section')].filter(valid);
     if(sections.length>=2){
       return sections.map((el,i)=>{
@@ -33,7 +103,6 @@
       });
     }
 
-    // Prioridad 2: secciones semánticas.
     sections=[...d.querySelectorAll('main section,article')].filter(valid);
     if(sections.length>=2){
       return sections.map((el,i)=>{
@@ -44,8 +113,7 @@
       });
     }
 
-    // Prioridad 3: encabezados tradicionales.
-    let headings=[...d.querySelectorAll('h2,h3,h4')]
+    const headings=[...d.querySelectorAll('h2,h3,h4')]
       .filter(h=>valid(h) && h.textContent.trim().length>2);
     return headings.map(h=>({
       el:h,
@@ -71,13 +139,14 @@
       li.appendChild(a);
       ul.appendChild(li);
     });
-    return targets.length;
   }
 
   function enhance(){
     try{
       const d=frame.contentDocument,w=frame.contentWindow;
       if(!d||!w||!d.body)return;
+
+      injectIntroSections(d);
 
       let toc=d.getElementById('TOC');
       if(!toc){
@@ -86,7 +155,6 @@
         d.body.prepend(toc);
       }
 
-      // Reconstruimos siempre el menú a partir de la estructura real del módulo.
       buildToc(d,toc);
 
       let lab=toc.querySelector('.class-nav-title');
@@ -102,6 +170,8 @@
       const style=d.createElement('style');
       style.id='student-nav-enhancement';
       style.textContent=`
+        .nav-intro-section{background:#fff!important;border:1px solid #E6E6E6!important;border-left:6px solid #E20613!important;box-shadow:0 4px 14px rgba(35,35,35,.05)!important}
+        .nav-intro-section h2{color:#AF1C32!important;margin-top:0!important}
         #TOC:before{display:none!important}
         #TOC .class-nav-title{display:block!important;padding:8px 10px 11px;color:#585858;font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #e6e6e6;margin-bottom:6px}
         #TOC ul{display:block!important;visibility:visible!important;opacity:1!important;list-style:none!important;padding:0!important;margin:0!important}
