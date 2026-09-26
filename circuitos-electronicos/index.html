@@ -8,32 +8,29 @@
   <style>
     :root{--red:#e30613;--red-dark:#b51228;--ink:#1f1f1f;--text:#4d4d4d;--page:#f4f5f6;--white:#fff;--line:#dedede;--soft:#fff4f5;--shadow:0 12px 30px rgba(0,0,0,.08)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.55}body:before{content:"";display:block;height:6px;background:linear-gradient(90deg,var(--red),var(--red-dark))}.container{width:min(1180px,calc(100% - 44px));margin:auto}
-    .hero{background:#fff;border-bottom:1px solid var(--line);padding:26px 0 42px}.brand-row{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-bottom:18px}.logo{width:min(310px,44vw);height:auto;display:block}.eyebrow{margin:0;color:var(--red-dark);font-size:.85rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:right}.hero-main{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:end}.hero h1{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.6rem,5.2vw,4.65rem);line-height:1.02;letter-spacing:-.025em}.lead{margin:0;max-width:960px;color:var(--text);font-size:1.17rem}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.meta span{background:#fafafa;border:1px solid #d8d8d8;border-radius:999px;padding:9px 14px;font-weight:800;font-size:.92rem}
-    main{padding:42px 0 52px}.main-grid{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:34px;align-items:start}h2{font-size:1.8rem;margin:0 0 24px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.card{display:flex;flex-direction:column;min-height:405px;background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:28px;box-shadow:var(--shadow)}.number{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;background:var(--red);color:#fff;border-radius:7px;padding:7px 11px;font-weight:900;font-size:.9rem}.card h3{margin:22px 0 10px;font-size:1.38rem;line-height:1.25}.card p{margin:0 0 20px;color:var(--text);font-size:1.04rem}.button{margin-top:auto;display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;padding:15px 18px;border-radius:10px;font-weight:900;font-size:1.05rem;transition:.18s}.button:hover{background:var(--red-dark);transform:translateY(-1px)}
-    .side-card{background:#fff;border:1px solid #d8d8d8;border-radius:18px;padding:28px;box-shadow:var(--shadow)}.side-card h2{margin-bottom:22px}.side-card>a{display:block;color:#bf1028;text-decoration:none;font-weight:800;padding:15px 0;border-bottom:1px solid #e5e5e5}.side-card>a:hover{color:#8d0d1f}.note{margin-top:24px;background:var(--soft);border-left:5px solid var(--red);padding:16px;line-height:1.65}footer{background:#fff;border-top:1px solid var(--line);padding:19px 0;color:#666;font-size:.92rem}
-    @media(max-width:1050px){.main-grid{grid-template-columns:1fr}.side-card{max-width:none}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card:last-child{grid-column:1/-1}}
-    @media(max-width:720px){.container{width:min(100% - 28px,1180px)}.brand-row{align-items:flex-start;flex-direction:column}.eyebrow{text-align:left}.logo{width:min(300px,82vw)}.hero-main{display:block}.hero h1{font-size:clamp(2.35rem,11vw,3.8rem)}.cards{grid-template-columns:1fr}.card:last-child{grid-column:auto}.card{min-height:auto}.main-grid{gap:24px}}
+    .hero{background:#fff;border-bottom:1px solid var(--line);padding:22px 0 42px}.institutional{display:flex;align-items:center;gap:28px;margin-bottom:18px}.logo-wrap{display:flex;align-items:center;justify-content:center;min-width:330px}.logo{display:block;width:320px;max-width:42vw;height:auto}.institution-copy{border-left:4px solid var(--red);padding-left:20px}.eyebrow{margin:0;color:var(--red-dark);font-size:.86rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.institution-copy small{display:block;margin-top:5px;color:#666;font-weight:700}.hero h1{margin:10px 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,6vw,5.1rem);line-height:.98;letter-spacing:-.025em}.lead{margin:0;max-width:960px;color:var(--text);font-size:1.17rem}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.meta span{background:#fafafa;border:1px solid #d8d8d8;border-radius:999px;padding:9px 14px;font-weight:800;font-size:.92rem}
+    main{padding:42px 0 52px}.main-grid{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:34px;align-items:start}h2{font-size:1.8rem;margin:0 0 24px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.card{display:flex;flex-direction:column;min-height:380px;background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:28px;box-shadow:var(--shadow)}.number{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;background:var(--red);color:#fff;border-radius:7px;padding:7px 11px;font-weight:900;font-size:.9rem}.card h3{margin:22px 0 10px;font-size:1.38rem;line-height:1.25}.card p{margin:0 0 20px;color:var(--text);font-size:1.04rem}.button{margin-top:auto;display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;padding:15px 18px;border-radius:10px;font-weight:900;font-size:1.05rem;transition:.18s}.button:hover{background:var(--red-dark);transform:translateY(-1px)}
+    .side-card{background:#fff;border:1px solid #d8d8d8;border-radius:18px;padding:28px;box-shadow:var(--shadow);min-height:380px}.side-card h2{margin-bottom:22px}.side-card>a{display:block;color:#bf1028;text-decoration:none;font-weight:800;padding:15px 0;border-bottom:1px solid #e5e5e5}.side-card>a:hover{color:#8d0d1f}.note{margin-top:24px;background:var(--soft);border-left:5px solid var(--red);padding:16px;line-height:1.65}footer{background:#fff;border-top:1px solid var(--line);padding:19px 0;color:#666;font-size:.92rem}
+    @media(max-width:1050px){.main-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card:last-child{grid-column:1/-1}}
+    @media(max-width:760px){.container{width:min(100% - 28px,1180px)}.institutional{align-items:flex-start;flex-direction:column}.logo-wrap{min-width:0;justify-content:flex-start}.logo{width:min(320px,86vw);max-width:none}.institution-copy{border-left:0;border-top:4px solid var(--red);padding:14px 0 0}.hero h1{font-size:clamp(2.7rem,14vw,4.3rem)}.cards{grid-template-columns:1fr}.card:last-child{grid-column:auto}.card{min-height:auto}.main-grid{gap:24px}}
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="container">
-      <div class="brand-row">
-        <img class="logo" src="../calculo-integral/assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca">
-        <p class="eyebrow">Universidad Católica de Cuenca · Carrera de Telecomunicaciones</p>
-      </div>
-      <div class="hero-main">
-        <div>
-          <h1>Circuitos Electrónicos para Telecomunicaciones</h1>
-          <p class="lead">Repositorio académico organizado por bloques y temas para el estudio aplicado de circuitos electrónicos en sistemas de telecomunicaciones.</p>
-          <div class="meta">
-            <span>CT-IT-05</span>
-            <span>Quinto ciclo</span>
-            <span>Paralelo 5A</span>
-            <span>Presencial</span>
-            <span>Sept. 2026 – Feb. 2027</span>
-          </div>
+      <div class="institutional">
+        <div class="logo-wrap">
+          <img class="logo" src="https://raw.githubusercontent.com/devo160579/material-academico-telecomunicaciones/main/calculo-integral/assets/ucacue-logo-horizontal.webp" alt="Universidad Católica de Cuenca">
         </div>
+        <div class="institution-copy">
+          <p class="eyebrow">Universidad Católica de Cuenca · Carrera de Telecomunicaciones</p>
+          <small>Repositorio académico institucional</small>
+        </div>
+      </div>
+      <h1>Circuitos Electrónicos para Telecomunicaciones</h1>
+      <p class="lead">Repositorio académico organizado por bloques y temas para el estudio aplicado de circuitos electrónicos en sistemas de telecomunicaciones.</p>
+      <div class="meta">
+        <span>CT-IT-05</span><span>Quinto ciclo</span><span>Paralelo 5A</span><span>Presencial</span><span>Sept. 2026 – Feb. 2027</span>
       </div>
     </div>
   </header>
@@ -63,7 +60,6 @@
           </article>
         </div>
       </section>
-
       <aside class="side-card">
         <h2>Accesos rápidos</h2>
         <a href="bloques/bloque-01/">Bloque 1</a>
@@ -75,7 +71,6 @@
       </aside>
     </div>
   </main>
-
   <footer><div class="container">Circuitos Electrónicos para Telecomunicaciones · Repositorio académico · Carrera de Telecomunicaciones</div></footer>
 </body>
 </html>
